@@ -178,6 +178,10 @@ pre {
 /* inspired by https://basicuse.net/articles/pl/textile/html_css/creating_a_toggle_box_to_collapse_or_expand_content_using_only_css3 */
 .toggle-box + label + h4 {
   display: inline-block;
+
+  /* leave space on top when using hash fragments for linking */
+  padding-top: 200px;
+  margin-top: -200px;
 }
 
 .toggle-box ~ .summary {
