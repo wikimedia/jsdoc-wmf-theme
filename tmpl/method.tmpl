@@ -3,7 +3,7 @@ var data = obj;
 var self = this;
 var open = data.showOpen || false;
 ?>
-<div>
+<div class="<?js= data.attribsClassName ?>">
 <?js if (data.kind !== 'module' && !data.hideconstructor) { ?>
     <?js if (data.kind === 'class' && data.classdesc) { ?>
     <h2>Constructor</h2>
@@ -17,7 +17,7 @@ var open = data.showOpen || false;
 
 <div class="summary">
     <?js if (data.summary) { ?>
-    <p><?js= summary ?></p>
+    <?js= summary ?>
     <?js } else { ?>
     ...
     <?js } ?>

@@ -222,8 +222,18 @@ function addSignatureTypes(f) {
 function addAttribs(f) {
     var attribs = helper.getAttribs(f);
     var attribsString = buildAttribsString(attribs);
-
     f.attribs = util.format('<span class="type-signature">%s</span>', attribsString);
+    addClassNames(f);
+}
+
+function addClassNames(f) {
+  var attribs = helper.getAttribs(f);
+  var classNames = attribs.map( function ( a ) {
+    return 'method--' + a;
+  } ).join( ' ' );
+  classNames += !!f.inherited ? ' method--inherited' : '';
+  classNames += !!f.deprecated ? ' method--deprecated' : '';
+  f.attribsClassName = classNames;
 }
 
 function shortenPaths(files, commonPrefix) {

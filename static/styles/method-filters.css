@@ -1,0 +1,11 @@
+.method-filters {
+  font-size: small;
+  padding: 1rem 2rem;
+  background: #f8f9fa;
+  border-radius: 2px;
+}
+
+.method-filters label {
+  color: #222;
+  margin-right: 2rem;
+}
