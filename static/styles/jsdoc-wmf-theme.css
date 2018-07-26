@@ -226,3 +226,7 @@ input[type=checkbox].toggle-box:checked + label {
   z-index: 100;
   background: #eaecf0;
 }
+
+.site__title {
+  text-transform: none;
+}
