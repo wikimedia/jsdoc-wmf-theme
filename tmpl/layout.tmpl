@@ -18,6 +18,7 @@ document.documentElement.className = document.documentElement.className.replace(
     <![endif]-->
     <link rel="stylesheet" href="wmf/css/build/wmui-style-guide.min.css">
     <link rel="stylesheet" href="styles/jsdoc-wmf-theme.css">
+    <link rel="stylesheet" href="styles/search.css">
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
@@ -35,7 +36,7 @@ document.documentElement.className = document.documentElement.className.replace(
 			<label class="btn--nav-main" for="trigger--nav-main" aria-hidden="true" title="Show main menu">
 				<i></i> <span>Menu</span>
 			</label>
-			<a href="<?js= env.conf.templates.wmf.repository ?>" class="lnk--contribute">Contribute</a>
+      <?js= this.partial( 'search.tmpl' )?>
 		</div>
 	</header>
 	<div class="page">

@@ -10,6 +10,7 @@ var path = require('jsdoc/path');
 var taffy = require('taffydb').taffy;
 var template = require('jsdoc/template');
 var util = require('util');
+var lunrHelper = require( './lunrHelper' );
 
 var resolveLinkFilename = '<unknown>';
 
@@ -728,6 +729,9 @@ exports.publish = function(taffyData, opts, tutorials) {
             doclet.kind = 'member';
         }
     });
+
+    // make lunr index for search
+    lunrHelper.makeIndex( data() );
 
     members = helper.getMembers(data);
     members.tutorials = tutorials.children;

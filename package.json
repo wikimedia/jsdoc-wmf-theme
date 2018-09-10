@@ -27,6 +27,7 @@
   "homepage": "https://github.com/cscott/jsdoc-wmf-theme#readme",
   "dependencies": {
     "domino": "^2.0.1",
+    "lunr": "2.3.0",
     "taffydb": "^2.6.2"
   }
 }

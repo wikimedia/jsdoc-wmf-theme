@@ -1,0 +1,41 @@
+#search-container {
+  float: right;
+  width: 45rem;
+}
+
+#lunr-search {
+  padding: 1rem;
+  width: 100%;
+}
+
+#search-results {
+  position: fixed;
+  background: #fff;
+  border: 1px solid #c8ccd1;
+  border-bottom: none;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+#search-results li {
+  margin: 0;
+  list-style: none;
+  border-bottom: 1px solid #c8ccd1;
+}
+
+#search-results dd {
+  margin-left: 1rem;
+  color: #000;
+}
+
+#search-results a {
+  display: block;
+  padding: 1rem;
+}
+
+#selected-search-result,
+#search-results a:hover {
+  text-decoration: none;
+  background: #eaecf0;
+}
