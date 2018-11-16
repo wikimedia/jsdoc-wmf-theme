@@ -2,6 +2,8 @@
     var data = obj;
     var self = this;
     data.forEach(function(name, i) { ?>
-<span class="param-type"><?js= self.linkto(name, self.htmlsafe(name)) ?></span>
+<span class="param-type">
+	<?js if (name == 'Mixed') { ?> <?js= self.htmlsafe(name) ?> <?js } else { ?> <?js= self.linkto(name, self.htmlsafe(name)) ?><?js } ?>
+</span>
 <?js if (i < data.length-1) { ?>|<?js } ?>
 <?js }); ?>
