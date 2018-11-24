@@ -1,0 +1,8 @@
+---
+extends: 'wikimedia'
+
+overrides:
+    -
+        files: Gruntfile.js
+        env:
+            commonjs: true
