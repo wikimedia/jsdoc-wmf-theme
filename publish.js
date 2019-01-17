@@ -13,20 +13,28 @@ var util = require('util');
 var lunrHelper = require( './lunrHelper' );
 
 var resolveLinkFilename = '<unknown>';
+var rLiteral = /^(null|undefined|true|false|NaN|Infinity)$/;
+// These are built-in types and classes in ECMAScript.
+// Our Wikimedia-specific rule of requiring a linkMap entry will allow these,
+// to be absence, resulting in the default JSDoc behaviour of a type without
+// hyperlink (without printing warning).
+var rGeneric = /^(boolean|number|string|function|symbol|Array|Object|Function|Date|RegExp|Error|Promise|Map|Set|WeakMap|WeakSet)$/;
 
 var htmlsafe = helper.htmlsafe;
 var linkto = function(longname, linkText, cssClass, fragmentId) {
-    if (longname==='any') {
+    if (longname === 'any') {
         return longname;
     }
-    if (/^(null|undefined|true|false)$/.test(longname)) {
-        return '<code>'+longname+'</code>';
+    if (rLiteral.test(longname)) {
+        return '<code>' + linkText + '</code>';
     }
-    if (/^(boolean|function|number|string)$/.test(longname)) {
+    var isGeneric = rGeneric.test(longname);
+    if (isGeneric) {
+        // Allow linking of generic types, e.g. to MDN.
         longname = longname[0].toUpperCase() + longname.slice(1);
     }
     var r = helper.linkto(longname, linkText, cssClass, fragmentId);
-    if (!/^(<a href=|<p|{@)/.test(r)) {
+    if (!isGeneric && !/^(<a href=|<p|{@)/.test(r)) {
         logger.warn('Unknown link %s in %s', longname, resolveLinkFilename);
     }
     return r;
