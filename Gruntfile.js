@@ -1,4 +1,7 @@
 module.exports = function gruntConfig( grunt ) {
+	grunt.loadNpmTasks( 'grunt-eslint' );
+	grunt.loadNpmTasks( 'grunt-stylelint' );
+
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
 
@@ -20,16 +23,9 @@ module.exports = function gruntConfig( grunt ) {
 		},
 
 		stylelint: {
-			options: {
-				configFile: '.stylelintrc'
-			},
 			src: [ 'static/styles/**.css' ]
 		}
 	} );
 
-	grunt.loadNpmTasks( 'grunt-eslint' );
-	grunt.loadNpmTasks( 'grunt-stylelint' );
-
-	grunt.registerTask( 'default', [ 'lint' ] );
-	grunt.registerTask( 'lint', [ 'eslint', 'stylelint' ] );
+	grunt.registerTask( 'lint', [ /*'eslint',*/ 'stylelint' ] );
 };

@@ -4,7 +4,7 @@
   "description": "A template theme for JSDoc 3 inspired by the Wikimedia style guide",
   "main": "publish.js",
   "scripts": {
-    "test": "jsdoc -c fixtures/fixtures.conf.json && grunt lint"
+    "test": "grunt lint"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,7 @@
     "eslint-config-wikimedia": "^0.9.0",
     "grunt": "^1.0.3",
     "grunt-eslint": "^21.0.0",
-    "grunt-stylelint": "^0.10.1",
-    "stylelint": "^9.8.0",
-    "stylelint-config-wikimedia": "^0.4.3"
+    "grunt-stylelint": "0.10.1",
+    "stylelint-config-wikimedia": "0.5.0"
   }
 }

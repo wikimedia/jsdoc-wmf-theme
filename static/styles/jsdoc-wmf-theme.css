@@ -1,232 +1,271 @@
 /* Additional styles, not included in wmf-style-guide. */
 .class-description {
-    font-size: 130%;
-    line-height: 140%;
-    margin-bottom: 1em;
-    margin-top: 1em;
+	font-size: 130%;
+	line-height: 140%;
+	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 .class-description:empty {
-    margin: 0;
+	margin: 0;
 }
+
 .variation {
-    display: none;
+	display: none;
 }
 
 .signature-attributes {
-    font-size: 60%;
-    color: #aaa;
-    font-style: italic;
-    font-weight: lighter;
+	font-size: 60%;
+	color: #aaa;
+	font-style: italic;
+	font-weight: lighter;
 }
 
-.ancestors, .attribs { color: #999; }
-.ancestors a, .attribs a
-{
-    color: #999 !important;
-    text-decoration: none;
+.ancestors,
+.attribs {
+	color: #999;
 }
 
-.clear
-{
-    clear: both;
+.ancestors a,
+.attribs a {
+	color: #999 !important; /* stylelint-disable-line declaration-no-important */
+	text-decoration: none;
 }
 
-.important
-{
-    font-weight: bold;
-    color: #950B02;
+.clear {
+	clear: both;
+}
+
+.important {
+	font-weight: bold;
+	color: #950b02;
 }
 
 .yes-def {
-    text-indent: -1000px;
+	text-indent: -1000px;
 }
 
 .type-signature {
-    color: #aaa;
+	color: #aaa;
 }
 
-.name, .signature {
-    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+.name,
+.signature {
+	font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
 }
 
 pre {
-  white-space: pre-wrap;
-  word-wrap: break-word;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 
-.details { margin-top: 14px; border-left: 2px solid #DDD; }
-.details dt { width: 120px; float: left; padding-left: 10px;  padding-top: 6px; }
-.details dd { margin-left: 70px; }
-.details ul { margin: 0; }
-.details ul { list-style-type: none; }
-.details li { margin-left: 30px; padding-top: 6px; }
-.details pre.prettyprint { margin: 0; }
-.details .object-value { padding-top: 0; }
+.details {
+	margin-top: 14px;
+	border-left: 2px solid #ddd;
+}
+
+.details dt {
+	width: 120px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 6px;
+}
+
+.details dd {
+	margin-left: 70px;
+}
+
+.details ul {
+	list-style: none none;
+	margin: 0;
+}
+
+.details li {
+	margin-left: 30px;
+	padding-top: 6px;
+}
+
+.details pre.prettyprint {
+	margin: 0;
+}
+
+.details .object-value {
+	padding-top: 0;
+}
 
 .description {
-    margin-bottom: 2em;
-    margin-top: 0em;
+	margin-bottom: 2em;
+	margin-top: 0;
 }
 
-.code-caption
-{
-    font-style: italic;
-    font-size: 107%;
-    margin: 0;
+.code-caption {
+	font-style: italic;
+	font-size: 107%;
+	margin: 0;
 }
 
-.source
-{
-    border: 1px solid #ddd;
-    width: 80%;
-    overflow: auto;
+.source {
+	width: 80%;
+	border: 1px solid #ddd;
+	overflow: auto;
 }
 
 .prettyprint.source {
-    width: inherit;
+	width: inherit;
 }
 
-.source code
-{
-    font-size: 100%;
-    line-height: 18px;
-    display: block;
-    padding: 4px 12px;
-    margin: 0;
-    background-color: #fff;
-    color: #4D4E53;
+.source code {
+	background-color: #fff;
+	color: #4d4e53;
+	display: block;
+	margin: 0;
+	padding: 4px 12px;
+	font-size: 100%;
+	line-height: 18px;
 }
 
-.prettyprint code span.line
-{
-  display: inline-block;
+.prettyprint code span.line {
+	display: inline-block;
 }
 
-.prettyprint.linenums
-{
-  padding-left: 70px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.prettyprint.linenums {
+	padding-left: 70px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
-.prettyprint.linenums ol
-{
-  padding-left: 0;
+.prettyprint.linenums ol {
+	padding-left: 0;
 }
 
-.prettyprint.linenums li
-{
-  border-left: 3px #ddd solid;
+.prettyprint.linenums li {
+	border-left: 3px solid #ddd;
+}
+
+.prettyprint.linenums li * {
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
 }
 
 .prettyprint.linenums li.selected,
-.prettyprint.linenums li.selected *
-{
-  background-color: lightyellow;
+.prettyprint.linenums li.selected * {
+	background-color: #ffffe0; /* CSS `lightyellow` */
 }
 
-.prettyprint.linenums li *
-{
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-.params .name, .props .name, .name code {
-    color: #4D4E53;
-    font-family: monospace, monospace;
-    font-size: 100%;
+.params .name,
+.props .name,
+.name code {
+	color: #4d4e53;
+	font-family: monospace, monospace;
+	font-size: 100%;
 }
 
 .params td.description > p:first-child,
-.props td.description > p:first-child
-{
-    margin-top: 0;
-    padding-top: 0;
+.props td.description > p:first-child {
+	margin-top: 0;
+	padding-top: 0;
 }
 
 .params td.description > p:last-child,
-.props td.description > p:last-child
-{
-    margin-bottom: 0;
-    padding-bottom: 0;
+.props td.description > p:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 .disabled {
-    color: #454545;
+	color: #454545;
 }
 
 /* override navbox styling from parent which prevents collapsing open li */
-.nav--main .nav__item > a { cursor: pointer; }
-.nav--main .is-on > a { pointer-events: inherit; }
+.nav--main .nav__item > a {
+	cursor: pointer;
+}
+
+.nav--main .is-on > a {
+	pointer-events: inherit;
+}
 
 /* keep navbox from overflowing */
-.nav--main { overflow-x: auto; }
+.nav--main {
+	overflow-x: auto;
+}
 
 .summary {
-  /* keep same margin-top as description */
-  margin-top: 0em;
-  /* lesser margin-bottom than description to keep page compact */
-  margin-bottom: 0em;
+	/* keep same margin-top as description */
+	margin-top: 0;
+	/* lesser margin-bottom than description to keep page compact */
+	margin-bottom: 0;
 }
 
 /* collapse boxes, in pure CSS */
 /* inspired by https://basicuse.net/articles/pl/textile/html_css/creating_a_toggle_box_to_collapse_or_expand_content_using_only_css3 */
 .toggle-box + label + h4 {
-  display: inline-block;
+	display: inline-block;
 }
 
 .toggle-box ~ .summary {
-  display: block;
+	display: block;
 }
 
 .toggle-box ~ .long {
-  display: none;
+	display: none;
 }
 
 .toggle-box:checked ~ .summary {
-  display: none;
+	display: none;
 }
+
 .toggle-box:checked ~ .long {
-  display: block;
+	display: block;
 }
 
 /* checkbox theme */
-input[type=checkbox].toggle-box {
-    position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+input[ type='checkbox' ].toggle-box {
+	position: absolute;
+	z-index: -1000;
+	left: -1000px;
+	overflow: hidden;
+	clip: rect( 0 0 0 0 );
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
 }
-input[type=checkbox].toggle-box + label {
-    padding-left:29px;
-    height:24px;
-    display:inline-block;
-    line-height:24px;
-    background-repeat:no-repeat;
-    background-position: 0 0;
-    font-size:24px;
-    vertical-align:middle;
-    cursor:pointer;
-    background-image:url(./checkbox-style.png);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+input[ type='checkbox' ].toggle-box + label {
+	padding-left: 29px;
+	height: 24px;
+	display: inline-block;
+	line-height: 24px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 24px;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: url( ./checkbox-style.png );
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
-input[type=checkbox].toggle-box:checked + label {
-    background-position: 0 -24px;
+
+input[ type='checkbox' ].toggle-box:checked + label {
+	background-position: 0 -24px;
 }
 
 /* override style guide */
-#header {
-  z-index: 100;
-  background: #eaecf0;
+#header { /* stylelint-disable-line selector-max-id */
+	background-color: #eaecf0;
+	z-index: 100;
 }
 
 .site__title {
-  text-transform: none;
+	text-transform: none;
 }
