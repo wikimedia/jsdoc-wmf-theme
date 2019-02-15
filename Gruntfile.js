@@ -1,3 +1,4 @@
+/* eslint-env node, es6 */
 module.exports = function gruntConfig( grunt ) {
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
@@ -6,9 +7,6 @@ module.exports = function gruntConfig( grunt ) {
 		pkg: grunt.file.readJSON( 'package.json' ),
 
 		eslint: {
-			options: {
-				configFile: '.eslintrc'
-			},
 			src: [
 				'Gruntfile.js',
 				'betterlinks.js',
@@ -27,5 +25,5 @@ module.exports = function gruntConfig( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ /*'eslint',*/ 'stylelint' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint' ] );
 };
