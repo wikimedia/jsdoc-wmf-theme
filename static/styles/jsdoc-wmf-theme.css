@@ -21,19 +21,19 @@ code {
 
 .signature-attributes {
 	font-size: 60%;
-	color: #aaa;
+	color: #a2a9b1;
 	font-style: italic;
 	font-weight: lighter;
 }
 
 .ancestors,
 .attribs {
-	color: #999;
+	color: #72777d;
 }
 
 .ancestors a,
 .attribs a {
-	color: #999 !important; /* stylelint-disable-line declaration-no-important */
+	color: #72777d !important; /* stylelint-disable-line declaration-no-important */
 	text-decoration: none;
 }
 
@@ -42,8 +42,8 @@ code {
 }
 
 .important {
+	color: #d33;
 	font-weight: bold;
-	color: #950b02;
 }
 
 .yes-def {
@@ -51,7 +51,7 @@ code {
 }
 
 .type-signature {
-	color: #aaa;
+	color: #72777d;
 }
 
 .name,
@@ -66,7 +66,7 @@ pre {
 
 .details {
 	margin-top: 14px;
-	border-left: 2px solid #ddd;
+	border-left: 2px solid #eaecf0;
 }
 
 .details dt {
@@ -111,7 +111,7 @@ pre {
 
 .source {
 	width: 80%;
-	border: 1px solid #ddd;
+	border: 1px solid #eaecf0;
 	overflow: auto;
 }
 
@@ -121,7 +121,7 @@ pre {
 
 .source code {
 	background-color: #fff;
-	color: #4d4e53;
+	color: #444;
 	display: block;
 	margin: 0;
 	padding: 4px 12px;
@@ -146,7 +146,7 @@ pre {
 }
 
 .prettyprint.linenums li {
-	border-left: 3px solid #ddd;
+	border-left: 3px solid #eaecf0;
 }
 
 .prettyprint.linenums li * {
@@ -164,7 +164,7 @@ pre {
 .params .name,
 .props .name,
 .name code {
-	color: #4d4e53;
+	color: #444;
 	font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier New', monospace;
 	font-size: 100%;
 }
@@ -182,7 +182,7 @@ pre {
 }
 
 .disabled {
-	color: #454545;
+	color: #72777d;
 }
 
 /* override navbox styling from parent which prevents collapsing open li */
