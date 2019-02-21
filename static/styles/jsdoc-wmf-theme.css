@@ -1,7 +1,17 @@
 /* Additional styles, not included in Wikimedia Design Style Guide. */
 /* FIXME: Remove as soon as DSG has integrated it */
-code {
+code,
+.name,
+.params .name,
+.props .name,
+.signature {
 	font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier New', monospace;
+	font-size: 1.4rem;
+}
+
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 
 .class-description {
@@ -52,16 +62,6 @@ code {
 
 .type-signature {
 	color: #72777d;
-}
-
-.name,
-.signature {
-	font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier New', monospace;
-}
-
-pre {
-	white-space: pre-wrap;
-	word-wrap: break-word;
 }
 
 .details {
@@ -165,8 +165,6 @@ pre {
 .props .name,
 .name code {
 	color: #444;
-	font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier New', monospace;
-	font-size: 100%;
 }
 
 .params td.description > p:first-child,
@@ -255,7 +253,6 @@ input[ type='checkbox' ].toggle-box + label {
 	background-image: url( ./checkbox-style.png );
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
-	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
