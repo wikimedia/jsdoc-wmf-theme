@@ -95,7 +95,11 @@ function needsSignature( doclet ) {
 		l;
 
 	// function and class definitions always get a signature
-	if ( doclet.kind === 'function' || doclet.kind === 'class' ) {
+	if (
+		doclet.kind === 'function' ||
+		doclet.kind === 'class' ||
+		doclet.kind === 'event'
+	) {
 		needsSig = true;
 	}
 	// typedefs that contain functions get a signature, too
