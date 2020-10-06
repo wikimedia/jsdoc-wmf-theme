@@ -1,4 +1,5 @@
 /* Additional styles, not included in Wikimedia Design Style Guide. */
+/* stylelint-disable unit-blacklist */
 /* FIXME: Remove as soon as DSG has integrated it */
 code,
 .name,

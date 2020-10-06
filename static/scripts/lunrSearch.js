@@ -28,6 +28,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 	} );
 
 	searchEl.addEventListener( 'focus', function () {
+		// eslint-disable-next-line no-self-assign
 		this.value = this.value; // Hack to move the cursor to the end of text
 		search( this.value );
 	} );
