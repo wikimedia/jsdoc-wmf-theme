@@ -1,5 +1,5 @@
 /* eslint-disable vars-on-top */
-/* global exports, require */
+/* global exports, require, TAFFY, Tutorial */
 'use strict';
 
 var domino = require( 'domino' ),
@@ -59,6 +59,7 @@ function addAlias( name, url ) {
 	aliases[ name ] = true;
 }
 
+// eslint-disable-next-line no-redeclare
 function find( spec ) {
 	return helper.find( data, spec );
 }
@@ -367,25 +368,25 @@ function attachModuleSymbols( doclets, modules ) {
 	} );
 }
 
-function makeNavItem( doc, data ) {
+function makeNavItem( doc, navItemData ) {
 	var a,
 		li = doc.createElement( 'li' );
-	li.classList.add( data.sub ? 'nav__sub-item' : 'nav__item' );
-	if ( data.tag === 'a' ) {
+	li.classList.add( navItemData.sub ? 'nav__sub-item' : 'nav__item' );
+	if ( navItemData.tag === 'a' ) {
 		a = doc.createElement( 'a' );
 		li.appendChild( a );
-		if ( data.href ) {
-			a.setAttribute( 'href', data.href );
+		if ( navItemData.href ) {
+			a.setAttribute( 'href', navItemData.href );
 		}
-		a.textContent = data.title;
-	} else if ( typeof ( data.html ) === 'string' ) {
-		li.innerHTML = data.html;
+		a.textContent = navItemData.title;
+	} else if ( typeof ( navItemData.html ) === 'string' ) {
+		li.innerHTML = navItemData.html;
 	}
 	return li;
 }
 
-function addNavItem( parent, data ) {
-	parent.appendChild( makeNavItem( parent.ownerDocument, data ) );
+function addNavItem( parent, navItemData ) {
+	parent.appendChild( makeNavItem( parent.ownerDocument, navItemData ) );
 	return parent;
 }
 
@@ -438,17 +439,18 @@ function linktoExternal( longName, name ) {
  *
  * Takes the same arguments as `buildMemberNav`.
  */
-function buildMemberNavIfConf( nav, member, name, seen, linkto ) {
+function buildMemberNavIfConf( nav, member, name, seen, linktoFn ) {
 	if (
 		env.conf.templates.wmf.hideSections === undefined ||
 	env.conf.templates.wmf.hideSections.indexOf( name ) < 0
 	) {
-		buildMemberNav( nav, member, name, seen, linkto );
+		buildMemberNav( nav, member, name, seen, linktoFn );
 	}
 }
 
 /**
  * Create the navigation sidebar.
+ *
  * @param {Object} members The members that will be used to create the sidebar.
  * @param {Array<Object>} members.classes
  * @param {Array<Object>} members.externals
@@ -589,17 +591,17 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 
 		if ( doclet.examples ) {
 			doclet.examples = doclet.examples.map( function ( example ) {
-				var caption,
-					code;
+				var $caption,
+					$code;
 
 				if ( example.match( /^\s*<caption>([\s\S]+?)<\/caption>(\s*[\n\r])([\s\S]+)$/i ) ) {
-					caption = RegExp.$1;
-					code = RegExp.$3;
+					$caption = RegExp.$1;
+					$code = RegExp.$3;
 				}
 
 				return {
-					caption: caption || '',
-					code: code || example
+					caption: $caption || '',
+					code: $code || example
 				};
 			} );
 		}

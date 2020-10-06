@@ -1,4 +1,3 @@
-/* global document */
 ( function () {
 	var source = document.getElementsByClassName( 'prettyprint source linenums' ),
 		i = 0,

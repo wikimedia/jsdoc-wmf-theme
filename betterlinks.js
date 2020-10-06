@@ -34,8 +34,8 @@ function expandLinks( text, longname ) {
 		return '{@link ' + basename + mod + name + ' ' + mod + name + '}';
 	} );
 	// Ensure that things which look like http/https URLs are {@link}-ified
-	text = text.replace( reWeburl, function ( match, _, offset, text ) {
-		var before = text.slice( 0, offset );
+	text = text.replace( reWeburl, function ( match, _, offset, innerText ) {
+		var before = innerText.slice( 0, offset );
 		if ( /(\{@link |@|=['"])$/.test( before ) ) {
 			return match; // don't linkify
 		}
