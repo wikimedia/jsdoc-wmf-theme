@@ -1,30 +1,30 @@
 {
   "name": "jsdoc-wmf-theme",
   "version": "0.0.3+git",
-  "description": "A template theme for JSDoc 3 inspired by the Wikimedia style guide",
+  "description": "A template theme for JSDoc 3 inspired by the Wikimedia Design Style Guide",
   "main": "publish.js",
   "scripts": {
     "test": "grunt lint"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cscott/jsdoc-wmf-theme.git"
+    "url": "ssh://gerrit.wikimedia.org:29418/jsdoc/wmf-theme"
   },
   "keywords": [
     "jsdoc",
     "template"
   ],
-  "author": "C. Scott Ananian <cscott@cscott.net>",
   "contributors": [
-    {
-      "url": "https://github.com/cscott/jsdoc-wmf-theme/graphs/contributors"
-    }
+    "C. Scott Ananian <cscott@cscott.net>",
+    "Prateek Saxena <prtksxna@gmail.com>",
+    "Timo Tijhof <krinklemail@gmail.com>",
+    "Volker E. <volker.e@wikimedia.org>"
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/cscott/jsdoc-wmf-theme/issues"
+    "url": "https://www.mediawiki.org/wiki/Manual_talk:Coding_conventions/JavaScript"
   },
-  "homepage": "https://github.com/cscott/jsdoc-wmf-theme#readme",
+  "homepage": "https://gerrit.wikimedia.org/g/jsdoc/wmf-theme/+/refs/heads/master/README.md",
   "dependencies": {
     "domino": "^2.0.1",
     "lunr": "2.3.0",
