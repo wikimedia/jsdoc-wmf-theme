@@ -1,10 +1,11 @@
-## UNRELEASED
+## v0.0.4
 * Bump version after release. (C. Scott Ananian)
 * Genereate signature for events (Prateek Saxena)
 * Bump WikimediaUI-Style-Guide submodule to be less old (James D. Forrester)
 * build: Bump all devDependencies to latest and make pass (James D. Forrester)
 * package.json: Update to reflect reality of gerrit hosting (James D. Forrester)
 * Add a changelog (James D. Forrester)
+* Release 0.0.4 (James D. Forrester)
 
 ## v0.0.3
 * Bump version after release. (C. Scott Ananian)
