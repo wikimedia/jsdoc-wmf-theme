@@ -20,7 +20,8 @@ var domino = require( 'domino' ),
 	// Our Wikimedia-specific rule of requiring a linkMap entry will allow these,
 	// to be absence, resulting in the default JSDoc behaviour of a type without
 	// hyperlink (without printing warning).
-	rGeneric = /^(boolean|number|string|function|symbol|Array|Object|Function|Date|RegExp|Error|Promise|Map|Set|WeakMap|WeakSet)$/,
+	rGeneric = /^(boolean|number|string|function|symbol|Object|Function|Date|RegExp|Error)$/,
+	rGenericWithArgs = /^(Array|Promise|Map|Set|WeakMap|WeakSet)\.<(.*)>$/,
 
 	htmlsafe = helper.htmlsafe,
 	linkto = function ( longname, linkText, cssClass, fragmentId ) {
@@ -31,13 +32,25 @@ var domino = require( 'domino' ),
 			return '<code>' + linkText + '</code>';
 		}
 		var isGeneric = rGeneric.test( longname ),
-			r = helper.linkto( longname, linkText, cssClass, fragmentId );
+			isGenericWithArgs = longname.match( rGenericWithArgs ),
+			r = helper.linkto( longname, linkText, cssClass, fragmentId ),
+			argName,
+			argLink;
 		if ( isGeneric ) {
 		// Allow linking of generic types, e.g. to MDN.
 			longname = longname[ 0 ].toUpperCase() + longname.slice( 1 );
 		}
+		if ( isGenericWithArgs ) {
+			argName = isGenericWithArgs[ 2 ];
+			// Check that the argument is valid
+			argLink = linkto( argName, linkText, cssClass, fragmentId );
+			if ( argLink !== '' ) {
+				return r;
+			}
+		}
 		if ( !isGeneric && !/^(<a href=|<p|{@)/.test( r ) ) {
 			logger.warn( 'Unknown link %s in %s', longname, resolveLinkFilename );
+			return '';
 		}
 		return r;
 	},
