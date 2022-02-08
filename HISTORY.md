@@ -1,4 +1,9 @@
-## v0.0.4
+# Release History
+
+## jsdoc-wmf-theme x.x.x (not yet released)
+* Support generic types with arguments (Bernard Wang)
+
+## jsdoc-wmf-theme 0.0.4 (2020-10-07)
 * Bump version after release. (C. Scott Ananian)
 * Genereate signature for events (Prateek Saxena)
 * Bump WikimediaUI-Style-Guide submodule to be less old (James D. Forrester)
@@ -7,7 +12,7 @@
 * Add a changelog (James D. Forrester)
 * Release 0.0.4 (James D. Forrester)
 
-## v0.0.3
+## jsdoc-wmf-theme 0.0.3 (2019-07-15)
 * Bump version after release. (C. Scott Ananian)
 * Add .gitreview (Christian Aistleitner)
 * Open member description when using hash fragments to link to it (Prateek Saxena)
@@ -29,7 +34,7 @@
 * Bump lodash from 4.17.11 to 4.17.14 (dependabot[bot])
 * Release 0.0.3 (C. Scott Ananian)
 
-## v0.0.2
+## jsdoc-wmf-theme 0.0.2 (2018-07-13)
 * Bump version after release. (C. Scott Ananian)
 * Remove "GitHub" from layout (Prateek Saxena)
 * Further tweak to Contribute text. (C. Scott Ananian)
@@ -42,7 +47,7 @@
 * Move summary and description closer to method name (Prateek Saxena)
 * Release 0.0.2 (C. Scott Ananian)
 
-## v0.0.1
+## jsdoc-wmf-theme 0.0.1 (2018-02-23)
 * Fork the JSDoc3 default template to start the WMF theme. (C. Scott Ananian)
 * Remove unneeded fonts and CSS from default theme. (C. Scott Ananian)
 * First hacky attempts at fitting content into WMF style guide framework. (C. Scott Ananian)
