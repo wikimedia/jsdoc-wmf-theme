@@ -2,6 +2,7 @@
 
 ## jsdoc-wmf-theme x.x.x (not yet released)
 * Support generic types with arguments (Bernard Wang)
+* Add code of conduct (C. Scott Ananian)
 
 ## jsdoc-wmf-theme 0.0.4 (2020-10-07)
 * Bump version after release. (C. Scott Ananian)
