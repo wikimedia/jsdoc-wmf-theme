@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://gerrit.wikimedia.org:29418/jsdoc/wmf-theme"
+    "url": "https://gerrit.wikimedia.org/r/jsdoc/wmf-theme"
   },
   "keywords": [
     "jsdoc",
