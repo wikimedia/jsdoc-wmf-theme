@@ -1,5 +1,7 @@
 # Release History
 
+## jsdoc-wmf-theme x.x.x (not yet released)
+
 ## jsdoc-wmf-theme 0.0.5 (8 Feb 2022)
 * Support generic types with arguments (Bernard Wang)
 * Add code of conduct (C. Scott Ananian)
