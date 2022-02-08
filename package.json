@@ -1,10 +1,12 @@
 {
   "name": "jsdoc-wmf-theme",
-  "version": "0.0.4",
+  "version": "0.0.4+git",
   "description": "A template theme for JSDoc 3 inspired by the Wikimedia Design Style Guide",
   "main": "publish.js",
   "scripts": {
-    "test": "grunt lint"
+    "test": "grunt lint",
+    "bump-version": "npm version patch -m 'Release jsdoc-wmf-theme %s.' && tools/bump-version.js && npm run version && git add package.json package-lock.json && git commit -m 'Bump version after release.'",
+    "version": "tools/update-history.js && git add HISTORY.md"
   },
   "repository": {
     "type": "git",
