@@ -21,7 +21,7 @@ var domino = require( 'domino' ),
 	// to be absence, resulting in the default JSDoc behaviour of a type without
 	// hyperlink (without printing warning).
 	rGeneric = /^(boolean|number|string|function|symbol|Object|Function|Date|RegExp|Error)$/,
-	rGenericWithArgs = /^(Array|Promise|Map|Set|WeakMap|WeakSet)\.<(.*)>$/,
+	rGenericWithArgs = /^(Array|Promise|Map|Set|WeakMap|WeakSet|Object)\.<(.*)>$/,
 
 	htmlsafe = helper.htmlsafe,
 	linkto = function ( longname, linkText, cssClass, fragmentId ) {
