@@ -1,6 +1,6 @@
 # jsdoc-wmf-theme
 
-A theme for JSDoc 3 conforming to the Wikimedia style guide.  Forked from
+A theme for JSDoc 3 conforming to the Wikimedia Design Style Guide.  Forked from
 the default template for JSDoc 3, which uses
 [the Taffy Database library](http://taffydb.com/) and the
 [Underscore Template library](http://underscorejs.org/).
