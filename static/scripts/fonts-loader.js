@@ -1,5 +1,4 @@
-/* eslint-disable vars-on-top, one-var */
-/* global FontFaceObserver, Promise */
+/* global FontFaceObserver */
 ( function () {
 	if ( document.head && 'Promise' in window ) {
 		var html = document.documentElement;
