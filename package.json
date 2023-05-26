@@ -28,9 +28,9 @@
   },
   "homepage": "https://gerrit.wikimedia.org/g/jsdoc/wmf-theme/+/refs/heads/master/README.md",
   "dependencies": {
-    "domino": "^2.0.1",
-    "lunr": "2.3.0",
-    "taffydb": "^2.6.2"
+    "domino": "^2.1.6",
+    "lunr": "2.3.9",
+    "taffydb": "^2.7.3"
   },
   "devDependencies": {
     "eslint-config-wikimedia": "0.25.1",
