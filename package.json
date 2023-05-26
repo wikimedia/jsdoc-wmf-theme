@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-wmf-theme",
-  "version": "0.0.5+git",
+  "version": "0.0.6",
   "description": "A template theme for JSDoc 3 inspired by the Wikimedia Design Style Guide",
   "main": "publish.js",
   "scripts": {
