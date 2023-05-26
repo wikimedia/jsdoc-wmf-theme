@@ -161,6 +161,29 @@ pre {
 	background-color: #ffffe0; /* CSS `lightyellow` */
 }
 
+.params {
+	background-color: #f8f9fa;
+	color: #202122;
+	margin: 1em 0;
+	border: 1px solid #a2a9b1;
+	border-collapse: collapse;
+}
+
+.params > tr > th,
+.params > tr > td,
+.params > * > tr > th,
+.params > * > tr > td {
+	vertical-align: top;
+	border: 1px solid #a2a9b1;
+	padding: 0.2em 0.4em;
+}
+
+.params > tr > th,
+.params > * > tr > th {
+	background-color: #eaecf0;
+	text-align: center;
+}
+
 .params .name,
 .props .name,
 .name code {
