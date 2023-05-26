@@ -69,8 +69,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		resultsEl.innerHTML = '';
 		resultDocs.forEach( function ( d, i ) {
 			var link = '',
-				id = i === 0 ? 'selected-search-result' : ''
-					.link = '<a href="' + d.id + '" id="' + id + '">';
+				id = i === 0 ? 'selected-search-result' : '';
+			link += '<a href="' + d.id + '" id="' + id + '">';
 			link += '<dt>' + d.name + ' &middot; <code>' + d.longname + '</code></dt>';
 			link += '<dd>' + d.summary + '</dd>';
 			link += '</a>';
