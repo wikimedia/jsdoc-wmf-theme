@@ -5,7 +5,6 @@ var lunr = require( 'lunr' ),
 	helper = require( 'jsdoc/util/templateHelper' );
 
 exports.makeIndex = function ( data ) {
-	// eslint-disable-next-line no-restricted-properties
 	var outdir = path.normalize( env.opts.destination ),
 		documents = [];
 
@@ -23,7 +22,6 @@ exports.makeIndex = function ( data ) {
 	} );
 
 	// Build index and add data
-	// eslint-disable-next-line one-var, vars-on-top
 	var index = lunr( function () {
 			this.field( 'name', { boost: 1000 } );
 			this.field( 'longname', { boost: 500 } );

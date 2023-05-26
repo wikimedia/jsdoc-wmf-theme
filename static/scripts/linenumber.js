@@ -8,7 +8,7 @@
 		anchorHash;
 
 	if ( source && source[ 0 ] ) {
-		anchorHash = document.location.hash.substring( 1 );
+		anchorHash = document.location.hash.slice( 1 );
 		lines = source[ 0 ].getElementsByTagName( 'li' );
 		totalLines = lines.length;
 

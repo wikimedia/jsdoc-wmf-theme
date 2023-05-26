@@ -1,4 +1,3 @@
-/* eslint-disable vars-on-top */
 /* global exports, require, TAFFY, Tutorial */
 'use strict';
 
@@ -63,7 +62,6 @@ var domino = require( 'domino' ),
 	view,
 	aliases = {},
 
-	// eslint-disable-next-line no-restricted-properties
 	outdir = path.normalize( env.opts.destination );
 
 function addAlias( name, url ) {
@@ -534,9 +532,9 @@ function buildNav( members ) {
 }
 
 /**
-	@param {TAFFY} taffyData See <http://taffydb.com/>.
-	@param {Object} opts
-	@param {Tutorial} tutorials
+ * @param {TAFFY} taffyData See <http://taffydb.com/>.
+ * @param {Object} opts
+ * @param {Tutorial} tutorials
  */
 exports.publish = function ( taffyData, opts, tutorials ) {
 	var classes,
@@ -568,7 +566,6 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	conf.default = conf.default || {};
 	conf.wmf = conf.wmf || {};
 
-	// eslint-disable-next-line no-restricted-properties
 	templatePath = path.normalize( opts.template );
 	view = new template.Template( path.join( templatePath, 'tmpl' ) );
 
@@ -723,7 +720,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	} );
 
 	// Add synthetic names
-	// eslint-disable-next-line one-var
+
 	var count = {},
 		shorten = function ( longname ) {
 			var pieces = longname.split( '~', 2 );

@@ -5,6 +5,7 @@
 		"wikimedia/jquery"
 	],
 	"rules": {
-		"no-implicit-globals": "off"
+		"no-implicit-globals": "off",
+		"no-var": "off"
 	}
 }
