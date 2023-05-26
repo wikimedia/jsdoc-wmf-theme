@@ -48,7 +48,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			lunrIndex.search( term ),
 			lunrIndex.search( term + '*' )
 		);
-		showResults( results.slice( 0, 50 ) );
+		showResults( results.slice( 0, 100 ) );
 	}
 
 	function showResults( results ) {
