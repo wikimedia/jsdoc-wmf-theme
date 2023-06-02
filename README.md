@@ -10,7 +10,7 @@ See https://doc.wikimedia.org/Parsoid/master/ for a sample demo. :rocket:
 
 ## Install
 ```bash
-$ npm install --save https://github.com/cscott/jsdoc-wmf-theme
+$ npm install --save jsdoc-wmf-theme
 ```
 
 ## Usage
