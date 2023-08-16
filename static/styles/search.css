@@ -6,11 +6,14 @@
 }
 
 #lunr-search {
+	border: 1px solid #c8ccd1;
+	box-sizing: border-box;
 	padding: 1rem;
 	width: 100%;
 }
 
 #search-results {
+	display: none;
 	background-color: #fff;
 	position: fixed;
 	margin: 0;
@@ -18,7 +21,7 @@
 	border: 1px solid #c8ccd1;
 	border-bottom: 0;
 	line-height: 1.5;
-	height: calc( 100vh - 6.4rem );
+	max-height: calc( 100vh - 6.4rem );
 	overflow: auto;
 }
 
