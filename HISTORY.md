@@ -1,6 +1,7 @@
 # Release History
 
 ## jsdoc-wmf-theme x.x.x (not yet released)
+* Bump WikimediaUI-Style-Guide submodule from 2020 to 2023 (James D. Forrester)
 
 ## jsdoc-wmf-theme 0.0.7 (not yet released)
 * Some minor search improvements (TheDJ)
