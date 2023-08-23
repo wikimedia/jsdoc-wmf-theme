@@ -2,6 +2,12 @@
 
 ## jsdoc-wmf-theme x.x.x (not yet released)
 
+## jsdoc-wmf-theme 0.0.7 (not yet released)
+* Some minor search improvements (TheDJ)
+
+—
+* build: Update linters (Ed Sanders)
+
 ## jsdoc-wmf-theme 0.0.6 (25 May 2023)
 * Make search results scrollable (Ed Sanders)
 * Fix typo in search code that was causing it to be mostly broken (Ed Sanders)
