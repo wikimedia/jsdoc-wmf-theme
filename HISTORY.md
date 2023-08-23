@@ -1,15 +1,15 @@
 # Release History
 
-## jsdoc-wmf-theme x.x.x (not yet released)
+## jsdoc-wmf-theme 0.0.8 (2023-08-23)
 * Bump WikimediaUI-Style-Guide submodule from 2020 to 2023 (James D. Forrester)
 
-## jsdoc-wmf-theme 0.0.7 (not yet released)
+## jsdoc-wmf-theme 0.0.7 (2023-08-23)
 * Some minor search improvements (TheDJ)
 
 —
 * build: Update linters (Ed Sanders)
 
-## jsdoc-wmf-theme 0.0.6 (25 May 2023)
+## jsdoc-wmf-theme 0.0.6 (2023-05-25)
 * Make search results scrollable (Ed Sanders)
 * Fix typo in search code that was causing it to be mostly broken (Ed Sanders)
 * Don't perform search on an empty term (Ed Sanders)
@@ -20,7 +20,7 @@
 —
 * docs: Shorten and rewrite HISTORY.md changelog (Timo Tijhof)
 
-## jsdoc-wmf-theme 0.0.5 (8 Feb 2022)
+## jsdoc-wmf-theme 0.0.5 (2022-02-08)
 * Support generic types with arguments (Bernard Wang)
 * Add code of conduct (C. Scott Ananian)
 
