@@ -14,6 +14,11 @@ pre {
 	word-wrap: break-word;
 }
 
+header h2 {
+	/* We already get spacing from the page class */
+	margin-top: 0;
+}
+
 .class-description {
 	font-size: 130%;
 	line-height: 140%;
@@ -200,6 +205,13 @@ pre {
 .props td.description > p:last-child {
 	margin-bottom: 0;
 	padding-bottom: 0;
+}
+
+.params h6,
+.props h6 {
+	margin-top: 0;
+	/* Vertically align headings in tables with other cells by reinstating body `line-height`. */
+	line-height: 1.6;
 }
 
 .disabled {
