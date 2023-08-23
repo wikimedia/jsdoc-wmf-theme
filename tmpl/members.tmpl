@@ -7,11 +7,7 @@ var self = this;
 <h4 class="name" id="<?js= id ?>"><?js= data.attribs + name + (data.signature ? data.signature : '') ?></h4>
 
 <div class="summary">
-<?js if (data.summary) { ?>
-<?js= summary ?>
-<?js } else { ?>
-...
-<?js } ?>
+<?js if (data.summary) { ?><?js= summary ?><?js } ?>
 </div>
 
 <div class="long">
