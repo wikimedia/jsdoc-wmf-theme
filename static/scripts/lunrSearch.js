@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 /* global lunr */
 document.addEventListener( 'DOMContentLoaded', function () {
 	var lunrIndex = lunr.Index.load( window.lunrData.index ),
