@@ -27,6 +27,11 @@ var open = data.showOpen || false;
 </div>
 <?js } ?>
 
+<?js if (data.examples && examples.length) { ?>
+    <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
+    <?js= this.partial('examples.tmpl', examples) ?>
+<?js } ?>
+
 <?js if (data.augments && data.alias && data.alias.indexOf('module:') === 0) { ?>
     <h5>Extends:</h5>
     <?js= self.partial('augments.tmpl', data) ?>
@@ -129,9 +134,5 @@ var open = data.showOpen || false;
     <?js });
 } } ?>
 
-<?js if (data.examples && examples.length) { ?>
-    <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
-    <?js= this.partial('examples.tmpl', examples) ?>
-<?js } ?>
 </div>
 </div>
