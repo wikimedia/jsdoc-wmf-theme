@@ -27,6 +27,17 @@
     "url": "https://www.mediawiki.org/wiki/Manual_talk:Coding_conventions/JavaScript"
   },
   "homepage": "https://gerrit.wikimedia.org/g/jsdoc/wmf-theme/+/refs/heads/master/README.md",
+  "files": [
+    "WikimediaUI-Style-Guide/css/build",
+    "WikimediaUI-Style-Guide/js",
+    "WikimediaUI-Style-Guide/fonts",
+    "fixtures",
+    "static",
+    "tmpl",
+    "lunrHelper.js",
+    "publish.js",
+    "HISTORY.md"
+  ],
   "dependencies": {
     "domino": "^2.1.6",
     "lunr": "2.3.9",
