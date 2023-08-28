@@ -1,53 +1,53 @@
 {
-  "name": "jsdoc-wmf-theme",
-  "version": "0.0.8",
-  "description": "A template theme for JSDoc 3 inspired by the Wikimedia Design Style Guide",
-  "main": "publish.js",
-  "scripts": {
-    "test": "grunt lint",
-    "bump-version": "npm version patch -m 'Release jsdoc-wmf-theme %s.' && tools/bump-version.js && npm run version && git add package.json package-lock.json && git commit -m 'Bump version after release.'",
-    "version": "tools/update-history.js && git add HISTORY.md"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://gerrit.wikimedia.org/r/jsdoc/wmf-theme"
-  },
-  "keywords": [
-    "jsdoc",
-    "template"
-  ],
-  "contributors": [
-    "C. Scott Ananian <cscott@cscott.net>",
-    "Prateek Saxena <prtksxna@gmail.com>",
-    "Timo Tijhof <krinklemail@gmail.com>",
-    "Volker E. <volker.e@wikimedia.org>"
-  ],
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://www.mediawiki.org/wiki/Manual_talk:Coding_conventions/JavaScript"
-  },
-  "homepage": "https://gerrit.wikimedia.org/g/jsdoc/wmf-theme/+/refs/heads/master/README.md",
-  "files": [
-    "WikimediaUI-Style-Guide/css/build",
-    "WikimediaUI-Style-Guide/js",
-    "WikimediaUI-Style-Guide/fonts",
-    "fixtures",
-    "static",
-    "tmpl",
-    "lunrHelper.js",
-    "publish.js",
-    "HISTORY.md"
-  ],
-  "dependencies": {
-    "domino": "^2.1.6",
-    "lunr": "2.3.9",
-    "taffydb": "^2.7.3"
-  },
-  "devDependencies": {
-    "eslint-config-wikimedia": "0.25.1",
-    "grunt": "1.6.1",
-    "grunt-eslint": "24.3.0",
-    "grunt-stylelint": "0.19.0",
-    "stylelint-config-wikimedia": "0.16.1"
-  }
+	"name": "jsdoc-wmf-theme",
+	"version": "0.0.8",
+	"description": "A template theme for JSDoc 3 inspired by the Wikimedia Design Style Guide",
+	"main": "publish.js",
+	"scripts": {
+		"test": "grunt lint",
+		"bump-version": "npm version patch -m 'Release jsdoc-wmf-theme %s.' && tools/bump-version.js && npm run version && git add package.json package-lock.json && git commit -m 'Bump version after release.'",
+		"version": "tools/update-history.js && git add HISTORY.md"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://gerrit.wikimedia.org/r/jsdoc/wmf-theme"
+	},
+	"keywords": [
+		"jsdoc",
+		"template"
+	],
+	"contributors": [
+		"C. Scott Ananian <cscott@cscott.net>",
+		"Prateek Saxena <prtksxna@gmail.com>",
+		"Timo Tijhof <krinklemail@gmail.com>",
+		"Volker E. <volker.e@wikimedia.org>"
+	],
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://www.mediawiki.org/wiki/Manual_talk:Coding_conventions/JavaScript"
+	},
+	"homepage": "https://gerrit.wikimedia.org/g/jsdoc/wmf-theme/+/refs/heads/master/README.md",
+	"files": [
+		"WikimediaUI-Style-Guide/css/build",
+		"WikimediaUI-Style-Guide/js",
+		"WikimediaUI-Style-Guide/fonts",
+		"fixtures",
+		"static",
+		"tmpl",
+		"lunrHelper.js",
+		"publish.js",
+		"HISTORY.md"
+	],
+	"dependencies": {
+		"domino": "^2.1.6",
+		"lunr": "2.3.9",
+		"taffydb": "^2.7.3"
+	},
+	"devDependencies": {
+		"eslint-config-wikimedia": "0.25.1",
+		"grunt": "1.6.1",
+		"grunt-eslint": "24.3.0",
+		"grunt-stylelint": "0.19.0",
+		"stylelint-config-wikimedia": "0.16.1"
+	}
 }
