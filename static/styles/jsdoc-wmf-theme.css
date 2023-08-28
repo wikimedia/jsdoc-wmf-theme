@@ -161,6 +161,7 @@ pre {
 	background-color: #ffffe0; /* CSS `lightyellow` */
 }
 
+.props,
 .params {
 	background-color: #f8f9fa;
 	color: #202122;
@@ -169,8 +170,8 @@ pre {
 	border-collapse: collapse;
 }
 
-.params > tr > th,
-.params > tr > td,
+.props > * > tr > th,
+.props > * > tr > td,
 .params > * > tr > th,
 .params > * > tr > td {
 	vertical-align: top;
@@ -178,10 +179,15 @@ pre {
 	padding: 0.2em 0.4em;
 }
 
-.params > tr > th,
+.props > * > tr > th,
 .params > * > tr > th {
 	background-color: #eaecf0;
 	text-align: center;
+}
+
+.props > thead > tr > th,
+.params > thead > tr > th {
+	text-align: left;
 }
 
 .params .name,
