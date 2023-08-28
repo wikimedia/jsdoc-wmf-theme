@@ -1,4 +1,5 @@
-/* eslint-env node, es6 */
+'use strict';
+
 module.exports = function gruntConfig( grunt ) {
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );

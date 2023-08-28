@@ -1,13 +1,16 @@
-#!/usr/bin/node
-let fs = require('fs');
-let path = require('path');
-let PACKAGEPATH = path.join(__dirname, '..', 'package.json');
-let PACKAGELOCKPATH = path.join(__dirname, '..', 'package-lock.json');
+'use strict';
 
-for (const pkgpath of [ PACKAGEPATH, PACKAGELOCKPATH ] ) {
-    let package = require(pkgpath);
-    if (!/\+git$/.test(package.version)) {
-        package.version += '+git';
-        fs.writeFileSync(pkgpath, JSON.stringify(package, null, 2)+'\n', 'utf8');
-    }
+const fs = require( 'fs' );
+const path = require( 'path' );
+const PACKAGEPATH = path.join( __dirname, '..', 'package.json' );
+const PACKAGELOCKPATH = path.join( __dirname, '..', 'package-lock.json' );
+
+for ( const pkgpath of [ PACKAGEPATH, PACKAGELOCKPATH ] ) {
+	// eslint-disable-next-line security/detect-non-literal-require
+	const pkg = require( pkgpath );
+	if ( !/\+git$/.test( pkg.version ) ) {
+		pkg.version += '+git';
+		// eslint-disable-next-line security/detect-non-literal-fs-filename
+		fs.writeFileSync( pkgpath, JSON.stringify( pkg, null, 2 ) + '\n', 'utf8' );
+	}
 }

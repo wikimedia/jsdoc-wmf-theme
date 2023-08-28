@@ -1,11 +1,15 @@
-/* global env, exports, require */
-var lunr = require( 'lunr' ),
+'use strict';
+/* global env */
+const lunr = require( 'lunr' ),
+	// eslint-disable-next-line node/no-missing-require
 	fs = require( 'jsdoc/fs' ),
+	// eslint-disable-next-line node/no-missing-require
 	path = require( 'jsdoc/path' ),
+	// eslint-disable-next-line node/no-missing-require
 	helper = require( 'jsdoc/util/templateHelper' );
 
 exports.makeIndex = function ( data ) {
-	var outdir = path.normalize( env.opts.destination ),
+	const outdir = path.normalize( env.opts.destination ),
 		documents = [];
 
 	// Collect only the data we need to search
@@ -22,7 +26,7 @@ exports.makeIndex = function ( data ) {
 	} );
 
 	// Build index and add data
-	var index = lunr( function () {
+	const index = lunr( function () {
 			this.field( 'name', { boost: 1000 } );
 			this.field( 'longname', { boost: 500 } );
 			this.field( 'kind', { boost: 110 } );
@@ -37,9 +41,9 @@ exports.makeIndex = function ( data ) {
 		} ),
 
 		// Write JSON and JS files
-		// eslint-disable-next-line no-redeclare
-		data = { index: index, documents: documents },
+		lunrData = { index: index, documents: documents },
 		jsFile = path.join( outdir, 'lunr-data.js' ),
-		dataJson = JSON.stringify( data );
-	fs.writeFileSync( jsFile, 'window.lunrData = ' + dataJson + ';', 'utf8' );
+		lunrDataJson = JSON.stringify( lunrData );
+
+	fs.writeFileSync( jsFile, 'window.lunrData = ' + lunrDataJson + ';', 'utf8' );
 };
