@@ -506,7 +506,7 @@ function buildNav( members ) {
 			seen[ g.longname ] = true;
 		} );
 
-		h3 = doc.createElement( h3 );
+		h3 = doc.createElement( 'h3' );
 		if ( !globalNav.firstChild ) {
 			// turn the heading into a link so you can actually get to the global page
 			h3.innerHTML = linkto( 'global', 'Global' );
