@@ -19,7 +19,15 @@ header h2 {
 	margin-top: 0;
 }
 
-.class-description {
+.description {
+	margin-bottom: 2em;
+	margin-top: 0;
+}
+
+/* For class and namespace pages */
+.class-description,
+/* For module pages */
+.container-overview > .description {
 	font-size: 130%;
 	line-height: 140%;
 	margin-bottom: 1em;
@@ -101,11 +109,6 @@ header h2 {
 
 .details .object-value {
 	padding-top: 0;
-}
-
-.description {
-	margin-bottom: 2em;
-	margin-top: 0;
 }
 
 .code-caption {
