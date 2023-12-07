@@ -1,0 +1,15 @@
+/* Styles for the main navigation. */
+
+/* override navbox styling from parent which prevents collapsing open li */
+.nav--main .nav__item > a {
+	cursor: pointer;
+}
+
+.nav--main .is-on > a {
+	pointer-events: inherit;
+}
+
+/* keep navbox from overflowing */
+.nav--main {
+	overflow-x: auto;
+}

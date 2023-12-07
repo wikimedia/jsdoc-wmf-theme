@@ -1,0 +1,20 @@
+/* General styles for HTML elements. */
+
+code,
+.name,
+.params .name,
+.props .name,
+.signature {
+	font-family: var( --font-family-monospace );
+	font-size: 1.4rem;
+}
+
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+header h2 {
+	/* We already get spacing from the page class */
+	margin-top: 0;
+}

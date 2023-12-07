@@ -1,0 +1,11 @@
+/* Styles for site layout (e.g. header and footer). */
+
+/* override style guide */
+#header { /* stylelint-disable-line selector-max-id */
+	background-color: #eaecf0;
+	z-index: 100;
+}
+
+.site__title {
+	text-transform: none;
+}
