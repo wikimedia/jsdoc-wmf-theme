@@ -12,7 +12,7 @@ var open = data.showOpen || false;
     <?js if (data.kind !== 'namespace') { ?>
     <?js= self.partial('toggle.tmpl', { id: id, open: open }) ?>
     <h4 class="name" id="<?js= id ?>"><?js= data.attribs + (kind === 'class' ? 'new ' : '') +
-    name + (data.signature || '') ?></h4>
+    (data.longname || data.name) + (data.signature || '') ?></h4>
     <?js } ?>
 
 <div class="summary">
