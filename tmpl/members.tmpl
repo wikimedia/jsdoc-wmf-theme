@@ -2,7 +2,7 @@
 var data = obj;
 var self = this;
 ?>
-<div>
+<div class="member">
 <?js= self.partial('toggle.tmpl', { id: id, open: false }) ?>
 <h4 class="name" id="<?js= id ?>"><?js= data.attribs + name + (data.signature ? data.signature : '') ?></h4>
 

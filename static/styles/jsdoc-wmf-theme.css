@@ -24,6 +24,10 @@ header h2 {
 	margin-top: 0;
 }
 
+.member {
+	margin-top: 1em;
+}
+
 /* For class and namespace pages */
 .class-description,
 /* For module pages */
@@ -251,7 +255,7 @@ header h2 {
 /* collapse boxes, in pure CSS */
 /* inspired by https://basicuse.net/articles/pl/textile/html_css/creating_a_toggle_box_to_collapse_or_expand_content_using_only_css3 */
 .toggle-box + label + h4 {
-	display: inline-block;
+	display: inline;
 }
 
 .toggle-box ~ .summary {
