@@ -1,5 +1,25 @@
 # Release History
 
+## jsdoc-wmf-theme 0.0.9 (2023-12-07)
+* Make properties tables of objects look like wikitables (Derk-Jan Hartman)
+* Remove ... when summary is missing (Derk-Jan Hartman)
+* Move JSDoc examples to be directly after the description. (Derk-Jan Hartman)
+* Remove unnecessary heading margins (Derk-Jan Hartman)
+* Style module description consistently with class description (Jon Robson)
+* Remove message filters (Jon Robson)
+* Improve spacing of members (properties and methods) (Roan Kattouw)
+* ui: Use longname instead of name for constructors (Roan Kattouw)
+* ui: Change Members subheading to Properties (apaskulin)
+* ui: Use alias instead of name for header (when it exists) (Roan Kattouw)
+
+—
+* Only publish the required resources (Derk-Jan Hartman)
+* Fix typo in publish.js (Ed Sanders)
+* build: Move client libraries to /lib to simplify eslint config (Ed Sanders)
+* build: Improve linter config, fix linting errors (Ed Sanders)
+* build: git-ignore .DS_Store files (Anne Tomasevich)
+
+
 ## jsdoc-wmf-theme 0.0.8 (2023-08-23)
 * Bump WikimediaUI-Style-Guide submodule from 2020 to 2023 (James D. Forrester)
 
