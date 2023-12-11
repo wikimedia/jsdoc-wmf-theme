@@ -1,11 +1,247 @@
 /* Styles for site layout (e.g. header and footer). */
 
-/* override style guide */
-#header { /* stylelint-disable-line selector-max-id */
-	background-color: #eaecf0;
+:root {
+	--width-site: 960px;
+	--width-site-desktop-wide: 1140px;
+}
+
+/* Header. */
+.header {
+	background-color: var( --background-color-interactive );
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	min-height: 6.4rem;
+	line-height: 6.4rem;
 	z-index: 100;
 }
 
 .site__title {
+	color: var( --color-base );
+	margin-top: 0;
+	height: 6.4rem;
+	font-family: var( --font-family-system-sans );
+	font-size: 1.6rem;
+	font-weight: var( --font-weight-base );
+	letter-spacing: 0.5px;
 	text-transform: none;
+}
+
+.site__title a {
+	color: inherit;
+	display: inline-block;
+	padding: 1.2rem 3.2rem 0;
+	transition: color var( --transition-duration-medium );
+}
+
+.site__title a:hover {
+	color: var( --color-emphasized );
+	text-decoration: none;
+}
+
+/* Page/content. */
+.page {
+	background-color: var( --background-color-base );
+	position: relative;
+	margin-top: 6.4rem;
+	padding: 6.4rem 0;
+	box-shadow: 0 1px 4px 0 rgba( 0, 0, 0, 0.25 );
+	overflow-y: hidden;
+}
+
+.content-box {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 1.6rem;
+	padding-right: 1.6rem;
+}
+
+.page::before,
+.page::after,
+.content-box::before,
+.content-box::after {
+	content: ' ';
+	display: table;
+}
+
+.page::after,
+.content-box::after {
+	clear: both;
+}
+
+.content {
+	float: left;
+}
+
+/* Columns. */
+.col {
+	float: left;
+	position: relative;
+	min-height: 1px;
+}
+
+.col--start {
+	padding: 0;
+}
+
+.col--end {
+	padding: 0;
+}
+
+/* Footer. */
+.footer {
+	background-color: var( --background-color-interactive );
+	color: var( --color-base );
+	padding: 2.4rem 0;
+	font-size: 1.3rem;
+}
+
+.footer__list {
+	padding: 0;
+}
+
+.footer__list:first-child {
+	margin: 0;
+}
+
+.footer__list::after {
+	content: ' ';
+	display: block;
+	clear: both;
+}
+
+.footer__list li {
+	list-style: none none;
+	display: block;
+	padding: 0.8rem 0 0;
+}
+
+.footer__list li:first-child {
+	padding-top: 0;
+}
+
+.footer__list + p {
+	margin-top: 1.2rem;
+}
+
+.lnk--wikimedia-project {
+	display: inline-block;
+	padding: 0.4rem 0;
+	text-transform: uppercase;
+}
+
+/* Smartphone portrait */
+@media ( min-width: 240px ) {
+	.content-box,
+	.site__title a {
+		transition-property: background-color, padding;
+		transition-duration: var( --transition-duration-medium );
+	}
+
+	.site__title {
+		margin-left: 4.2rem;
+	}
+
+	.site__title a {
+		padding-left: 0;
+	}
+
+	.col--start,
+	.col--end {
+		width: 100%;
+	}
+}
+
+/* Smartphone+ portrait */
+@media ( min-width: 414px ) {
+	.content-box {
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+	}
+
+	.footer__list li {
+		display: list-item;
+		float: left;
+		padding: 0 0.8rem 0 0;
+	}
+
+	.footer__list li::after {
+		content: '\2022'; /* bullet dot: '•' */
+		color: var( --color-subtle );
+		padding: 0 0 0 0.8rem;
+		font-weight: 100;
+	}
+
+	.footer__list li:last-child::after {
+		content: '';
+		padding: 0;
+	}
+}
+
+/* Tablet */
+@media ( min-width: 768px ) {
+	.content-box {
+		width: 100%;
+		max-width: 960px;
+	}
+
+	.site__title {
+		float: left;
+		margin-left: 0;
+	}
+
+	.site__title a {
+		padding-left: 1.6rem;
+		padding-right: 1.6rem;
+	}
+
+	.col--start {
+		width: 20.8rem;
+		z-index: 1;
+		transition: width var( --transition-duration-medium );
+	}
+
+	.col--end {
+		margin-left: -20.8rem;
+		padding-left: 24rem; /* = 22.4 + (2 * 1.6 padding) */
+	}
+}
+
+/* Tablet+ / Netbook */
+@media ( min-width: 992px ) {
+	.content-box {
+		width: 100%;
+		max-width: var( --width-site-desktop-wide );
+	}
+
+	.site__title a {
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+	}
+
+	.col--start {
+		width: 24rem;
+	}
+
+	.col--end {
+		margin-left: -24rem;
+		padding-left: 27.2rem; /* = 24 + (2 * 1.6 padding) */
+	}
+}
+
+@media ( min-width: 1200px ) {
+	.content-box {
+		width: var( --width-site-desktop-wide );
+	}
+
+	.col--start {
+		width: 25.6rem;
+	}
+
+	.col--end {
+		margin-left: -25.6rem;
+		padding-left: 28.8rem; /* = 25.6 + (2 * 1.6 padding) */
+	}
 }

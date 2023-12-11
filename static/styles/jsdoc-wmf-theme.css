@@ -1,4 +1,6 @@
 /* Main CSS file. */
+@import 'lib/normalize.css';
+@import 'lib/theme-wikimedia-ui.css';
 
 /* Local imports. */
 @import 'elements.css';
