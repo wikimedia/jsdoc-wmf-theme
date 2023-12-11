@@ -6,7 +6,7 @@
 }
 
 #lunr-search {
-	border: 1px solid #c8ccd1;
+	border: var( --border-subtle );
 	box-sizing: border-box;
 	padding: 1rem;
 	width: 100%;
@@ -14,11 +14,11 @@
 
 #search-results {
 	display: none;
-	background-color: #fff;
+	background-color: var( --background-color-base );
 	position: fixed;
 	margin: 0;
 	padding: 0;
-	border: 1px solid #c8ccd1;
+	border: var( --border-subtle );
 	border-bottom: 0;
 	line-height: 1.5;
 	max-height: calc( 100vh - 6.4rem );
@@ -28,11 +28,11 @@
 #search-results li {
 	list-style: none none;
 	margin: 0;
-	border-bottom: 1px solid #c8ccd1;
+	border-bottom: var( --border-subtle );
 }
 
 #search-results dd {
-	color: #000;
+	color: var( --color-emphasized );
 	margin-left: 1rem;
 }
 
@@ -43,7 +43,7 @@
 
 #selected-search-result,
 #search-results a:hover {
-	background: #eaecf0;
+	background: var( --background-color-interactive );
 	text-decoration: none;
 }
 

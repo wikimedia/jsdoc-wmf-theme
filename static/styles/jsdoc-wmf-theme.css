@@ -8,3 +8,8 @@
 @import 'navigation.css';
 @import 'search.css';
 @import 'content.css';
+
+/* Theme-wide variables. */
+:root {
+	--border-color-light: var( --background-color-interactive );
+}

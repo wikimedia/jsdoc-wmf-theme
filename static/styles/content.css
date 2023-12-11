@@ -29,19 +29,19 @@
 
 .signature-attributes {
 	font-size: 60%;
-	color: #a2a9b1;
+	color: var( --color-placeholder );
 	font-style: italic;
 	font-weight: lighter;
 }
 
 .ancestors,
 .attribs {
-	color: #72777d;
+	color: var( --color-placeholder );
 }
 
 .ancestors a,
 .attribs a {
-	color: #72777d !important; /* stylelint-disable-line declaration-no-important */
+	color: var( --color-placeholder ) !important; /* stylelint-disable-line declaration-no-important */
 	text-decoration: none;
 }
 
@@ -50,8 +50,8 @@
 }
 
 .important {
-	color: #d33;
-	font-weight: bold;
+	color: var( --color-destructive );
+	font-weight: var( --font-weight-bold );
 }
 
 .yes-def {
@@ -59,12 +59,12 @@
 }
 
 .type-signature {
-	color: #72777d;
+	color: var( --color-placeholder );
 }
 
 .details {
 	margin-top: 14px;
-	border-left: 2px solid #eaecf0;
+	border-left: var( --border-width-thick ) var( --border-style-base ) var( --border-color-light );
 }
 
 .details dt {
@@ -104,7 +104,7 @@
 
 .source {
 	width: 80%;
-	border: 1px solid #eaecf0;
+	border: var( --border-width-base ) var( --border-style-base ) var( --border-color-light );
 	overflow: auto;
 }
 
@@ -113,8 +113,8 @@
 }
 
 .source code {
-	background-color: #fff;
-	color: #444;
+	background-color: var( --background-color-base );
+	color: var( --color-subtle );
 	display: block;
 	margin: 0;
 	padding: 4px 12px;
@@ -139,7 +139,7 @@
 }
 
 .prettyprint.linenums li {
-	border-left: 3px solid #eaecf0;
+	border-left: 3px var( --border-style-base ) var( --border-color-light );
 }
 
 .prettyprint.linenums li * {
@@ -156,10 +156,10 @@
 
 .props,
 .params {
-	background-color: #f8f9fa;
-	color: #202122;
+	background-color: var( --background-color-interactive-subtle );
+	color: var( --color-base );
 	margin: 1em 0;
-	border: 1px solid #a2a9b1;
+	border: var( --border-base );
 	border-collapse: collapse;
 }
 
@@ -168,13 +168,13 @@
 .params > * > tr > th,
 .params > * > tr > td {
 	vertical-align: top;
-	border: 1px solid #a2a9b1;
+	border: var( --border-base );
 	padding: 0.2em 0.4em;
 }
 
 .props > * > tr > th,
 .params > * > tr > th {
-	background-color: #eaecf0;
+	background-color: var( --background-color-interactive );
 	text-align: center;
 }
 
@@ -186,7 +186,7 @@
 .params .name,
 .props .name,
 .name code {
-	color: #444;
+	color: var( --color-subtle );
 }
 
 .params td.description > p:first-child,
@@ -209,7 +209,7 @@
 }
 
 .disabled {
-	color: #72777d;
+	color: var( --color-disabled );
 }
 
 .summary {
