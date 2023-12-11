@@ -620,23 +620,16 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	}
 	fs.mkPath( outdir );
 
-	let fromDir;
-	// Copy the WMF style guide files to outdir
-	[ path.join( 'css', 'build' ), 'js', 'fonts' ].forEach( function ( d ) {
-		fromDir = path.join( templatePath, 'WikimediaUI-Style-Guide', d );
-		fs.ls( fromDir, 3 ).forEach( function ( fileName ) {
-			const toDir = fs.toDir(
-				fileName.replace( fromDir, path.join( outdir, 'wmf', d ) )
-			);
-			fs.mkPath( toDir );
-			fs.copyFileSync( fileName, toDir );
-		} );
-	} );
+	const fromDir = path.join( templatePath, 'static' );
+	const cssLibDir = path.join( fromDir, 'styles/lib' );
+	fs.mkPath( cssLibDir );
+
+	// Copy CSS dependencies to the static dir.
+	fs.copyFileSync( path.join( templatePath, 'node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.css' ), cssLibDir );
+	fs.copyFileSync( path.join( templatePath, 'node_modules/normalize.css/normalize.css' ), cssLibDir );
 
 	// copy the template's static files to outdir
-	fromDir = path.join( templatePath, 'static' );
 	const staticFiles = fs.ls( fromDir, 3 );
-
 	staticFiles.forEach( function ( fileName ) {
 		const toDir = fs.toDir( fileName.replace( fromDir, outdir ) );
 

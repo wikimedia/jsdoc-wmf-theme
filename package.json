@@ -28,9 +28,6 @@
 	},
 	"homepage": "https://gerrit.wikimedia.org/g/jsdoc/wmf-theme/+/refs/heads/master/README.md",
 	"files": [
-		"WikimediaUI-Style-Guide/css/build",
-		"WikimediaUI-Style-Guide/js",
-		"WikimediaUI-Style-Guide/fonts",
 		"fixtures",
 		"static",
 		"tmpl",
@@ -39,8 +36,10 @@
 		"HISTORY.md"
 	],
 	"dependencies": {
+		"@wikimedia/codex-design-tokens": "1.1.1",
 		"domino": "^2.1.6",
 		"lunr": "2.3.9",
+		"normalize.css": "8.0.1",
 		"taffydb": "^2.7.3"
 	},
 	"devDependencies": {
