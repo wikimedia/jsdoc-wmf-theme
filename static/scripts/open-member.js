@@ -16,9 +16,9 @@ function openMember() {
 	var id = window.location.hash.slice( 1 ),
 		toggler = document.getElementById( 'toggle-' + id ),
 		offset = toggler.getBoundingClientRect().top,
-		y = window.scrollY + offset - 62 - 10;
+		y = window.scrollY + offset;
 	if ( toggler ) {
-		toggler.checked = true;
+		toggler.open = true;
 	}
 	window.scrollTo( 0, y );
 }

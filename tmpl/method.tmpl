@@ -1,7 +1,14 @@
 <?js
 var data = obj;
 var self = this;
-var open = data.showOpen || false;
+
+// Initially expand details for class constructor.
+var detailsAttr = data.kind === 'class' && data.classdesc ? 'open' : '';
+
+// Add a class to the member element if it has a toggle box so we can add special styles.
+if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'namespace' ) {
+    data.attribsClassName += ' member--has-toggle-box';
+}
 ?>
 <div class="member <?js= data.attribsClassName ?>">
 <?js if (data.kind !== 'module' && !data.hideconstructor) { ?>
@@ -10,14 +17,15 @@ var open = data.showOpen || false;
     <?js } ?>
 
     <?js if (data.kind !== 'namespace') { ?>
-    <?js= self.partial('toggle.tmpl', { id: id, open: open }) ?>
-    <h4 class="name" id="<?js= id ?>"><?js= (kind === 'class' ? 'new ' : '') +
-    (data.longname || data.name) + (data.signature || '') + data.attribs ?></h4>
+    <details id="toggle-<?js= id ?>" class="toggle-box" <?js= detailsAttr ?>>
+    <summary>
+        <h4 class="name" id="<?js= id ?>"><?js= (kind === 'class' ? 'new ' : '') + (data.longname || data.name) + (data.signature || '') + data.attribs ?></h4>
+    </summary>
+    <?js } else { ?>
+        <div class="summary">
+            <?js if (data.summary) { ?><?js= summary ?><?js } ?>
+        </div>
     <?js } ?>
-
-<div class="summary">
-    <?js if (data.summary) { ?><?js= summary ?><?js } ?>
-</div>
 <?js } ?>
 
 <div class="long">
@@ -135,4 +143,11 @@ var open = data.showOpen || false;
 } } ?>
 
 </div>
+
+<?js if (data.kind !== 'namespace') { ?>
+    </details>
+    <div class="summary">
+        <?js if (data.summary) { ?><?js= summary ?><?js } ?>
+    </div>
+<?js } ?>
 </div>

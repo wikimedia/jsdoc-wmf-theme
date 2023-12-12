@@ -2,43 +2,48 @@
 var data = obj;
 var self = this;
 ?>
-<div class="member">
-<?js= self.partial('toggle.tmpl', { id: id, open: false }) ?>
-<h4 class="name" id="<?js= id ?>"><?js= name + (data.signature ? data.signature : '') + data.attribs ?></h4>
+<div class="member  member--has-toggle-box">
+
+<details id="toggle-<?js= id ?>" class="toggle-box">
+    <summary>
+        <h4 class="name" id="<?js= id ?>"><?js= name + (data.signature ? data.signature : '') + data.attribs ?></h4>
+    </summary>
+
+    <div class="long">
+    <?js if (data.description) { ?>
+    <div class="description">
+        <?js= data.description ?>
+    </div>
+    <?js } ?>
+
+    <?js if (data.examples && examples.length) { ?>
+        <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
+        <?js= this.partial('examples.tmpl', examples) ?>
+    <?js } ?>
+
+    <?js if (data.type && data.type.names) {?>
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                <?js= self.partial('type.tmpl', data.type.names) ?>
+            </li>
+        </ul>
+    <?js } ?>
+
+    <?js= this.partial('details.tmpl', data) ?>
+
+    <?js if (data.fires && fires.length) { ?>
+        <h5>Fires:</h5>
+        <ul><?js fires.forEach(function(f) { ?>
+            <li><?js= self.linkto(f) ?></li>
+        <?js }); ?></ul>
+    <?js } ?>
+
+    </div>
+</details>
 
 <div class="summary">
-<?js if (data.summary) { ?><?js= summary ?><?js } ?>
+    <?js if (data.summary) { ?><?js= summary ?><?js } ?>
 </div>
 
-<div class="long">
-<?js if (data.description) { ?>
-<div class="description">
-    <?js= data.description ?>
-</div>
-<?js } ?>
-
-<?js if (data.examples && examples.length) { ?>
-    <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
-    <?js= this.partial('examples.tmpl', examples) ?>
-<?js } ?>
-
-<?js if (data.type && data.type.names) {?>
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            <?js= self.partial('type.tmpl', data.type.names) ?>
-        </li>
-    </ul>
-<?js } ?>
-
-<?js= this.partial('details.tmpl', data) ?>
-
-<?js if (data.fires && fires.length) { ?>
-    <h5>Fires:</h5>
-    <ul><?js fires.forEach(function(f) { ?>
-        <li><?js= self.linkto(f) ?></li>
-    <?js }); ?></ul>
-<?js } ?>
-
-</div>
 </div>
