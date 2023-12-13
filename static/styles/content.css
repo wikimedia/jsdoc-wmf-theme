@@ -1,12 +1,14 @@
 /* Styles for documentation content. Overrides the base JSDoc theme. */
 
+:root {
+	--spacing-toggle-box-spacing: 2.4rem;
+	--size-toggle-box-icon: 16px;
+	--spacing-toggle-box-icon-margin: 0.8rem;
+}
+
 .description {
 	margin-bottom: 2em;
 	margin-top: 0;
-}
-
-.member {
-	margin-top: 3.2rem;
 }
 
 /* For class and namespace pages */
@@ -234,67 +236,82 @@
 	color: var( --color-disabled );
 }
 
+/* Details element used for accordion sections. */
+/* Add divider as a border of the member element, since it needs to come after
+the description that displays when the details element is closed. */
+.member--has-toggle-box {
+	padding-bottom: var( --spacing-toggle-box-spacing );
+	border-bottom: var( --border-subtle );
+}
+
+/* Not all member elements have toggle-boxes, and not all toggle-boxes are part of member elements.
+We need this margin top on both for consistency. */
+.member:not( .member--has-toggle-box ) {
+	margin-top: var( --spacing-toggle-box-spacing );
+}
+
+/* The details element. */
+.toggle-box {
+	margin-top: var( --spacing-toggle-box-spacing );
+}
+
+/* Remove the browser-specific marker from the summary element. */
+.toggle-box summary::marker,
+.toggle-box summary::-webkit-details-marker {
+	display: none;
+}
+
+/* Support: Firefox: Remove the browser-specific marker. */
+.toggle-box > summary {
+	list-style-type: none;
+}
+
+.toggle-box summary {
+	display: flex;
+}
+
+/* Add a custom icon. */
+.toggle-box summary::before {
+	display: inline-block;
+	flex-shrink: 0;
+	content: '';
+	background-image: url( ./checkbox-style.png );
+	background-repeat: no-repeat;
+	background-position: -4px 0;
+	width: var( --size-toggle-box-icon );
+	height: var( --size-toggle-box-icon );
+	margin-right: var( --spacing-toggle-box-icon-margin );
+}
+
+.toggle-box[ open ] summary::before {
+	background-position: -4px -24px;
+}
+
+.toggle-box .name {
+	/* Remove margin on the heading element. */
+	margin: 0;
+}
+
+.toggle-box .name:hover {
+	cursor: var( --cursor-base--hover );
+}
+
+/* Standalone descrioption that appears when the details element is closed. */
 .summary {
 	/* keep same margin-top as description */
-	margin-top: 0;
+	margin-top: 0.8rem;
 	/* lesser margin-bottom than description to keep page compact */
 	margin-bottom: 0;
 }
 
-/* collapse boxes, in pure CSS */
-/* inspired by https://basicuse.net/articles/pl/textile/html_css/creating_a_toggle_box_to_collapse_or_expand_content_using_only_css3 */
-.toggle-box + label + h4 {
-	display: inline;
-}
-
+/* Align the details content (and the standalone description that appears
+when the box is closed) with the summary label. */
+.toggle-box .long,
 .toggle-box ~ .summary {
-	display: block;
+	margin-left: calc( var( --size-toggle-box-icon ) + var( --spacing-toggle-box-icon-margin ) );
 }
 
-.toggle-box ~ .long {
+/* Hide standalone description when the details element is open. */
+.toggle-box[ open ] ~ .summary {
 	display: none;
-}
-
-.toggle-box:checked ~ .summary {
-	display: none;
-}
-
-.toggle-box:checked ~ .long {
-	display: block;
-}
-
-/* checkbox theme */
-input[ type='checkbox' ].toggle-box {
-	position: absolute;
-	z-index: -1000;
-	left: -1000px;
-	overflow: hidden;
-	clip: rect( 0 0 0 0 );
-	height: 1px;
-	width: 1px;
-	margin: -1px;
-	padding: 0;
-	border: 0;
-}
-
-input[ type='checkbox' ].toggle-box + label {
-	padding-left: 29px;
-	height: 24px;
-	display: inline-block;
-	line-height: 24px;
-	background-repeat: no-repeat;
-	background-position: 0 0;
-	font-size: 24px;
-	vertical-align: middle;
-	cursor: pointer;
-	background-image: url( ./checkbox-style.png );
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-input[ type='checkbox' ].toggle-box:checked + label {
-	background-position: 0 -24px;
 }
