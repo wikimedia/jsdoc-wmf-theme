@@ -266,9 +266,14 @@ function addClassNames( f ) {
 }
 
 function addAttribs( f ) {
-	const attribs = helper.getAttribs( f ),
-		attribsString = buildAttribsString( attribs );
-	f.attribs = util.format( '<span class="type-signature">%s</span>', attribsString );
+	const attribs = helper.getAttribs( f );
+	let attribsMarkup = '';
+
+	attribs.forEach( ( attrib ) => {
+		attribsMarkup += `<span class="type-signature__attrib type-signature__attrib--${attrib}">${attrib}</span>`;
+	} );
+
+	f.attribs = util.format( '<span class="type-signature">%s</span>', attribsMarkup );
 	addClassNames( f );
 }
 
