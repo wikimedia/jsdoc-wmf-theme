@@ -30,7 +30,7 @@
 }
 
 .signature-attributes {
-	font-size: 60%;
+	font-size: 75%;
 	color: var( --color-placeholder );
 	font-style: italic;
 	font-weight: lighter;
@@ -71,7 +71,7 @@
 	display: inline-flex;
 	max-width: var( --size-3200 );
 	margin-left: var( --spacing-50 );
-	font-size: var( --font-size-small );
+	font-size: var( --font-size-x-small );
 	border: var( --border-subtle );
 	border-radius: var( --border-radius-pill );
 	padding: 0 var( --spacing-50 );
@@ -270,6 +270,10 @@ We need this margin top on both for consistency. */
 	display: flex;
 }
 
+.toggle-box summary:hover {
+	cursor: var( --cursor-base--hover );
+}
+
 /* Add a custom icon. */
 .toggle-box summary::before {
 	display: inline-block;
@@ -277,23 +281,19 @@ We need this margin top on both for consistency. */
 	content: '';
 	background-image: url( ./checkbox-style.png );
 	background-repeat: no-repeat;
-	background-position: -4px 0;
+	background-position: -4px -2px;
 	width: var( --size-toggle-box-icon );
 	height: var( --size-toggle-box-icon );
 	margin-right: var( --spacing-toggle-box-icon-margin );
 }
 
 .toggle-box[ open ] summary::before {
-	background-position: -4px -24px;
+	background-position: -4px -26px;
 }
 
 .toggle-box .name {
 	/* Remove margin on the heading element. */
 	margin: 0;
-}
-
-.toggle-box .name:hover {
-	cursor: var( --cursor-base--hover );
 }
 
 /* Standalone descrioption that appears when the details element is closed. */
