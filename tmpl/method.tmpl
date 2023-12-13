@@ -19,7 +19,9 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
     <?js if (data.kind !== 'namespace') { ?>
     <details id="toggle-<?js= id ?>" class="toggle-box" <?js= detailsAttr ?>>
     <summary>
-        <h4 class="name" id="<?js= id ?>"><?js= (kind === 'class' ? 'new ' : '') + (data.longname || data.name) + (data.signature || '') + data.attribs ?></h4>
+        <h4 class="name" id="<?js= id ?>">
+            <?js= (kind === 'class' ? 'new ' : '') + ( kind === 'class' ? data.longname : data.name) + (data.signature || '') + data.attribs ?>
+        </h4>
     </summary>
     <?js } else { ?>
         <div class="summary">
