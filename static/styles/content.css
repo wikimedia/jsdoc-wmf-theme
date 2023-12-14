@@ -225,8 +225,8 @@
 	padding-bottom: 0;
 }
 
-.params h6,
-.props h6 {
+.params h5,
+.props h5 {
 	margin-top: 0;
 	/* Vertically align headings in tables with other cells by reinstating body `line-height`. */
 	line-height: 1.6;

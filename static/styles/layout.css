@@ -33,6 +33,8 @@
 	font-family: var( --font-family-system-sans );
 	font-size: var( --font-size-site-title );
 	font-weight: var( --font-weight-semi-bold );
+	/* Match headings. */
+	line-height: var( --line-height-xxx-small );
 	letter-spacing: 0.5px;
 	text-transform: none;
 }

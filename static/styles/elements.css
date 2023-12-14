@@ -33,8 +33,10 @@ h6 {
 	margin: 3.2rem 0 0;
 	line-height: var( --line-height-xxx-small );
 	transition: font-size var( --transition-duration-medium ), font-weight var( --transition-duration-medium );
+	scroll-margin-top: var( --size-header );
 }
 
+h1,
 h2,
 h3,
 h4,
@@ -43,34 +45,30 @@ h5 {
 }
 
 h1 {
-	font-family: var( --font-family-serif );
-	font-size: 3.2rem;
-	font-weight: var( --font-weight-base );
-}
-
-h2 {
 	border-bottom: var( --border-width-heading ) var( --border-style-base ) var( --border-color-light );
+	margin-top: 0;
 	padding-bottom: 2px;
 	font-size: 2.4rem;
 }
 
-h3 {
+h2 {
 	font-size: 2rem;
 }
 
 /* Reduce top margin when introductory headlines are following each other. */
-h2 + h3 {
+h1 + h2 {
 	margin-top: 1.6rem;
 }
 
-h4 {
+h3 {
 	font-size: 1.8rem;
 }
 
-h5 {
+h4 {
 	font-size: 1.6rem;
 }
 
+h5,
 h6 {
 	font-size: 1.6rem;
 	font-weight: normal;
