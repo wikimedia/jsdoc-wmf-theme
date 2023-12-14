@@ -1,50 +1,67 @@
-/* stylelint-disable selector-max-id */
-
-#search-container {
-	float: right;
-	width: 45rem;
+:root {
+	--size-search-container: 45rem;
 }
 
-#lunr-search {
+.search-container {
+	position: relative;
+}
+
+.search-input {
 	border: var( --border-subtle );
-	box-sizing: border-box;
-	padding: 1rem;
 	width: 100%;
+	margin: var( --spacing-header ) 0;
+	/* Match Codex TextInput. */
+	padding: var( --spacing-vertical-search-input ) var( --spacing-horizontal-search-input );
+	line-height: var( --line-height-medium );
 }
 
-#search-results {
+.search-results {
 	display: none;
 	background-color: var( --background-color-base );
-	position: fixed;
-	margin: 0;
+	position: absolute;
+	/* Ensure the menu is flush with the bottom of the input. */
+	margin: calc( var( --spacing-header ) * -1 ) 0 0;
 	padding: 0;
 	border: var( --border-subtle );
-	border-bottom: 0;
-	line-height: 1.5;
-	max-height: calc( 100vh - 6.4rem );
+	border-top: 0;
+	line-height: var( --line-height-medium );
+	width: var( --size-full );
+	max-height: calc( 100vh - var( --size-header--mobile ) );
 	overflow: auto;
+	box-shadow: var( --box-shadow-drop-medium );
 }
 
-#search-results li {
+.search-results li {
 	list-style: none none;
 	margin: 0;
 	border-bottom: var( --border-subtle );
 }
 
-#search-results dd {
-	color: var( --color-emphasized );
-	margin-left: 1rem;
+.search-results li:last-child {
+	border-bottom: 0;
 }
 
-#search-results a {
+.search-result {
 	display: block;
-	padding: 1rem;
+	/* Match Codex MenuItem. */
+	padding: 0.8rem 1.2rem;
 }
 
+.search-result dd {
+	color: var( --color-base );
+	/* Remove browser style. */
+	margin-left: 0;
+}
+
+/* stylelint-disable-next-line selector-max-id */
 #selected-search-result,
-#search-results a:hover {
+.search-result:hover {
 	background: var( --background-color-interactive );
 	text-decoration: none;
 }
 
-/* stylelint-enable */
+@media ( min-width: 768px ) {
+	.search-container {
+		width: var( --size-search-container );
+	}
+}

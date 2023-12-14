@@ -2,33 +2,39 @@
 document.addEventListener( 'DOMContentLoaded', function () {
 	var lunrIndex = lunr.Index.load( window.lunrData.index ),
 		docs = window.lunrData.documents,
-		UP = 38,
-		DOWN = 40,
-		ENTER = 13,
+		UP = 'ArrowUp',
+		DOWN = 'ArrowDown',
+		ENTER = 'Enter',
 		searchEl = document.getElementById( 'lunr-search' ),
-		resultsEl = document.getElementById( 'search-results' );
+		resultsEl = document.getElementById( 'search-results' ),
+		resultDocs = [];
+
+	function showResults() {
+		resultsEl.style.display = 'block';
+		searchEl.setAttribute( 'aria-expanded', 'true' );
+	}
+
+	function hideResults() {
+		resultsEl.style.display = 'none';
+		searchEl.setAttribute( 'aria-expanded', 'false' );
+	}
 
 	searchEl.addEventListener( 'keyup', function ( e ) {
 		if (
-			e.keyCode === UP ||
-			e.keyCode === DOWN ||
-			e.keyCode === ENTER
+			e.key === UP ||
+			e.key === DOWN ||
+			e.key === ENTER
 		) {
-			manageKeyboard( e.keyCode );
+			manageKeyboard( e.key );
 			e.preventDefault();
 			return false;
 		}
 
-		if ( this.value === '' ) {
+		if ( e.key === 'Escape' ) {
 			hideResults();
-		} else {
-			search( this.value );
+			return false;
 		}
-	} );
 
-	searchEl.addEventListener( 'focus', function () {
-		// eslint-disable-next-line no-self-assign
-		this.value = this.value; // Hack to move the cursor to the end of text
 		if ( this.value === '' ) {
 			hideResults();
 		} else {
@@ -40,6 +46,19 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		hideResults();
 	} );
 
+	searchEl.addEventListener( 'click', function ( e ) {
+		/* Don't hide results on search input click. */
+		e.stopPropagation();
+	} );
+
+	searchEl.addEventListener( 'focus', function () {
+		// eslint-disable-next-line no-self-assign
+		this.value = this.value; // Hack to move the cursor to the end of text
+		if ( this.value !== '' && resultDocs.length > 0 ) {
+			showResults();
+		}
+	} );
+
 	function search( term ) {
 		// We want exact matches as well as prefix search
 		// So we get both, merge and de-duplicate
@@ -47,12 +66,12 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			lunrIndex.search( term ),
 			lunrIndex.search( term + '*' )
 		);
-		showResults( results.slice( 0, 100 ) );
+		getResults( results.slice( 0, 100 ) );
 	}
 
-	function showResults( results ) {
+	function getResults( results ) {
 		// Get details of results
-		var resultDocs = docs.filter( function ( d ) {
+		resultDocs = docs.filter( function ( d ) {
 			return results.indexOf( d.id ) > -1;
 		} ).map( function ( d ) {
 			return {
@@ -64,21 +83,19 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		} );
 
 		// Add results to the <ul>
-		resultsEl.style.display = 'block';
 		resultsEl.innerHTML = '';
 		resultDocs.forEach( function ( d, i ) {
 			var link = '',
-				id = i === 0 ? 'selected-search-result' : '';
-			link += '<a href="' + d.id + '" id="' + id + '">';
+				id = i === 0 ? 'selected-search-result' : '',
+				className = 'search-result';
+			link += '<a href="' + d.id + '" id="' + id + '" class="' + className + '">';
 			link += '<dt>' + d.name + ' &middot; <code>' + d.longname + '</code></dt>';
 			link += '<dd>' + d.summary + '</dd>';
 			link += '</a>';
 			resultsEl.innerHTML += '<li>' + link + '</li>';
 		} );
-	}
 
-	function hideResults() {
-		resultsEl.style.display = 'none';
+		showResults();
 	}
 
 	function manageKeyboard( k ) {

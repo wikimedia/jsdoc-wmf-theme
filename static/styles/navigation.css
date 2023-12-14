@@ -3,21 +3,27 @@
 :root {
 	--border-color-menu-item--inactive: var( --background-color-interactive );
 	--border-color-menu-item--active: var( --color-emphasized );
+	--spacing-vertical-nav-item: 0.8rem;
+	--margin-bottom-nav-item: 0.4rem;
+	--font-size-nav-item: 1.6rem;
+	--font-size-nav-sub-item: 1.4rem;
+	/* Calculate the height of a nav item. Vertical padding * 2, plus the font size * line height, plus margin-bottom. */
+	--size-vertical-nav-item: calc( var( --spacing-vertical-nav-item ) * 2 + var( --font-size-nav-item ) * var( --line-height-medium ) + var( --margin-bottom-nav-item ) );
 }
 
 /* Navigation button. */
 .btn--nav-main {
 	position: absolute;
-	top: 1.2rem;
-	width: 4.2rem;
-	height: 4.2rem;
+	top: var( --spacing-header );
+	width: var( --size-nav-button );
+	height: var( --size-nav-button );
 	cursor: pointer;
 }
 
 /* Fake hamburger icon. */
 .btn--nav-main i {
 	display: block;
-	height: 4.2rem;
+	height: var( --size-nav-button );
 	transition: color var( --transition-duration-medium ), box-shadow var( --transition-duration-medium );
 }
 
@@ -26,7 +32,7 @@
 	content: '';
 	/* Background color is the icon color. */
 	background-color: var( --color-subtle );
-	width: 2rem;
+	width: var( --size-nav-button );
 	height: 2px;
 	position: absolute;
 	top: 0.4rem;
@@ -85,16 +91,17 @@
 }
 
 .nav--main > ol > li {
-	margin-bottom: 0.4rem;
+	margin-bottom: var( --margin-bottom-nav-item );
 }
 
 .nav--main a {
 	color: var( --color-base );
 	display: block;
-	padding: 0.8rem 1.2rem;
-	font-size: 1.6rem;
+	padding: var( --spacing-vertical-nav-item ) var( --spacing-horizontal-nav-item-small );
+	font-size: var( --font-size-nav-item );
 	text-decoration: none;
-	transition: background-color var( --transition-duration-medium ), color var( --transition-duration-medium ), padding var( --transition-duration-medium );
+	transition-property: background-color, padding;
+	transition-duration: var( --transition-duration-medium );
 }
 
 .nav--main a:hover,
@@ -136,7 +143,7 @@
 	border-left: var( --border-width-base ) solid var( --border-color-menu-item--inactive );
 	border-radius: 0 var( --border-radius-base ) var( --border-radius-base ) 0;
 	padding-left: 1.6rem;
-	font-size: 1.4rem;
+	font-size: var( --font-size-nav-sub-item );
 	transition: background-color var( --transition-duration-medium ), color var( --transition-duration-medium );
 }
 
@@ -154,12 +161,13 @@
 /* Smartphone only. */
 @media ( max-width: 767px ) {
 	.nav--main {
-		position: absolute;
-		top: -3.2rem;
-		left: -1.6rem;
-		right: -1.6rem;
+		position: fixed;
+		/* Hide the Home item since a link to home is available directly above the mobile menu. */
+		top: calc( var( --size-header--mobile ) - var( --size-vertical-nav-item ) );
+		left: 0;
+		right: 0;
 		padding-bottom: 1.6rem;
-		box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
+		box-shadow: var( --box-shadow-drop-medium );
 		z-index: 1;
 		transform: translateY( -200% );
 		transition: left var( --transition-duration-medium ), right var( --transition-duration-medium ), transform var( --transition-duration-medium );
@@ -170,26 +178,11 @@
 	}
 }
 
-/* Smartphone portrait. */
-@media ( min-width: 240px ) {
-	.nav--main a {
-		padding-left: 1.6rem;
-		padding-right: 1.6rem;
-		transition-property: background-color, padding;
-		transition-duration: var( --transition-duration-medium );
-	}
-}
-
 /* Smartphone+ portrait. */
 @media ( min-width: 414px ) {
-	.nav--main {
-		left: -3.2rem;
-		right: -3.2rem;
-	}
-
 	.nav--main a {
-		padding-left: 3.2rem;
-		padding-right: 3.2rem;
+		padding-left: var( --spacing-horizontal-nav-item-large );
+		padding-right: var( --spacing-horizontal-nav-item-large );
 	}
 }
 
@@ -200,8 +193,8 @@
 	}
 
 	.nav--main a {
-		padding-left: 1.6rem;
-		padding-right: 1.6rem;
+		padding-left: var( --spacing-horizontal-nav-item-small );
+		padding-right: var( --spacing-horizontal-nav-item-small );
 	}
 
 	.nav--main {
@@ -213,7 +206,7 @@
 /* Tablet+ / Netbook. */
 @media ( min-width: 992px ) {
 	.nav--main a {
-		padding-left: 3.2rem;
-		padding-right: 3.2rem;
+		padding-left: var( --spacing-horizontal-nav-item-large );
+		padding-right: var( --spacing-horizontal-nav-item-large );
 	}
 }

@@ -30,22 +30,24 @@ document.documentElement.className = document.documentElement.className.replace(
 		<div class="content-box">
 			<a href="#content" class="is-aural is-focusable">Jump to content</a>
 			<a href="#nav--main" class="is-aural is-focusable">Jump to navigation</a>
-			<h1 class="site__title"><a href="./"><span class="site__logo"></span><?js= env.conf.templates.wmf.maintitle ?>/ <?js= title ?></a></h1>
-			<label class="btn--nav-main" for="trigger--nav-main" aria-hidden="true" title="Show main menu">
-				<i></i> <span>Menu</span>
-			</label>
-      <?js= this.partial( 'search.tmpl' )?>
+			<div class="header__title">
+				<h1 class="site-title"><a href="./"><span class="site-logo"></span><?js= env.conf.templates.wmf.maintitle ?>/ <?js= title ?></a></h1>
+				<label class="btn--nav-main" for="trigger--nav-main" aria-hidden="true" title="Show main menu">
+					<i></i> <span>Menu</span>
+				</label>
+			</div>
+     		<?js= this.partial( 'search.tmpl' )?>
 		</div>
 	</header>
 	<div class="page">
-		<div class="content-box">
-			<div class="col col--start">
+		<div class="content-box flex-cols">
+			<div class="flex-col flex-col--start">
 				<input type="checkbox" id="trigger--nav-main" class="trigger--nav-main">
 				<nav id="nav--main" class="nav nav--main" role="navigation">
 					<?js= this.nav(filename) ?>
 				</nav>
 			</div>
-			<div class="col col--end">
+			<div class="flex-col flex-col--end">
 				<main id="content" class="content" role="main">
 
     <?js= content ?>
@@ -85,17 +87,5 @@ arr(document.querySelectorAll("nav > ol > li a:not([href])")).map(function(el) {
 <script src="scripts/linenumber.js"> </script>
 
 <script src="scripts/open-member.js"> </script>
-<script src="scripts/lib/sticky-sidebar.js"> </script>
-<script type="text/javascript">
-var sidebar = new StickySidebar('.col--start', {
-  containerSelector: '.content-box',
-  innerWrapperSelector: 'nav--main',
-  topSpacing: 100,
-  bottomSpacing: 20
-});
-document.getElementsByClassName('col--start')[0].addEventListener( 'click', function(e) {
-  sidebar.updateSticky();
-});
-</script>
 </body>
 </html>

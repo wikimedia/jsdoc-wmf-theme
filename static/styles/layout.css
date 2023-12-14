@@ -3,6 +3,9 @@
 :root {
 	--width-site: 960px;
 	--width-site-desktop-wide: 1140px;
+	--size-sidebar-tablet: 20.8rem;
+	--size-sidebar-tablet-plus: 24rem;
+	--size-sidebar-desktop: 25.6rem;
 }
 
 /* Header. */
@@ -12,30 +15,36 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	min-height: 6.4rem;
-	line-height: 6.4rem;
+	/* Ensure contents aren't wider than the viewport. */
+	width: 100vw;
+	min-height: var( --size-header );
 	z-index: 100;
 }
 
-.site__title {
+.header__title {
+	padding-top: var( --spacing-header );
+}
+
+.site-title {
+	display: flex;
+	align-items: center;
 	color: var( --color-base );
 	margin-top: 0;
-	height: 6.4rem;
 	font-family: var( --font-family-system-sans );
-	font-size: 1.6rem;
-	font-weight: var( --font-weight-base );
+	font-size: var( --font-size-site-title );
+	font-weight: var( --font-weight-semi-bold );
 	letter-spacing: 0.5px;
 	text-transform: none;
 }
 
-.site__title a {
+.site-title a {
 	color: inherit;
 	display: inline-block;
-	padding: 1.2rem 3.2rem 0;
+	padding: 0 var( --spacing-horizontal-nav-item-small );
 	transition: color var( --transition-duration-medium );
 }
 
-.site__title a:hover {
+.site-title a:hover {
 	color: var( --color-emphasized );
 	text-decoration: none;
 }
@@ -44,10 +53,9 @@
 .page {
 	background-color: var( --background-color-base );
 	position: relative;
-	margin-top: 6.4rem;
-	padding: 6.4rem 0;
+	margin-top: var( --size-header );
+	padding: var( --size-header ) 0;
 	box-shadow: 0 1px 4px 0 rgba( 0, 0, 0, 0.25 );
-	overflow-y: hidden;
 }
 
 .content-box {
@@ -58,36 +66,14 @@
 	padding-right: 1.6rem;
 }
 
-.page::before,
-.page::after,
-.content-box::before,
-.content-box::after {
-	content: ' ';
-	display: table;
+.flex-cols {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
 }
 
-.page::after,
-.content-box::after {
-	clear: both;
-}
-
-.content {
-	float: left;
-}
-
-/* Columns. */
-.col {
-	float: left;
-	position: relative;
-	min-height: 1px;
-}
-
-.col--start {
-	padding: 0;
-}
-
-.col--end {
-	padding: 0;
+.flex-col--start {
+	flex-shrink: 0;
 }
 
 /* Footer. */
@@ -135,21 +121,25 @@
 /* Smartphone portrait */
 @media ( min-width: 240px ) {
 	.content-box,
-	.site__title a {
+	.site-title a {
 		transition-property: background-color, padding;
 		transition-duration: var( --transition-duration-medium );
 	}
 
-	.site__title {
+	.site-title {
+		/* Account for menu button. */
 		margin-left: 4.2rem;
 	}
 
-	.site__title a {
+	.site-title a {
 		padding-left: 0;
 	}
 
-	.col--start,
-	.col--end {
+	.flex-cols {
+		flex-wrap: wrap;
+	}
+
+	.flex-col {
 		width: 100%;
 	}
 }
@@ -187,25 +177,40 @@
 		max-width: 960px;
 	}
 
-	.site__title {
-		float: left;
+	.header .content-box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.header__title {
+		padding-top: 0;
+	}
+
+	.site-title {
 		margin-left: 0;
 	}
 
-	.site__title a {
-		padding-left: 1.6rem;
-		padding-right: 1.6rem;
+	.site-title a {
+		padding-top: 0;
+		/* Align with the main nav items. */
+		padding-left: var( --spacing-horizontal-nav-item-small );
+		padding-right: var( --spacing-horizontal-nav-item-small );
 	}
 
-	.col--start {
-		width: 20.8rem;
+	.flex-cols {
+		flex-wrap: nowrap;
+	}
+
+	.flex-col--start {
+		position: sticky;
+		/* Header height + page padding-top. */
+		top: calc( var( --size-header ) * 2 );
+		width: var( --size-sidebar-tablet );
+		height: 100%;
+		margin-right: 3.2rem;
 		z-index: 1;
 		transition: width var( --transition-duration-medium );
-	}
-
-	.col--end {
-		margin-left: -20.8rem;
-		padding-left: 24rem; /* = 22.4 + (2 * 1.6 padding) */
 	}
 }
 
@@ -216,18 +221,13 @@
 		max-width: var( --width-site-desktop-wide );
 	}
 
-	.site__title a {
-		padding-left: 3.2rem;
-		padding-right: 3.2rem;
+	.site-title a {
+		padding-left: var( --spacing-horizontal-nav-item-large );
+		padding-right: var( --spacing-horizontal-nav-item-large );
 	}
 
-	.col--start {
-		width: 24rem;
-	}
-
-	.col--end {
-		margin-left: -24rem;
-		padding-left: 27.2rem; /* = 24 + (2 * 1.6 padding) */
+	.flex-col--start {
+		width: var( --size-sidebar-tablet-plus );
 	}
 }
 
@@ -236,12 +236,7 @@
 		width: var( --width-site-desktop-wide );
 	}
 
-	.col--start {
-		width: 25.6rem;
-	}
-
-	.col--end {
-		margin-left: -25.6rem;
-		padding-left: 28.8rem; /* = 25.6 + (2 * 1.6 padding) */
+	.flex-col--start {
+		width: var( --size-sidebar-desktop );
 	}
 }
