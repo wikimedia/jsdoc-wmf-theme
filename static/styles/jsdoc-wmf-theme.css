@@ -11,5 +11,25 @@
 
 /* Theme-wide variables. */
 :root {
+	/* Font size. */
+	--font-size-base: 1.6rem;
+	--font-size-site-title: var( --font-size-base );
+
+	/* Border. */
 	--border-color-light: var( --background-color-interactive );
+
+	/* Size. */
+	--size-header: 6.4rem;
+	/* Nav button height + 3x header spacing + height of the search input. */
+	--size-header--mobile: calc( var( --size-nav-button ) + calc( var( --spacing-header ) * 3 ) + calc( var( --font-size-base ) * var( --line-height-medium ) ) + calc( var( --spacing-vertical-search-input ) * 2 ) );
+	--size-nav-button: 2rem;
+
+	/* Spacing. */
+	--spacing-header: calc( var( --size-header ) / 4 );
+
+	--spacing-horizontal-nav-item-small: 1.6rem;
+	--spacing-horizontal-nav-item-large: 3.2rem;
+
+	--spacing-vertical-search-input: 0.4rem;
+	--spacing-horizontal-search-input: 0.8rem;
 }
