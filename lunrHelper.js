@@ -14,6 +14,12 @@ exports.makeIndex = function ( data ) {
 
 	// Collect only the data we need to search
 	data.each( function ( doclet ) {
+		// Workaround for https://phabricator.wikimedia.org/T353417;
+		// Ensure non-published pages are not referenced in search results
+		if ( doclet.longname.includes( 'anonymous' ) ) {
+			return;
+		}
+
 		documents.push( {
 			id: helper.longnameToUrl[ doclet.longname ],
 			kind: doclet.kind,
