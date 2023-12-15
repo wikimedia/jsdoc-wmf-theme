@@ -19,9 +19,9 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
     <?js if (data.kind !== 'namespace') { ?>
     <details id="toggle-<?js= id ?>" class="toggle-box" <?js= detailsAttr ?>>
     <summary>
-        <h4 class="name" id="<?js= id ?>">
+        <h3 class="name" id="<?js= id ?>">
             <?js= (kind === 'class' ? 'new ' : '') + ( kind === 'class' ? data.longname : data.name) + (data.signature || '') + data.attribs ?>
-        </h4>
+        </h3>
     </summary>
     <?js } else { ?>
         <div class="summary">
@@ -38,17 +38,17 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 <?js } ?>
 
 <?js if (data.examples && examples.length) { ?>
-    <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
+    <h4>Example<?js= examples.length > 1? 's':'' ?></h4>
     <?js= this.partial('examples.tmpl', examples) ?>
 <?js } ?>
 
 <?js if (data.augments && data.alias && data.alias.indexOf('module:') === 0) { ?>
-    <h5>Extends:</h5>
+    <h4>Extends:</h4>
     <?js= self.partial('augments.tmpl', data) ?>
 <?js } ?>
 
 <?js if (kind === 'event' && data.type && data.type.names) {?>
-    <h5>Type:</h5>
+    <h4>Type:</h4>
     <ul>
         <li>
             <?js= self.partial('type.tmpl', data.type.names) ?>
@@ -57,47 +57,47 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 <?js } ?>
 
 <?js if (data['this']) { ?>
-    <h5>This:</h5>
+    <h4>This:</h4>
     <ul><li><?js= this.linkto(data['this'], data['this']) ?></li></ul>
 <?js } ?>
 
 <?js if (data.params && params.length && !data.hideconstructor) { ?>
-    <h5>Parameters:</h5>
+    <h4>Parameters:</h4>
     <?js= this.partial('params.tmpl', params) ?>
 <?js } ?>
 
 <?js= this.partial('details.tmpl', data) ?>
 
 <?js if (data.kind !== 'module' && data.requires && data.requires.length) { ?>
-<h5>Requires:</h5>
+<h4>Requires:</h4>
 <ul><?js data.requires.forEach(function(r) { ?>
     <li><?js= self.linkto(r) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
 <?js if (data.fires && fires.length) { ?>
-<h5>Fires:</h5>
+<h4>Fires:</h4>
 <ul><?js fires.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
 <?js if (data.listens && listens.length) { ?>
-<h5>Listens to Events:</h5>
+<h4>Listens to Events:</h4>
 <ul><?js listens.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
 <?js if (data.listeners && listeners.length) { ?>
-<h5>Listeners of This Event:</h5>
+<h4>Listeners of This Event:</h4>
 <ul><?js listeners.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
 <?js if (data.modifies && modifies.length) {?>
-<h5>Modifies:</h5>
+<h4>Modifies:</h4>
 <?js if (modifies.length > 1) { ?><ul><?js
     modifies.forEach(function(m) { ?>
         <li><?js= self.partial('modifies.tmpl', m) ?></li>
@@ -109,7 +109,7 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 } } ?>
 
 <?js if (data.exceptions && exceptions.length) { ?>
-<h5>Throws:</h5>
+<h4>Throws:</h4>
 <?js if (exceptions.length > 1) { ?><ul><?js
     exceptions.forEach(function(r) { ?>
         <li><?js= self.partial('exceptions.tmpl', r) ?></li>
@@ -121,7 +121,7 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 } } ?>
 
 <?js if (data.returns && returns.length) { ?>
-<h5>Returns:</h5>
+<h4>Returns:</h4>
 <?js if (returns.length > 1) { ?><ul><?js
     returns.forEach(function(r) { ?>
         <li><?js= self.partial('returns.tmpl', r) ?></li>
@@ -133,7 +133,7 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 } } ?>
 
 <?js if (data.yields && yields.length) { ?>
-<h5>Yields:</h5>
+<h4>Yields:</h4>
 <?js if (yields.length > 1) { ?><ul><?js
     yields.forEach(function(r) { ?>
         <li><?js= self.partial('returns.tmpl', r) ?></li>

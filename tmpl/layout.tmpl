@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title><?js= title ?>: JSDoc</title>
+    <title><?js= title ?>, <?js= env.conf.templates.wmf.maintitle ?>, JSDoc</title>
     <script>
 document.documentElement.className = document.documentElement.className.replace(/\bjs-off\b/,'js-on'); // no BEM notation thx to IE
     </script>
@@ -31,7 +31,7 @@ document.documentElement.className = document.documentElement.className.replace(
 			<a href="#content" class="is-aural is-focusable">Jump to content</a>
 			<a href="#nav--main" class="is-aural is-focusable">Jump to navigation</a>
 			<div class="header__title">
-				<h1 class="site-title"><a href="./"><span class="site-logo"></span><?js= env.conf.templates.wmf.maintitle ?>/ <?js= title ?></a></h1>
+				<span class="site-title"><a href="./"><span class="site-logo"></span><?js= env.conf.templates.wmf.maintitle ?></a></span>
 				<label class="btn--nav-main" for="trigger--nav-main" aria-hidden="true" title="Show main menu">
 					<i></i> <span>Menu</span>
 				</label>

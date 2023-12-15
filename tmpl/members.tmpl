@@ -6,7 +6,7 @@ var self = this;
 
 <details id="toggle-<?js= id ?>" class="toggle-box">
     <summary>
-        <h4 class="name" id="<?js= id ?>"><?js= name + (data.signature ? data.signature : '') + data.attribs ?></h4>
+        <h3 class="name" id="<?js= id ?>"><?js= name + (data.signature ? data.signature : '') + data.attribs ?></h3>
     </summary>
 
     <div class="long">
@@ -17,12 +17,12 @@ var self = this;
     <?js } ?>
 
     <?js if (data.examples && examples.length) { ?>
-        <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
+        <h4>Example<?js= examples.length > 1? 's':'' ?></h4>
         <?js= this.partial('examples.tmpl', examples) ?>
     <?js } ?>
 
     <?js if (data.type && data.type.names) {?>
-        <h5>Type:</h5>
+        <h4>Type:</h4>
         <ul>
             <li>
                 <?js= self.partial('type.tmpl', data.type.names) ?>
@@ -33,7 +33,7 @@ var self = this;
     <?js= this.partial('details.tmpl', data) ?>
 
     <?js if (data.fires && fires.length) { ?>
-        <h5>Fires:</h5>
+        <h4>Fires:</h4>
         <ul><?js fires.forEach(function(f) { ?>
             <li><?js= self.linkto(f) ?></li>
         <?js }); ?></ul>
