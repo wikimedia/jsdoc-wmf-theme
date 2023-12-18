@@ -1,5 +1,21 @@
 # Release History
 
+## jsdoc-wmf-theme 0.0.10 (2023-12-18)
+* styles: Reorganize existing styles (Anne Tomasevich)
+* Remove WikimediaUI-Style-Guide and add Codex tokens (Anne Tomasevich)
+* Include styles from the style guide repository (Anne Tomasevich)
+* Use Codex tokens throughout custom code (Anne Tomasevich)
+* Make attributes (static, protected) more visually distinct (Anne Tomasevich)
+* Improve toggle-box markup and design (Anne Tomasevich)
+* Styles: Small typographic improvements (Eric Gardner)
+* js: Add redirect.js (Eric Gardner)
+* Refactor and restyle the header and menu; fix search (Anne Tomasevich)
+* search: Exclude members of "anonymous" items from search index (Eric Gardner)
+* Refactor headings and site title (Anne Tomasevich)
+
+-
+* Update README with contributing info (Anne Tomasevich)
+
 ## jsdoc-wmf-theme 0.0.9 (2023-12-07)
 * Make properties tables of objects look like wikitables (Derk-Jan Hartman)
 * Remove ... when summary is missing (Derk-Jan Hartman)
