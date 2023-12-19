@@ -630,8 +630,8 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	fs.mkPath( cssLibDir );
 
 	// Copy CSS dependencies to the static dir.
-	fs.copyFileSync( path.join( templatePath, 'node_modules/@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.css' ), cssLibDir );
-	fs.copyFileSync( path.join( templatePath, 'node_modules/normalize.css/normalize.css' ), cssLibDir );
+	fs.copyFileSync( require.resolve( '@wikimedia/codex-design-tokens/theme-wikimedia-ui.css' ), cssLibDir );
+	fs.copyFileSync( require.resolve( 'normalize.css' ), cssLibDir );
 
 	// copy the template's static files to outdir
 	const staticFiles = fs.ls( fromDir, 3 );
