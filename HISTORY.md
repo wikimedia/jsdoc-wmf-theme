@@ -13,7 +13,7 @@
 * search: Exclude members of "anonymous" items from search index (Eric Gardner)
 * Refactor headings and site title (Anne Tomasevich)
 
--
+—
 * Update README with contributing info (Anne Tomasevich)
 
 ## jsdoc-wmf-theme 0.0.9 (2023-12-07)
