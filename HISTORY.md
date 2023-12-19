@@ -1,5 +1,11 @@
 # Release History
 
+## jsdoc-wmf-theme 0.0.11 (2023-12-19)
+
+—
+* Fix path to Codex and normalize.css (Roan Kattouw)
+* docs: Add release instructions (apaskulin)
+
 ## jsdoc-wmf-theme 0.0.10 (2023-12-18)
 * styles: Reorganize existing styles (Anne Tomasevich)
 * Remove WikimediaUI-Style-Guide and add Codex tokens (Anne Tomasevich)
