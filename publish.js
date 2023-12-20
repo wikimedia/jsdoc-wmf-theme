@@ -634,7 +634,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	fs.copyFileSync( require.resolve( 'normalize.css' ), cssLibDir );
 
 	// copy the template's static files to outdir
-	const staticFiles = fs.ls( fromDir, 3 );
+	const staticFiles = fs.ls( fromDir, 4 );
 	staticFiles.forEach( function ( fileName ) {
 		const toDir = fs.toDir( fileName.replace( fromDir, outdir ) );
 
