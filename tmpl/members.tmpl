@@ -6,7 +6,10 @@ var self = this;
 
 <details id="toggle-<?js= id ?>" class="toggle-box">
     <summary>
-        <h3 class="name" id="<?js= id ?>"><?js= name + (data.signature ? data.signature : '') + data.attribs ?></h3>
+        <h3 class="name" id="<?js= id ?>">
+            <?js= name + (data.signature ? data.signature : '') + data.attribs ?>
+            <a href="#<?js= id ?>">#</a>
+        </h3>
     </summary>
 
     <div class="long">
