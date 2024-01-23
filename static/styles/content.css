@@ -211,6 +211,10 @@
 	color: var( --color-subtle );
 }
 
+.name a {
+	color: var( --color-placeholder );
+}
+
 .params td.description > p:first-child,
 .props td.description > p:first-child {
 	margin-top: 0;

@@ -21,6 +21,7 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
     <summary>
         <h3 class="name" id="<?js= id ?>">
             <?js= (kind === 'class' ? 'new ' : '') + ( kind === 'class' ? data.longname : data.name) + (data.signature || '') + data.attribs ?>
+            <a href="#<?js= id ?>">#</a>
         </h3>
     </summary>
     <?js } else { ?>
