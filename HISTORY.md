@@ -1,5 +1,11 @@
 # Release History
 
+## jsdoc-wmf-theme 0.0.12 (2024-01-25)
+
+* Ensure prettify is copied from the template (Derk-Jan Hartman)
+* styles: Use paragraph font size for introductions (apaskulin)
+* templates: Add clickable anchors for members and methods (apaskulin)
+
 ## jsdoc-wmf-theme 0.0.11 (2023-12-19)
 
 —
