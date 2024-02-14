@@ -209,7 +209,8 @@
 		/* Header height + page padding-top. */
 		top: calc( var( --size-header ) * 2 );
 		width: var( --size-sidebar-tablet );
-		height: 100%;
+		max-height: calc( 100vh - var( --size-header ) * 2 );
+		overflow-y: auto;
 		margin-right: 3.2rem;
 		z-index: 1;
 		transition: width var( --transition-duration-medium );
