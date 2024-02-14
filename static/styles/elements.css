@@ -138,6 +138,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+a:visited {
+	color: var( --color-visited );
+}
+
 a:active {
 	color: var( --color-progressive--active );
 }
