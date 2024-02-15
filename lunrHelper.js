@@ -14,6 +14,9 @@ exports.makeIndex = function ( data ) {
 
 	// Collect only the data we need to search
 	data.each( function ( doclet ) {
+		if ( doclet.meta && doclet.ancestors.length === 0 && doclet.name !== 'window' ) {
+			return;
+		}
 		// Workaround for https://phabricator.wikimedia.org/T353417;
 		// Ensure non-published pages are not referenced in search results
 		if ( doclet.longname.includes( 'anonymous' ) ) {
