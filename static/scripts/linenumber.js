@@ -1,5 +1,5 @@
 ( function () {
-	var source = document.getElementsByClassName( 'prettyprint source linenums' ),
+	var source = document.getElementsByClassName( 'prettyprint sourcefile linenums' ),
 		i = 0,
 		lineNumber = 0,
 		lineId,
