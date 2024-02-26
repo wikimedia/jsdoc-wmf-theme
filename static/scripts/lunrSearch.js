@@ -90,7 +90,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				className = 'search-result';
 			link += '<a href="' + d.id + '" id="' + id + '" class="' + className + '">';
 			link += '<dt>' + d.name + ' &middot; <code>' + d.longname + '</code></dt>';
-			link += '<dd>' + d.summary + '</dd>';
+			var tempEl = new DOMParser().parseFromString( d.summary, 'text/html' );
+			var summaryWithoutHTML = tempEl.body.textContent || '';
+			link += '<dd>' + summaryWithoutHTML + '</dd>';
 			link += '</a>';
 			resultsEl.innerHTML += '<li>' + link + '</li>';
 		} );
