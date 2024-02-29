@@ -14,7 +14,7 @@ const domino = require( 'domino' ),
 	path = require( 'jsdoc/path' ),
 	template = require( 'jsdoc/template' ),
 	/* eslint-enable node/no-missing-require */
-	taffy = require( 'taffydb' ).taffy,
+	taffy = require( '@jsdoc/salty' ).taffy,
 	util = require( 'util' ),
 	lunrHelper = require( './lunrHelper' ),
 
