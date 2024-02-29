@@ -147,7 +147,7 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 
 </div>
 
-<?js if (data.kind !== 'namespace') { ?>
+<?js if (data.kind !== 'namespace' && data.kind !== 'module') { ?>
     </details>
     <div class="summary">
         <?js if (data.summary) { ?><?js= summary ?><?js } ?>
