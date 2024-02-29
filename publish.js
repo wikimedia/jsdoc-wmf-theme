@@ -712,6 +712,17 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	} );
 
 	data().each( function ( doclet ) {
+		const isUnexpectedGlobal = doclet && doclet.meta &&
+			doclet.kind !== 'class' && doclet.kind !== 'namespace' &&
+			doclet.scope === 'global' && doclet.name !== 'window';
+		if ( isUnexpectedGlobal ) {
+			throw new Error( `***
+Unexpected global detected (T357489):
+NAME: ${doclet.name}
+FILE: ${doclet.meta.path}/${doclet.meta.filename}
+***
+` );
+		}
 		const url = helper.longnameToUrl[ doclet.longname ];
 
 		if ( url.includes( '#' ) ) {
