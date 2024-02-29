@@ -38,9 +38,11 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 </div>
 <?js } ?>
 
-<?js if (data.examples && examples.length) { ?>
-    <h4>Example<?js= examples.length > 1? 's':'' ?></h4>
-    <?js= this.partial('examples.tmpl', examples) ?>
+<?js if (data.kind !== 'class') { ?>
+    <?js if (data.examples && examples.length) { ?>
+        <h4>Example<?js= examples.length > 1? 's':'' ?></h4>
+        <?js= this.partial('examples.tmpl', examples) ?>
+    <?js } ?>
 <?js } ?>
 
 <?js if (data.augments && data.alias && data.alias.indexOf('module:') === 0) { ?>

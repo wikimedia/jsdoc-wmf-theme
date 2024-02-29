@@ -31,6 +31,10 @@
     <?js if (!doc.longname || !doc.modules) { ?>
         <?js if (doc.classdesc) { ?>
             <div class="class-description"><?js= doc.classdesc ?></div>
+            <?js if (doc.examples && doc.examples.length) { ?>
+                <h4>Example<?js= doc.examples.length > 1? 's':'' ?></h4>
+                <?js= self.partial('examples.tmpl', doc.examples) ?>
+            <?js } ?>
         <?js } ?>
     <?js } else if (doc.kind === 'module' && doc.modules) { ?>
         <?js doc.modules.forEach(function(module) { ?>
