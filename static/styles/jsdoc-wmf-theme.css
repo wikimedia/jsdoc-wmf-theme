@@ -19,13 +19,15 @@
 	--border-color-light: var( --background-color-interactive );
 
 	/* Size. */
-	--size-header: 6.4rem;
+	--min-size-header: 6.4rem;
+	/* 2x header spacing + height of the search input. */
+	--size-header: calc( calc( var( --spacing-header ) * 2 ) + calc( var( --font-size-base ) * var( --line-height-medium ) ) + calc( var( --spacing-vertical-search-input ) * 2 ) + calc( var( --border-width-base ) * 2 ) );
 	/* Nav button height + 3x header spacing + height of the search input. */
-	--size-header--mobile: calc( var( --size-nav-button ) + calc( var( --spacing-header ) * 3 ) + calc( var( --font-size-base ) * var( --line-height-medium ) ) + calc( var( --spacing-vertical-search-input ) * 2 ) );
+	--size-header--mobile: calc( var( --size-nav-button ) + calc( var( --spacing-header ) * 3 ) + calc( var( --font-size-base ) * var( --line-height-medium ) ) + calc( var( --spacing-vertical-search-input ) * 2 ) + calc( var( --border-width-base ) * 2 ) );
 	--size-nav-button: 2rem;
 
 	/* Spacing. */
-	--spacing-header: calc( var( --size-header ) / 4 );
+	--spacing-header: calc( var( --min-size-header ) / 4 );
 
 	--spacing-horizontal-nav-item-small: 1.6rem;
 	--spacing-horizontal-nav-item-large: 3.2rem;

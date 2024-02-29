@@ -17,7 +17,7 @@
 	right: 0;
 	/* Ensure contents aren't wider than the viewport. */
 	width: 100vw;
-	min-height: var( --size-header );
+	min-height: var( --min-size-header );
 	z-index: 100;
 }
 
@@ -55,8 +55,8 @@
 .page {
 	background-color: var( --background-color-base );
 	position: relative;
-	margin-top: var( --size-header );
-	padding: var( --size-header ) 0;
+	margin-top: var( --min-size-header );
+	padding: var( --min-size-header ) 0;
 	box-shadow: 0 1px 4px 0 rgba( 0, 0, 0, 0.25 );
 }
 
@@ -207,9 +207,9 @@
 	.flex-col--start {
 		position: sticky;
 		/* Header height + page padding-top. */
-		top: calc( var( --size-header ) * 2 );
+		top: calc( var( --min-size-header ) * 2 );
 		width: var( --size-sidebar-tablet );
-		max-height: calc( 100vh - var( --size-header ) * 2 );
+		max-height: calc( 100vh - var( --min-size-header ) * 2 );
 		overflow-y: auto;
 		margin-right: 3.2rem;
 		z-index: 1;
