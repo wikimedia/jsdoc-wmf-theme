@@ -39,7 +39,6 @@
 	color: var( --color-placeholder );
 }
 
-.ancestors a,
 .attribs a {
 	color: var( --color-placeholder ) !important; /* stylelint-disable-line declaration-no-important */
 	text-decoration: none;
