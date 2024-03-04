@@ -1,7 +1,7 @@
 {
 	"name": "jsdoc-wmf-theme",
-	"version": "0.0.12",
-	"description": "A template theme for JSDoc 3 inspired by the Wikimedia Design Style Guide",
+	"version": "0.0.13",
+	"description": "A template theme for JSDoc 4 inspired by the Wikimedia Design Style Guide",
 	"main": "publish.js",
 	"scripts": {
 		"test": "grunt lint",

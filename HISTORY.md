@@ -1,5 +1,23 @@
 # Release History
 
+## jsdoc-wmf-theme 0.0.13 (2024-03-04)
+
+* Fix hash navigation for non-existing elements (Derk-Jan Hartman)
+* Introduce separate CSS style for visited links (Kamil Bach)
+* Flag globals to stop them appearing in search results (Jon Robson)
+* templates: Remove duplicate summary on module pages (apaskulin)
+* css: Separate class used in displaying source files (apaskulin)
+* Make the sidebar scrollable (Kamil Bach)
+* Guard against creation of global.html (Jon Robson)
+* Ensure proper scroll position for anchor links (Anne Tomasevich)
+* templates: Display examples in class description (apaskulin)
+* css: Use link styles for links in titles (apaskulin)
+* nav: Add scroll to mobile nav menu (Anne Tomasevich)
+
+—
+* build: Update package-lock with npm audit --fix results (James D. Forrester)
+* db: Replace TaffyDB with Salty (apaskulin)
+
 ## jsdoc-wmf-theme 0.0.12 (2024-01-25)
 
 * Ensure prettify is copied from the template (Derk-Jan Hartman)
