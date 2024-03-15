@@ -33,7 +33,8 @@
 		"tmpl",
 		"lunrHelper.js",
 		"publish.js",
-		"HISTORY.md"
+		"HISTORY.md",
+		"plugins"
 	],
 	"dependencies": {
 		"@wikimedia/codex-design-tokens": "1.1.1",
