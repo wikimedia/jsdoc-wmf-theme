@@ -489,29 +489,6 @@ function buildNav( members ) {
 	buildMemberNavIfConf( nav, members.mixins, 'Mixins', seen, linkto );
 	buildMemberNavIfConf( nav, members.tutorials, 'Tutorials', seenTutorials, linktoTutorial );
 
-	// eslint-disable-next-line no-constant-condition
-	if ( members.globals.length && false ) {
-		const globalNav = doc.createElement( 'ul' );
-
-		members.globals.forEach( function ( g ) {
-			if ( g.kind !== 'typedef' && !hasOwnProp.call( seen, g.longname ) ) {
-				addNavItem( globalNav, { sub: true, html: linkto( g.longname, g.name ) } );
-			}
-			seen[ g.longname ] = true;
-		} );
-
-		const h3 = doc.createElement( 'h3' );
-		if ( !globalNav.firstChild ) {
-			// turn the heading into a link so you can actually get to the global page
-			h3.innerHTML = linkto( 'global', 'Global' );
-			nav.appendChild( h3 );
-		} else {
-			h3.textContent = 'Global';
-			nav.appendChild( h3 );
-			nav.appendChild( globalNav );
-		}
-	}
-
 	return function ( filename ) {
 		const nav2 = nav.cloneNode( true );
 		let el = nav2.querySelector( 'a[href="' + filename + '"]' );
