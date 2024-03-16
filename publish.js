@@ -405,7 +405,16 @@ function addNavItem( parent, navItemData ) {
 	return parent;
 }
 
-function buildMemberNav( parent, items, itemHeading, itemsSeen, linktoFn ) {
+/**
+ * @param {*} parent
+ * @param {*} items
+ * @param {*} itemHeading
+ * @param {*} itemsSeen
+ * @param {*} linktoFn
+ * @param {number} [depth] how deep down the stack to go. 1 == only globals e.g. "mw".
+ *  2 === include member functions e.g. "mw.Api"
+ */
+function buildMemberNav( parent, items, itemHeading, itemsSeen, linktoFn, depth ) {
 	if ( items.length ) {
 		const li = makeNavItem( parent.ownerDocument, { tag: 'a', title: itemHeading } );
 		const ul = parent.ownerDocument.createElement( 'ul' );
@@ -414,6 +423,14 @@ function buildMemberNav( parent, items, itemHeading, itemsSeen, linktoFn ) {
 
 		items.forEach( function ( item ) {
 			let displayName;
+			// Limit the navigation to items that match the requested depth.
+			if ( depth !== undefined ) {
+				const itemDepth = item.longname.split( '.' ).length;
+				// if 0 this is a global.
+				if ( itemDepth > depth ) {
+					return;
+				}
+			}
 
 			if ( !hasOwnProp.call( item, 'longname' ) ) {
 				addNavItem( ul, { sub: true, html: linktoFn( '', item.name ) } );
@@ -448,12 +465,12 @@ function linktoExternal( longName, name ) {
  *
  * Takes the same arguments as `buildMemberNav`.
  */
-function buildMemberNavIfConf( nav, member, name, seen, linktoFn ) {
+function buildMemberNavIfConf( nav, member, name, seen, linktoFn, depth ) {
 	if (
 		env.conf.templates.wmf.hideSections === undefined ||
 	!env.conf.templates.wmf.hideSections.includes( name )
 	) {
-		buildMemberNav( nav, member, name, seen, linktoFn );
+		buildMemberNav( nav, member, name, seen, linktoFn, depth );
 	}
 }
 
@@ -470,24 +487,33 @@ function buildMemberNavIfConf( nav, member, name, seen, linktoFn ) {
  * @param {Array<Object>} members.tutorials
  * @param {Array<Object>} members.events
  * @param {Array<Object>} members.interfaces
+ * @param {Object} customPages array of additional pages that exist.
  * @return {string} The HTML for the navigation sidebar.
  */
-function buildNav( members ) {
+function buildNav( members, customPages = {} ) {
 	const doc = domino.createDocument(),
 		nav = doc.createElement( 'ol' ),
-		seen = {},
-		seenTutorials = {};
+		seen = {};
 	doc.body.appendChild( nav );
 	addNavItem( nav, { tag: 'a', href: 'index.html', title: 'Home' } );
 
-	buildMemberNavIfConf( nav, members.modules, 'Modules', {}, linkto );
-	buildMemberNavIfConf( nav, members.externals, 'Externals', seen, linktoExternal );
-	buildMemberNavIfConf( nav, members.namespaces, 'Namespaces', seen, linkto );
-	buildMemberNavIfConf( nav, members.classes, 'Classes', seen, linkto );
-	buildMemberNavIfConf( nav, members.interfaces, 'Interfaces', seen, linkto );
-	buildMemberNavIfConf( nav, members.events, 'Events', seen, linkto );
-	buildMemberNavIfConf( nav, members.mixins, 'Mixins', seen, linkto );
-	buildMemberNavIfConf( nav, members.tutorials, 'Tutorials', seenTutorials, linktoTutorial );
+	[ 'modules', 'externals', 'namespaces', 'classes', 'interfaces', 'events', 'mixins', 'tutorials' ].forEach( ( type ) => {
+		const opts = customPages[ type ] || {};
+		let linker;
+		switch ( type ) {
+			case 'tutorials':
+				linker = linktoTutorial;
+				break;
+			case 'externals':
+				linker = linktoExternal;
+				break;
+			default:
+				linker = linkto;
+				break;
+		}
+		const heading = opts.longname || ( type.charAt( 0 ).toUpperCase() + type.slice( 1 ) );
+		buildMemberNavIfConf( nav, members[ type ], heading, seen, linker, opts.depth );
+	} );
 
 	return function ( filename ) {
 		const nav2 = nav.cloneNode( true );
@@ -750,8 +776,11 @@ FILE: ${doclet.meta.path}/${doclet.meta.filename}
 	view.htmlsafe = htmlsafe;
 	view.outputSourceFiles = outputSourceFiles;
 
+	// Find any custom pages defined by jsdoc.json
+	const customPages = opts.pages || {};
+
 	// once for all
-	view.nav = buildNav( members );
+	view.nav = buildNav( members, customPages );
 	attachModuleSymbols( find( { longname: { left: 'module:' } } ), members.modules );
 
 	// generate the pretty-printed source files first so other pages can link to them
