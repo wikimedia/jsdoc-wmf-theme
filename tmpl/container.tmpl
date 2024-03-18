@@ -26,8 +26,7 @@
         }
     ?><?js= doc.alias || doc.name ?><?js
         if (doc.variation) { ?>
-        <sup class="variation"><?js= doc.variation ?></sup><?js }
-        if (doc.signature && !doc.hideconstructor) { ?><?js= doc.signature ?><?js } ?></h1>
+        <sup class="variation"><?js= doc.variation ?></sup><?js } ?></h1>
     <?js if (!doc.longname || !doc.modules) { ?>
         <?js if (doc.classdesc) { ?>
             <div class="class-description"><?js= doc.classdesc ?></div>
