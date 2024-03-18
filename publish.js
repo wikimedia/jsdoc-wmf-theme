@@ -140,10 +140,6 @@ function needsSignature( doclet ) {
 function getSignatureAttributes( item ) {
 	const attributes = [];
 
-	if ( item.optional ) {
-		attributes.push( 'opt' );
-	}
-
 	if ( item.nullable === true ) {
 		attributes.push( 'nullable' );
 	} else if ( item.nullable === false ) {
