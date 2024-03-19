@@ -33,7 +33,7 @@ if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvalu
     <?js } ?>
 
     <?js if (data.inherited && data.inherits && !data.overrides) { ?>
-    <dt class="inherited-from">Inherited From:</dt>
+    <dt class="inherited-from">Inherited from:</dt>
     <dd class="inherited-from"><ul class="dummy"><li>
         <?js= this.linkto(data.inherits, this.htmlsafe(data.inherits)) ?>
     </li></ul></dd>
@@ -65,7 +65,7 @@ if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvalu
     <?js } ?>
 
     <?js if (data.mixes && data.mixes.length) { ?>
-        <dt class="mixes">Mixes In:</dt>
+        <dt class="mixes">Mixes in:</dt>
 
         <dd class="mixes"><ul>
         <?js data.mixes.forEach(function(a) { ?>
@@ -101,7 +101,7 @@ if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvalu
     <?js } ?>
 
     <?js if (data.defaultvalue) {?>
-    <dt class="tag-default">Default Value:</dt>
+    <dt class="tag-default">Default value:</dt>
     <dd class="tag-default"><ul class="dummy">
             <li<?js= defaultObjectClass ?>><?js= data.defaultvalue ?></li>
         </ul></dd>
@@ -133,7 +133,7 @@ if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvalu
     <?js } ?>
 
     <?js if (data.todo && todo.length) {?>
-    <dt class="tag-todo">To Do:</dt>
+    <dt class="tag-todo">To do:</dt>
     <dd class="tag-todo">
         <ul><?js todo.forEach(function(t) { ?>
             <li><?js= t ?></li>
