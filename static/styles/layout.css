@@ -204,6 +204,12 @@
 		flex-wrap: nowrap;
 	}
 
+	.flex-col {
+		/* Prevent overflow of content. Flex items hav a default min-width of `auto`, which
+		makes them at least as wide as their content. */
+		min-width: 0;
+	}
+
 	.flex-col--start {
 		position: sticky;
 		/* Header height + page padding-top. */

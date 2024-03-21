@@ -175,12 +175,22 @@
 	background-color: #ffffe0; /* CSS `lightyellow` */
 }
 
+/* Add horizontal scroll for tables. */
+.props-wrapper,
+.params-wrapper {
+	/* Ensure the div isn't wider than the table. */
+	display: inline-block;
+	max-width: 100%;
+	overflow-x: auto;
+	margin: 1em 0;
+	border: var( --border-base );
+	border-collapse: collapse;
+}
+
 .props,
 .params {
 	background-color: var( --background-color-interactive-subtle );
 	color: var( --color-base );
-	margin: 1em 0;
-	border: var( --border-base );
 	border-collapse: collapse;
 }
 
@@ -189,7 +199,8 @@
 .params > * > tr > th,
 .params > * > tr > td {
 	vertical-align: top;
-	border: var( --border-base );
+	border-right: var( --border-base );
+	border-bottom: var( --border-base );
 	padding: 0.2em 0.4em;
 }
 
@@ -202,6 +213,20 @@
 .props > thead > tr > th,
 .params > thead > tr > th {
 	text-align: left;
+}
+
+.props > * > tr:last-child > th,
+.props > * > tr:last-child > td,
+.params > * > tr:last-child > th,
+.params > * > tr:last-child > td {
+	border-bottom: 0;
+}
+
+.props > * > tr > th:last-child,
+.props > * > tr > td:last-child,
+.params > * > tr > th:last-child,
+.params > * > tr > td:last-child {
+	border-right: 0;
 }
 
 .params .name,
