@@ -134,7 +134,6 @@
 }
 
 .sourcefile code {
-	background-color: var( --background-color-base );
 	color: var( --color-subtle );
 	display: block;
 	margin: 0;
@@ -161,6 +160,7 @@
 
 .prettyprint.linenums li {
 	border-left: 3px var( --border-style-base ) var( --border-color-light );
+	margin: 0;
 }
 
 .prettyprint.linenums li * {
