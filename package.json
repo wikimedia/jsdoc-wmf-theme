@@ -37,11 +37,12 @@
 		"plugins"
 	],
 	"dependencies": {
+		"@jsdoc/salty": "^0.2.7",
 		"@wikimedia/codex-design-tokens": "1.1.1",
 		"domino": "^2.1.6",
 		"lunr": "2.3.9",
-		"normalize.css": "8.0.1",
-		"@jsdoc/salty": "^0.2.7"
+		"marked": "^12.0.1",
+		"normalize.css": "8.0.1"
 	},
 	"devDependencies": {
 		"eslint-config-wikimedia": "0.25.1",
