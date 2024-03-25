@@ -29,9 +29,7 @@
 
 .signature-attributes {
 	font-size: 75%;
-	color: var( --color-placeholder );
 	font-style: italic;
-	font-weight: lighter;
 }
 
 .ancestors,
