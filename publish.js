@@ -7,6 +7,7 @@ let data, view,
 const domino = require( 'domino' ),
 	/* eslint-disable node/no-missing-require */
 	doop = require( 'jsdoc/util/doop' ),
+	{ marked } = require( 'marked' ),
 	env = require( 'jsdoc/env' ),
 	fs = require( 'jsdoc/fs' ),
 	helper = require( 'jsdoc/util/templateHelper' ),
@@ -390,6 +391,7 @@ function makeNavItem( doc, navItemData ) {
 			a.setAttribute( 'href', navItemData.href );
 		}
 		a.textContent = navItemData.title;
+		li.appendChild( a );
 	} else if ( typeof ( navItemData.html ) === 'string' ) {
 		li.innerHTML = navItemData.html;
 	}
@@ -409,10 +411,11 @@ function addNavItem( parent, navItemData ) {
  * @param {*} linktoFn
  * @param {number} [depth] how deep down the stack to go. 1 == only globals e.g. "mw".
  *  2 === include member functions e.g. "mw.Api"
+ * @param {string} [href] to item
  */
-function buildMemberNav( parent, items, itemHeading, itemsSeen, linktoFn, depth ) {
+function buildMemberNav( parent, items, itemHeading, itemsSeen, linktoFn, depth, href = '' ) {
 	if ( items.length ) {
-		const li = makeNavItem( parent.ownerDocument, { tag: 'a', title: itemHeading } );
+		const li = makeNavItem( parent.ownerDocument, { tag: 'a', title: itemHeading, href } );
 		const ul = parent.ownerDocument.createElement( 'ul' );
 		ul.classList.add( 'nav__sub-items' );
 		li.appendChild( ul );
@@ -461,12 +464,12 @@ function linktoExternal( longName, name ) {
  *
  * Takes the same arguments as `buildMemberNav`.
  */
-function buildMemberNavIfConf( nav, member, name, seen, linktoFn, depth ) {
+function buildMemberNavIfConf( nav, member, name, seen, linktoFn, depth, href ) {
 	if (
 		env.conf.templates.wmf.hideSections === undefined ||
 	!env.conf.templates.wmf.hideSections.includes( name )
 	) {
-		buildMemberNav( nav, member, name, seen, linktoFn, depth );
+		buildMemberNav( nav, member, name, seen, linktoFn, depth, href );
 	}
 }
 
@@ -493,6 +496,13 @@ function buildNav( members, customPages = {} ) {
 	doc.body.appendChild( nav );
 	addNavItem( nav, { tag: 'a', href: 'index.html', title: 'Home' } );
 
+	const linkIfExists = ( filename ) => {
+		if ( customPages[ filename ] ) {
+			return `${filename}.html`;
+		} else {
+			return undefined;
+		}
+	};
 	[ 'modules', 'externals', 'namespaces', 'classes', 'interfaces', 'events', 'mixins', 'tutorials' ].forEach( ( type ) => {
 		const opts = customPages[ type ] || {};
 		let linker;
@@ -508,7 +518,7 @@ function buildNav( members, customPages = {} ) {
 				break;
 		}
 		const heading = opts.longname || ( type.charAt( 0 ).toUpperCase() + type.slice( 1 ) );
-		buildMemberNavIfConf( nav, members[ type ], heading, seen, linker, opts.depth );
+		buildMemberNavIfConf( nav, members[ type ], heading, seen, linker, opts.depth, linkIfExists( type ) );
 	} );
 
 	return function ( filename ) {
@@ -800,6 +810,23 @@ FILE: ${doclet.meta.path}/${doclet.meta.filename}
 				longname: ( opts.mainpagetitle ) ? opts.mainpagetitle : 'Main Page'
 			} ]
 		).concat( files ), indexUrl );
+
+	// generate custom pages
+	Object.keys( customPages ).forEach( ( key ) => {
+		const desc = customPages[ key ];
+		const readme = desc.readme ?
+			marked.parse( fs.readFileSync( desc.readme ).toString() ) : '';
+		if ( !readme ) {
+			return;
+		}
+		const longname = desc.longname;
+		const url = helper.getUniqueFilename( key );
+		generate( longname,
+			[ {
+				kind: 'mainpage',
+				readme
+			} ], url );
+	} );
 
 	// set up the lists that we'll use to generate pages
 	const classes = taffy( members.classes );
