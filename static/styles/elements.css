@@ -90,6 +90,7 @@ pre,
 
 p {
 	margin: 3.2rem 0 0;
+	overflow-wrap: break-word;
 }
 
 h1 + p,
@@ -162,6 +163,8 @@ sup {
 code {
 	background-color: var( --background-color-interactive-subtle );
 	display: inline-block;
+	/* Support: Chrome - prevent overflow for long code blocks. */
+	max-width: 100%;
 	padding: 0.2rem 0.4rem;
 	font-size: 1.4rem;
 }
@@ -180,6 +183,8 @@ code,
 pre {
 	white-space: pre-wrap;
 	word-wrap: break-word;
+	/* Make scrollable on very small screens if necessary. */
+	overflow-x: auto;
 }
 
 /* Support Blink based browsers. */

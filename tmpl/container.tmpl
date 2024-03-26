@@ -26,13 +26,13 @@
         <?js= doc.alias || doc.name ?>
     </nav>
     <?js } ?>
-    <h1><?js if (doc.attribs) { ?><span class="attribs"><?js= doc.attribs ?></span><?js }
+    <h1 class="page-title"><?js if (doc.attribs) { ?><span class="page-title__attribs"><?js= doc.attribs ?></span><?js }
         if (doc.ancestors && doc.ancestors.length) { ?>
-        <span class="ancestors"><?js= doc.ancestors.join('') ?></span><?js
+        <span class="page-title__ancestors"><?js= doc.ancestors.join('<wbr>') ?><wbr></span><?js
         }
-    ?><?js= doc.alias || doc.name ?><?js
+    ?><span class="page-title__name"><?js= doc.alias || doc.name ?></span><?js
         if (doc.variation) { ?>
-        <sup class="variation"><?js= doc.variation ?></sup><?js } ?></h1>
+        <sup class="page-title__variation"><?js= doc.variation ?></sup><?js } ?></h1>
     <?js if (!doc.longname || !doc.modules) { ?>
         <?js if (doc.classdesc) { ?>
             <div class="class-description"><?js= doc.classdesc ?></div>
