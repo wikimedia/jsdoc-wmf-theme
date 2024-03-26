@@ -115,12 +115,6 @@
 	padding-top: 0;
 }
 
-.code-caption {
-	font-style: italic;
-	font-size: 107%;
-	margin: 0;
-}
-
 .sourcefile {
 	width: 80%;
 	border: var( --border-width-base ) var( --border-style-base ) var( --border-color-light );
