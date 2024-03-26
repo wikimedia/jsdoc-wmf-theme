@@ -90,7 +90,20 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				className = 'search-result';
 			link += '<a href="' + d.id + '" id="' + id + '" class="' + className + '">';
 			link += '<dt>' + d.name + ' &middot; <code>' + d.longname + '</code></dt>';
-			link += '<dd>' + d.summary + '</dd>';
+
+			// Get rid of any <a> tags; they will break the layout. See T357167.
+			var doc = new DOMParser().parseFromString( d.summary, 'text/html' );
+			var anchorTags = doc.querySelectorAll( 'a' );
+			for ( var anchorTag of anchorTags ) {
+				if ( anchorTag.parentNode ) {
+					while ( anchorTag.firstChild ) {
+						anchorTag.parentNode.insertBefore( anchorTag.firstChild, anchorTag );
+					}
+					anchorTag.parentNode.removeChild( anchorTag );
+				}
+			}
+			var strippedHtml = doc.body.innerHTML;
+			link += '<dd>' + strippedHtml + '</dd>';
 			link += '</a>';
 			resultsEl.innerHTML += '<li>' + link + '</li>';
 		} );
