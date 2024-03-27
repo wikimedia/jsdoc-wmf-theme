@@ -212,3 +212,8 @@
 		padding-right: var( --spacing-horizontal-nav-item-large );
 	}
 }
+
+/* Styles for breadcrumbs */
+.breadcrumbs {
+	margin-bottom: 1rem;
+}
