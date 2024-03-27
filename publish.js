@@ -520,6 +520,9 @@ function buildNav( members, customPages = {} ) {
 		const heading = opts.longname || ( type.charAt( 0 ).toUpperCase() + type.slice( 1 ) );
 		buildMemberNavIfConf( nav, members[ type ], heading, seen, linker, opts.depth, linkIfExists( type ) );
 	} );
+	if ( env.conf.templates.wmf.siteMap ) {
+		addNavItem( nav, { tag: 'a', href: 'sitemap.html', title: 'Sitemap' } );
+	}
 
 	return function ( filename ) {
 		const nav2 = nav.cloneNode( true );
@@ -532,6 +535,37 @@ function buildNav( members, customPages = {} ) {
 		}
 		return nav2.outerHTML;
 	};
+}
+
+function buildSiteMapSection( items, subsection ) {
+	const heading = subsection ? `<h2>${subsection}</h2>` : '';
+	return `${heading}
+<ul style="column-count: 2">
+	${items.sort( ( a, b ) => a.name < b.name ? -1 : 1 ).map( ( a ) => `<li>${a}</li>` ).join( '\n' )}
+</ul>`;
+}
+
+function buildSiteMap( items, options = {} ) {
+	let index = [];
+	let html = '<h1>Sitemap</h1>';
+	const sortLongName = ( a, b ) => a.longname < b.longname ? -1 : 1;
+	Object.keys( items ).forEach( ( key ) => {
+		if ( options.include && !options.include.includes( key ) ) {
+			return;
+		}
+		items[ key ].sort( sortLongName ).forEach( ( doclet ) => {
+			index.push( linkto( doclet.longname, doclet.longname ) );
+		} );
+		if ( options.sections && index.length ) {
+			html += buildSiteMapSection( index, key );
+			index = [];
+		}
+	} );
+
+	if ( index.length ) {
+		html += buildSiteMapSection( index.sort( sortLongName ) );
+	}
+	return html;
 }
 
 /**
@@ -871,6 +905,14 @@ FILE: ${doclet.meta.path}/${doclet.meta.filename}
 			generate( 'Interface: ' + myInterfaces[ 0 ].name, myInterfaces, helper.longnameToUrl[ longname ] );
 		}
 	} );
+
+	if ( env.conf.templates.wmf.siteMap ) {
+		generate( 'Sitemap',
+			[ {
+				kind: 'mainpage',
+				readme: buildSiteMap( members, env.conf.templates.wmf.siteMap )
+			} ], helper.getUniqueFilename( 'sitemap' ) );
+	}
 
 	// TODO: move the tutorial functions to templateHelper.js
 	function generateTutorial( title, tutorial, filename ) {
