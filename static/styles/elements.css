@@ -109,7 +109,7 @@ pre,
 	background-color: var( --background-color-interactive-subtle );
 	color: var( --color-emphasized );
 	border: var( --border-base );
-	padding: 1.2rem 2rem;
+	padding: 1.2rem;
 	font-size: 1.4rem;
 	white-space: pre-wrap;
 }
