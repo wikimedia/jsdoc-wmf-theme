@@ -760,9 +760,10 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 			doclet.scope === 'global' && doclet.name !== 'window';
 		if ( isUnexpectedGlobal ) {
 			throw new Error( `***
-Unexpected global detected (T357489):
+Unexpected global detected. Add the following to a module, namespace, or class:
 NAME: ${doclet.name}
 FILE: ${doclet.meta.path}/${doclet.meta.filename}
+See https://www.mediawiki.org/wiki/JSDoc#Globals
 ***
 ` );
 		}
