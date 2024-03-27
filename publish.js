@@ -538,9 +538,9 @@ function buildNav( members, customPages = {} ) {
 }
 
 function buildSiteMapSection( items, subsection ) {
-	const heading = subsection ? `<h2>${subsection}</h2>` : '';
+	const heading = subsection ? `<h2 class="sitemap-heading">${subsection}</h2>` : '';
 	return `${heading}
-<ul style="column-count: 2">
+<ul class="sitemap">
 	${items.sort( ( a, b ) => a.name < b.name ? -1 : 1 ).map( ( a ) => `<li>${a}</li>` ).join( '\n' )}
 </ul>`;
 }

@@ -220,3 +220,19 @@ dd > p:first-child {
 	text-decoration: underline;
 	overflow: visible;
 }
+
+/* Sitemap */
+.sitemap {
+	word-break: break-word;
+}
+
+@media ( min-width: 900px ) {
+	.sitemap {
+		column-count: 2;
+		column-gap: 3rem;
+	}
+}
+
+.sitemap-heading {
+	text-transform: capitalize; /* stylelint-disable-line declaration-property-value-disallowed-list */
+}
