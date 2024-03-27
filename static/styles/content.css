@@ -23,7 +23,7 @@
 	margin: 0;
 }
 
-.variation {
+.page-title__variation {
 	display: none;
 }
 
@@ -32,14 +32,18 @@
 	font-style: italic;
 }
 
-.ancestors,
-.attribs {
+.page-title__ancestors,
+.page-title__attribs {
 	color: var( --color-placeholder );
 }
 
-.attribs a {
+.page-title__attribs a {
 	color: var( --color-placeholder ) !important; /* stylelint-disable-line declaration-no-important */
 	text-decoration: none;
+}
+
+.page-title__name {
+	word-wrap: break-word;
 }
 
 .clear {
@@ -87,14 +91,13 @@
 }
 
 .details dt {
-	width: 120px;
-	float: left;
 	padding-left: 10px;
 	padding-top: 6px;
 }
 
 .details dd {
-	margin-left: 70px;
+	/* Add some space between the border-left and the dd text. */
+	margin-left: 10px;
 }
 
 .details ul {
@@ -103,8 +106,8 @@
 }
 
 .details li {
-	margin-left: 30px;
 	padding-top: 6px;
+	word-wrap: break-word;
 }
 
 .details pre.prettyprint {
@@ -231,6 +234,11 @@
 	color: var( --color-placeholder );
 }
 
+.name__function-name {
+	/* Names may be long, e.g. mw.widgets.ComplexnamespaceInputWidget. */
+	word-break: break-all;
+}
+
 .params td.description > p:first-child,
 .props td.description > p:first-child {
 	margin-top: 0;
@@ -332,4 +340,20 @@ when the box is closed) with the summary label. */
 /* Hide standalone description when the details element is open. */
 .toggle-box[ open ] ~ .summary {
 	display: none;
+}
+
+/* Tablet */
+@media ( min-width: 768px ) {
+	.details dt {
+		width: 120px;
+		float: left;
+	}
+
+	.details dd {
+		margin-left: 90px;
+	}
+
+	.details li {
+		margin-left: 30px;
+	}
 }
