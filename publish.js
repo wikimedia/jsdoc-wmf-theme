@@ -435,11 +435,11 @@ function buildMemberNav( parent, items, itemHeading, itemsSeen, linktoFn, depth,
 				addNavItem( ul, { sub: true, html: linktoFn( '', item.name ) } );
 			} else if ( !hasOwnProp.call( itemsSeen, item.longname ) ) {
 				if ( env.conf.templates.default.useLongnameInNav ) {
-					displayName = item.longname;
+					displayName = item.displayName;
 				} else {
 					displayName = item.name;
 				}
-				addNavItem( ul, { sub: true, html: linktoFn( item.longname, displayName.replace( /\b(module|event):/g, '' ) ) } );
+				addNavItem( ul, { sub: true, html: linktoFn( item.longname, displayName ) } );
 
 				itemsSeen[ item.longname ] = true;
 			}
@@ -786,7 +786,9 @@ See https://www.mediawiki.org/wiki/JSDoc#Globals
 
 	// do this after the urls have all been generated
 	data().each( function ( doclet ) {
-		doclet.ancestors = getAncestorLinks( doclet );
+		doclet.breadcrumbLinks = getAncestorLinks( doclet );
+
+		doclet.displayName = doclet.longname.replace( /\b(module|event):/g, '' );
 
 		if ( doclet.kind === 'member' ) {
 			addSignatureTypes( doclet );

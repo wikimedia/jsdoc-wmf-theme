@@ -32,7 +32,6 @@
 	font-style: italic;
 }
 
-.page-title__ancestors,
 .page-title__attribs {
 	color: var( --color-placeholder );
 }
