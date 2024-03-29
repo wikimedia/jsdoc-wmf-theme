@@ -1,0 +1,66 @@
+<?js
+var data = obj;
+var self = this;
+?>
+
+<?js
+    var namespaces = self.find({kind: 'namespace', memberof: data.longname});
+    if (namespaces && namespaces.length) {
+?>
+    <h2 class="subsection-title">Namespaces</h2>
+
+    <dl><?js namespaces.forEach(function(n) { ?>
+        <dt><?js= self.linkto(n.longname, n.name) ?></dt>
+        <dd><?js if (n.summary) { ?><?js= n.summary ?><?js } ?></dd>
+    <?js }); ?></dl>
+<?js } ?>
+
+<?js
+    var classes = self.find({kind: 'class', memberof: data.longname});
+    if (classes && classes.length) {
+?>
+    <h2 class="subsection-title">Classes</h2>
+
+    <dl><?js classes.forEach(function(c) { ?>
+        <dt><?js= self.linkto(c.longname, c.name) ?></dt>
+        <dd><?js if (c.summary) { ?><?js= c.summary ?><?js } ?></dd>
+    <?js }); ?></dl>
+<?js } ?>
+
+<?js if (data.augments && data.augments.length) { ?>
+    <h2 class="subsection-title">Extends</h2>
+
+    <?js= self.partial('augments.tmpl', data) ?>
+<?js } ?>
+
+<?js if (data.requires && data.requires.length) { ?>
+    <h2 class="subsection-title">Requires</h2>
+
+    <ul><?js data.requires.forEach(function(r) { ?>
+        <li><?js= self.linkto(r, r) ?></li>
+    <?js }); ?></ul>
+<?js } ?>
+
+<?js
+    var interfaces = self.find({kind: 'interface', memberof: data.longname});
+    if (interfaces && interfaces.length) {
+?>
+    <h2 class="subsection-title">Interfaces</h2>
+
+    <dl><?js interfaces.forEach(function(i) { ?>
+        <dt><?js= self.linkto(i.longname, i.name) ?></dt>
+        <dd><?js if (i.summary) { ?><?js= i.summary ?><?js } ?></dd>
+    <?js }); ?></dl>
+<?js } ?>
+
+<?js
+    var mixins = self.find({kind: 'mixin', memberof: data.longname});
+    if (mixins && mixins.length) {
+?>
+    <h2 class="subsection-title">Mixins</h2>
+
+    <dl><?js mixins.forEach(function(m) { ?>
+        <dt><?js= self.linkto(m.longname, m.name) ?></dt>
+        <dd><?js if (m.summary) { ?><?js= m.summary ?><?js } ?></dd>
+    <?js }); ?></dl>
+<?js } ?>
