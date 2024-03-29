@@ -554,7 +554,7 @@ function buildSiteMap( items, options = {} ) {
 			return;
 		}
 		items[ key ].sort( sortLongName ).forEach( ( doclet ) => {
-			index.push( linkto( doclet.longname, doclet.longname ) );
+			index.push( linkto( doclet.longname, doclet.displayName ) );
 		} );
 		if ( options.sections && index.length ) {
 			html += buildSiteMapSection( index, key );
