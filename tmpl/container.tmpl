@@ -31,7 +31,7 @@
         if (doc.variation) { ?>
         <sup class="page-title__variation"><?js= doc.variation ?></sup><?js } ?></h1>
     <?js if (!doc.longname || !doc.modules) { ?>
-        <?js if (doc.classdesc) { ?>
+        <?js if (doc.classdesc && doc.kind === 'class') { ?>
             <div class="class-description"><?js= doc.classdesc ?></div>
             <?js= self.partial('details.tmpl', doc) ?>
             <?js if (doc.examples && doc.examples.length) { ?>
