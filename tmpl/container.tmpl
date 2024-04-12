@@ -33,7 +33,6 @@
     <?js if (!doc.longname || !doc.modules) { ?>
         <?js if (doc.classdesc && doc.kind === 'class') { ?>
             <div class="class-description"><?js= doc.classdesc ?></div>
-            <?js= self.partial('details.tmpl', doc) ?>
             <?js if (doc.examples && doc.examples.length) { ?>
                 <h2>Example<?js= doc.examples.length > 1? 's':'' ?></h2>
                 <?js= self.partial('examples.tmpl', doc.examples) ?>
@@ -70,8 +69,6 @@
         <?js if (doc.description) { ?>
             <div class="description"><?js= doc.description ?></div>
         <?js } ?>
-
-        <?js= self.partial('details.tmpl', doc) ?>
 
         <?js if (doc.examples && doc.examples.length) { ?>
             <h2>Example<?js= doc.examples.length > 1? 's':'' ?></h2>
