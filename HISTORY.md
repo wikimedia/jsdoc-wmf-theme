@@ -1,5 +1,41 @@
 # Release History
 
+## jsdoc-wmf-theme 1.0.0 (2024-04-16)
+
+* styles: Remove line separation from source files (apaskulin)
+* titles: Remove parameters (apaskulin)
+* templates: Use sentence case for detail fields (apaskulin)
+* tables: Add horizontal scroll (Anne Tomasevich)
+* headings: Remove optional indicator (apaskulin)
+* headings: Style properties heading for subparameters (apaskulin)
+* styles: Increase margin for h2 headings in Markdown descriptions (apaskulin)
+* styles: Style code captions like regular text (apaskulin)
+* Limit classes and namespaces to top level functions (Jon Robson)
+* Add breadcrumb navigation (Jon Robson)
+* Support generation of site map (Jon Robson)
+* Support the creation of custom pages for top level nav items (Jon Robson)
+* styles: Fix inconsistent margin in definition lists (apaskulin)
+* plugins: Move plugin from Core (apaskulin)
+* styles: Reduce padding-left/right on `<pre>` to fix apparent indentation (Timo Tijhof)
+* search: Strip anchor elements from search results (Anne Tomasevich)
+* templates: Simplify attributes (apaskulin)
+* content: Prevent long words from overflowing their containers (Anne Tomasevich)
+* build: Clarify error message and link to docs (apaskulin)
+* templates: Consistent page organization (apaskulin)
+* styles: Add styles to sitemap (apaskulin)
+* layout: Remove links from titles in favor of breadcrumbs (apaskulin)
+* publish: Simplify sitemap items (apaskulin)
+* templates: Fix typo (apaskulin)
+* template: Better handling for incorrect @classdesc tags (apaskulin)
+* plugins: Fork summarize plugin from JSDoc (apaskulin)
+* templates: Handle class-description summaries (apaskulin)
+* templates: Remove source link from main page description (apaskulin)
+
+—
+* plugins: Set up plugins directory (apaskulin)
+* Delete dead code block (Jon Robson)
+* docs: Update README (apaskulin)
+
 ## jsdoc-wmf-theme 0.0.13 (2024-03-04)
 
 * Fix hash navigation for non-existing elements (Derk-Jan Hartman)
