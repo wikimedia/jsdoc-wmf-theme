@@ -148,7 +148,11 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 
 </div>
 
-<?js if (data.kind !== 'namespace' && data.kind !== 'module') { ?>
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+<?js if (data.kind !== 'namespace' && data.kind !== 'module' && !data.hideconstructor && !data.classdesc) { ?>
     </details>
     <div class="summary">
         <?js if (data.summary) { ?><?js= summary ?><?js } ?>
