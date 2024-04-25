@@ -20,7 +20,7 @@
 <section>
 
 <header>
-    <?js if ( doc.breadcrumbLinks.length ) {?>
+    <?js if ( doc.breadcrumbLinks ) {?>
     <nav class="breadcrumbs">
         <?js= doc.breadcrumbLinks.join(' &gt; ').replace( /\>\./g, '>' ) ?> &gt;
         <?js= doc.alias || doc.name ?>
