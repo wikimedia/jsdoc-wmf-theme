@@ -19,7 +19,7 @@ const domino = require( 'domino' ),
 	util = require( 'util' ),
 	lunrHelper = require( './lunrHelper' ),
 
-	rLiteral = /^(null|undefined|true|false|NaN|Infinity)$/,
+	rLiteral = /^(null|undefined|true|false|NaN|Infinity|'[^']*')$/,
 	// These are built-in types and classes in ECMAScript.
 	// Our Wikimedia-specific rule of requiring a linkMap entry will allow these,
 	// to be absence, resulting in the default JSDoc behaviour of a type without
