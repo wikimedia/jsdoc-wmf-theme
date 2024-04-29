@@ -3,7 +3,7 @@
  * We wnat this to run as soon as possible; no need to wait
  * for DOMContentLoaded / load / etc.
  */
-( () => {
+{
 	const hash = window.location.hash;
 	const base = window.location.origin + window.location.pathname;
 
@@ -16,4 +16,4 @@
 			window.location.href = new URL( `${ extracted }.html`, base );
 		}
 	}
-} )();
+}

@@ -1,4 +1,4 @@
-( function () {
+{
 	const source = document.getElementsByClassName( 'prettyprint sourcefile linenums' );
 
 	if ( source && source[ 0 ] ) {
@@ -14,4 +14,4 @@
 			}
 		}
 	}
-}() );
+}
