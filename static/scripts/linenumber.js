@@ -1,20 +1,13 @@
 ( function () {
-	var source = document.getElementsByClassName( 'prettyprint sourcefile linenums' ),
-		i = 0,
-		lineNumber = 0,
-		lineId,
-		lines,
-		totalLines,
-		anchorHash;
+	var source = document.getElementsByClassName( 'prettyprint sourcefile linenums' );
 
 	if ( source && source[ 0 ] ) {
-		anchorHash = document.location.hash.slice( 1 );
-		lines = source[ 0 ].getElementsByTagName( 'li' );
-		totalLines = lines.length;
+		var anchorHash = document.location.hash.slice( 1 );
+		var lines = source[ 0 ].getElementsByTagName( 'li' );
+		var totalLines = lines.length;
 
-		for ( ; i < totalLines; i++ ) {
-			lineNumber++;
-			lineId = 'line' + lineNumber;
+		for ( var i = 0; i < totalLines; i++ ) {
+			var lineId = 'line' + ( i + 1 );
 			lines[ i ].id = lineId;
 			if ( lineId === anchorHash ) {
 				lines[ i ].className += ' selected';
