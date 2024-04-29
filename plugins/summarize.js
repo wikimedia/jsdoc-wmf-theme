@@ -57,7 +57,7 @@ exports.handlers = {
 				// get just the tag name
 				endTag = endTag.slice( 1, endTag.search( /[ >]/ ) );
 				// append the end tag
-				doclet.summary += `</${endTag}>`;
+				doclet.summary += `</${ endTag }>`;
 			}
 
 			// and, finally, if the summary starts and ends with a <p> tag, remove it; let the

@@ -5,7 +5,7 @@ let data, view,
 	resolveLinkFilename = '<unknown>';
 
 const domino = require( 'domino' ),
-	/* eslint-disable node/no-missing-require */
+	/* eslint-disable n/no-missing-require */
 	doop = require( 'jsdoc/util/doop' ),
 	{ marked } = require( 'marked' ),
 	env = require( 'jsdoc/env' ),
@@ -14,7 +14,7 @@ const domino = require( 'domino' ),
 	logger = require( 'jsdoc/util/logger' ),
 	path = require( 'jsdoc/path' ),
 	template = require( 'jsdoc/template' ),
-	/* eslint-enable node/no-missing-require */
+	/* eslint-enable n/no-missing-require */
 	taffy = require( '@jsdoc/salty' ).taffy,
 	util = require( 'util' ),
 	lunrHelper = require( './lunrHelper' ),
@@ -267,7 +267,7 @@ function addAttribs( f ) {
 	let attribsMarkup = '';
 
 	attribs.forEach( ( attrib ) => {
-		attribsMarkup += `<span class="type-signature__attrib type-signature__attrib--${attrib}">${attrib}</span>`;
+		attribsMarkup += `<span class="type-signature__attrib type-signature__attrib--${ attrib }">${ attrib }</span>`;
 	} );
 
 	f.attribs = util.format( '<span class="type-signature">%s</span>', attribsMarkup );
@@ -498,7 +498,7 @@ function buildNav( members, customPages = {} ) {
 
 	const linkIfExists = ( filename ) => {
 		if ( customPages[ filename ] ) {
-			return `${filename}.html`;
+			return `${ filename }.html`;
 		} else {
 			return undefined;
 		}
@@ -518,7 +518,9 @@ function buildNav( members, customPages = {} ) {
 				break;
 		}
 		const heading = opts.longname || ( type.charAt( 0 ).toUpperCase() + type.slice( 1 ) );
-		buildMemberNavIfConf( nav, members[ type ], heading, seen, linker, opts.depth, linkIfExists( type ) );
+		buildMemberNavIfConf(
+			nav, members[ type ], heading, seen, linker, opts.depth, linkIfExists( type )
+		);
 	} );
 	if ( env.conf.templates.wmf.siteMap ) {
 		addNavItem( nav, { tag: 'a', href: 'sitemap.html', title: 'Sitemap' } );
@@ -538,10 +540,10 @@ function buildNav( members, customPages = {} ) {
 }
 
 function buildSiteMapSection( items, subsection ) {
-	const heading = subsection ? `<h2 class="sitemap-heading">${subsection}</h2>` : '';
-	return `${heading}
+	const heading = subsection ? `<h2 class="sitemap-heading">${ subsection }</h2>` : '';
+	return `${ heading }
 <ul class="sitemap">
-	${items.sort( ( a, b ) => a.name < b.name ? -1 : 1 ).map( ( a ) => `<li>${a}</li>` ).join( '\n' )}
+	${ items.sort( ( a, b ) => a.name < b.name ? -1 : 1 ).map( ( a ) => `<li>${ a }</li>` ).join( '\n' ) }
 </ul>`;
 }
 
@@ -692,9 +694,9 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 		const staticFilePaths = conf.default.staticFiles.include ||
 			conf.default.staticFiles.paths ||
 			[];
-		// eslint-disable-next-line node/no-missing-require
+		// eslint-disable-next-line n/no-missing-require
 		const staticFileFilter = new ( require( 'jsdoc/src/filter' ) ).Filter( conf.default.staticFiles );
-		// eslint-disable-next-line node/no-missing-require
+		// eslint-disable-next-line n/no-missing-require
 		const staticFileScanner = new ( require( 'jsdoc/src/scanner' ) ).Scanner();
 
 		staticFilePaths.forEach( function ( filePath ) {
@@ -761,8 +763,8 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 		if ( isUnexpectedGlobal ) {
 			throw new Error( `***
 Unexpected global detected. Add the following to a module, namespace, or class:
-NAME: ${doclet.name}
-FILE: ${doclet.meta.path}/${doclet.meta.filename}
+NAME: ${ doclet.name }
+FILE: ${ doclet.meta.path }/${ doclet.meta.filename }
 See https://www.mediawiki.org/wiki/JSDoc#Globals
 ***
 ` );

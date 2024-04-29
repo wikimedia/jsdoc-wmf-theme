@@ -4,7 +4,7 @@
  * Add support for {@link .shortName} and {@link #shortName}, as well
  * as link-ifying URLs.
  */
-// eslint-disable-next-line node/no-missing-require
+// eslint-disable-next-line n/no-missing-require
 const env = require( 'jsdoc/env' ),
 
 	hasOwnProp = Object.prototype.hasOwnProperty,

@@ -1,11 +1,11 @@
 'use strict';
 /* global env */
 const lunr = require( 'lunr' ),
-	// eslint-disable-next-line node/no-missing-require
+	// eslint-disable-next-line n/no-missing-require
 	fs = require( 'jsdoc/fs' ),
-	// eslint-disable-next-line node/no-missing-require
+	// eslint-disable-next-line n/no-missing-require
 	path = require( 'jsdoc/path' ),
-	// eslint-disable-next-line node/no-missing-require
+	// eslint-disable-next-line n/no-missing-require
 	helper = require( 'jsdoc/util/templateHelper' );
 
 exports.makeIndex = function ( data ) {

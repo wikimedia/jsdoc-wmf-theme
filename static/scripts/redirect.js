@@ -13,7 +13,7 @@
 
 		if ( match ) {
 			const extracted = match[ 1 ];
-			window.location.href = new URL( `${extracted}.html`, base );
+			window.location.href = new URL( `${ extracted }.html`, base );
 		}
 	}
 } )();
