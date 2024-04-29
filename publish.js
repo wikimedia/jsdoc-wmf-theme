@@ -66,6 +66,20 @@ const domino = require( 'domino' ),
 
 let outdir = path.normalize( env.opts.destination );
 
+function getAttribs( doclet ) {
+	const attribs = helper.getAttribs( doclet );
+
+	if ( doclet.tags ) {
+		doclet.tags.forEach( function ( tag ) {
+			if ( tag.originalTitle === 'chainable' ) {
+				attribs.push( 'chainable' );
+			}
+		} );
+	}
+
+	return attribs;
+}
+
 function addAlias( name, url ) {
 	if ( helper.longnameToUrl[ name ] ) {
 		return;
@@ -228,7 +242,7 @@ function addSignatureReturns( f ) {
 	// who use multiple @return tags aren't using Closure Compiler type annotations, and vice-versa.
 	if ( source ) {
 		source.forEach( function ( item ) {
-			helper.getAttribs( item ).forEach( function ( attrib ) {
+			getAttribs( item ).forEach( function ( attrib ) {
 				if ( !attribs.includes( attrib ) ) {
 					attribs.push( attrib );
 				}
@@ -257,7 +271,7 @@ function addSignatureTypes( f ) {
 }
 
 function addClassNames( f ) {
-	const attribs = helper.getAttribs( f );
+	const attribs = getAttribs( f );
 	let classNames = attribs.map( function ( a ) {
 		return 'method--' + a;
 	} ).join( ' ' );
@@ -267,7 +281,7 @@ function addClassNames( f ) {
 }
 
 function addAttribs( f ) {
-	const attribs = helper.getAttribs( f );
+	const attribs = getAttribs( f );
 	let attribsMarkup = '';
 
 	attribs.forEach( ( attrib ) => {
