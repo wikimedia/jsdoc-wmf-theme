@@ -6,6 +6,6 @@
 	],
 	"rules": {
 		"no-implicit-globals": "off",
-		"no-var": "off"
+		"prefer-arrow-callback": "error"
 	}
 }

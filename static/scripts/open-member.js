@@ -1,13 +1,13 @@
-window.addEventListener( 'DOMContentLoaded', function () {
+window.addEventListener( 'DOMContentLoaded', () => {
 	if ( window.location.hash ) {
 		openMember();
-		window.setTimeout( function () {
+		window.setTimeout( () => {
 			window.scrollTo( 0, ( window.pageYOffset || document.documentElement.scrollTop ) );
 		}, 0 );
 	}
 } );
 
-window.addEventListener( 'hashchange', function ( e ) {
+window.addEventListener( 'hashchange', ( e ) => {
 	e.stopPropagation();
 	openMember();
 } );

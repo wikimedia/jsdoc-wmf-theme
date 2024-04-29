@@ -8,7 +8,10 @@ module.exports = function gruntConfig( grunt ) {
 		pkg: grunt.file.readJSON( 'package.json' ),
 
 		eslint: {
-			src: [ '.' ]
+			options: {
+				fix: grunt.option( 'fix' )
+			},
+			all: [ '.' ]
 		},
 
 		stylelint: {

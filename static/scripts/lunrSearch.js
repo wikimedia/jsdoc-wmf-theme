@@ -1,13 +1,14 @@
 /* global lunr */
-document.addEventListener( 'DOMContentLoaded', function () {
-	var lunrIndex = lunr.Index.load( window.lunrData.index ),
+
+document.addEventListener( 'DOMContentLoaded', () => {
+	const lunrIndex = lunr.Index.load( window.lunrData.index ),
 		docs = window.lunrData.documents,
 		UP = 'ArrowUp',
 		DOWN = 'ArrowDown',
 		ENTER = 'Enter',
 		searchEl = document.getElementById( 'lunr-search' ),
-		resultsEl = document.getElementById( 'search-results' ),
-		resultDocs = [];
+		resultsEl = document.getElementById( 'search-results' );
+	let resultDocs = [];
 
 	function showResults() {
 		resultsEl.style.display = 'block';
@@ -42,11 +43,11 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		}
 	} );
 
-	document.addEventListener( 'click', function () {
+	document.addEventListener( 'click', () => {
 		hideResults();
 	} );
 
-	searchEl.addEventListener( 'click', function ( e ) {
+	searchEl.addEventListener( 'click', ( e ) => {
 		/* Don't hide results on search input click. */
 		e.stopPropagation();
 	} );
@@ -62,7 +63,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 	function search( term ) {
 		// We want exact matches as well as prefix search
 		// So we get both, merge and de-duplicate
-		var results = mergeResults(
+		const results = mergeResults(
 			lunrIndex.search( term ),
 			lunrIndex.search( term + '*' )
 		);
@@ -71,9 +72,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 	function getResults( results ) {
 		// Get details of results
-		resultDocs = docs.filter( function ( d ) {
+		resultDocs = docs.filter( ( d ) => {
 			return results.indexOf( d.id ) > -1;
-		} ).map( function ( d ) {
+		} ).map( ( d ) => {
 			return {
 				id: d.id,
 				name: d.name,
@@ -84,17 +85,17 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 		// Add results to the <ul>
 		resultsEl.innerHTML = '';
-		resultDocs.forEach( function ( d, i ) {
-			var link = '',
-				id = i === 0 ? 'selected-search-result' : '',
+		resultDocs.forEach( ( d, i ) => {
+			const id = i === 0 ? 'selected-search-result' : '',
 				className = 'search-result';
+			let link = '';
 			link += '<a href="' + d.id + '" id="' + id + '" class="' + className + '">';
 			link += '<dt>' + d.name + ' &middot; <code>' + d.longname + '</code></dt>';
 
 			// Get rid of any <a> tags; they will break the layout. See T357167.
-			var doc = new DOMParser().parseFromString( d.summary, 'text/html' );
-			var anchorTags = doc.querySelectorAll( 'a' );
-			for ( var anchorTag of anchorTags ) {
+			const doc = new DOMParser().parseFromString( d.summary, 'text/html' );
+			const anchorTags = doc.querySelectorAll( 'a' );
+			for ( const anchorTag of anchorTags ) {
 				if ( anchorTag.parentNode ) {
 					while ( anchorTag.firstChild ) {
 						anchorTag.parentNode.insertBefore( anchorTag.firstChild, anchorTag );
@@ -102,7 +103,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 					anchorTag.parentNode.removeChild( anchorTag );
 				}
 			}
-			var strippedHtml = doc.body.innerHTML;
+			const strippedHtml = doc.body.innerHTML;
 			link += '<dd>' + strippedHtml + '</dd>';
 			link += '</a>';
 			resultsEl.innerHTML += '<li>' + link + '</li>';
@@ -112,9 +113,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
 	}
 
 	function manageKeyboard( k ) {
-		var currId = 'selected-search-result',
-			curr = document.getElementById( currId ),
-			next;
+		const currId = 'selected-search-result',
+			curr = document.getElementById( currId );
+		let next;
 		if ( k === ENTER ) {
 			curr.click();
 		} else if ( k === DOWN && curr.parentNode.nextElementSibling !== null ) {
@@ -129,18 +130,16 @@ document.addEventListener( 'DOMContentLoaded', function () {
 	}
 
 	function mergeResults( r1, r2 ) {
-		var a = r1.concat( r2 ),
-			i,
-			j;
+		let a = r1.concat( r2 );
 
 		// Remove scores and metadata before looking for uniques
-		a = a.map( function ( r ) {
+		a = a.map( ( r ) => {
 			return r.ref;
 		} );
 
 		// Keep uniques
-		for ( i = 0; i < a.length; ++i ) {
-			for ( j = i + 1; j < a.length; ++j ) {
+		for ( let i = 0; i < a.length; ++i ) {
+			for ( let j = i + 1; j < a.length; ++j ) {
 				if ( a[ i ] === a[ j ] ) {
 					a.splice( j--, 1 );
 				}
