@@ -9,6 +9,9 @@ const prefixMap = wmfConf.prefixMap || {};
 const prefixMapIgnore = wmfConf.prefixMapIgnore || [];
 const linkMap = wmfConf.linkMap || {};
 
+// Sort prefixes, longest first
+const prefixMapsKeys = Object.keys( prefixMap ).sort( ( a, b ) => b.length - a.length );
+
 // eslint-disable-next-line n/no-missing-require
 const parseType = require( 'jsdoc/tag/type' ).parse;
 
@@ -92,7 +95,7 @@ exports.handlers = {
 		}, [] );
 
 		types.forEach( ( type ) => {
-			Object.keys( prefixMap ).some( ( prefix ) => {
+			prefixMapsKeys.some( ( prefix ) => {
 				if (
 					// Ignore anything explicitly defined in the linkMap
 					!linkMap[ type ] &&
