@@ -35,6 +35,8 @@
 		"fixtures",
 		"static",
 		"tmpl",
+		"data",
+		"defaultMaps.js",
 		"lunrHelper.js",
 		"publish.js",
 		"HISTORY.md",

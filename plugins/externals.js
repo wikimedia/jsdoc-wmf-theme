@@ -5,9 +5,10 @@ const helper = require( 'jsdoc/util/templateHelper' );
 // eslint-disable-next-line n/no-missing-require
 const conf = require( 'jsdoc/env' ).conf;
 const wmfConf = ( conf.templates && conf.templates.wmf ) || {};
-const prefixMap = wmfConf.prefixMap || {};
-const prefixMapIgnore = wmfConf.prefixMapIgnore || {};
-const linkMap = wmfConf.linkMap || {};
+const defaultMaps = require( '../defaultMaps' );
+const prefixMap = { ...defaultMaps.prefixMap, ...wmfConf.prefixMap };
+const prefixMapIgnore = { ...defaultMaps.prefixMapIgnore, ...wmfConf.prefixMapIgnore };
+const linkMap = { ...defaultMaps.linkMap, ...wmfConf.linkMap };
 
 // Keys can be set to 'false' to remove from the list
 const ignoreList = Object.keys( prefixMapIgnore ).filter( ( key ) => prefixMapIgnore[ key ] );
