@@ -40,7 +40,8 @@
 		"lunrHelper.js",
 		"publish.js",
 		"HISTORY.md",
-		"plugins"
+		"plugins",
+		"defaultPlugins.json"
 	],
 	"dependencies": {
 		"@jsdoc/salty": "^0.2.8",
