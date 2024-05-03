@@ -26,9 +26,12 @@ exports.handlers = {
 		if ( doclet && !doclet.summary && ( doclet.description || doclet.classdesc ) ) {
 			description = doclet.classdesc || doclet.description;
 			// The summary may end with `.$`, `. `, or `.<` (a period followed by an HTML tag).
-			doclet.summary = description.split( /\.$|\.\s|\.</ )[ 0 ];
-			// Append `.` as it was removed in both cases, or is possibly missing.
-			doclet.summary += '.';
+			const parts = description.split( /\.$|\.\s|\.</ );
+			doclet.summary = parts[ 0 ];
+			if ( parts.length > 1 ) {
+				// Append `.` if it was removed
+				doclet.summary += '.';
+			}
 
 			// This is an excerpt of something that is possibly HTML.
 			// Balance it using a stack. Assume it was initially balanced.
