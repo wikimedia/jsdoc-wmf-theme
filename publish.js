@@ -686,6 +686,9 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 			outdir = path.join( outdir, packageInfo.name, ( packageInfo.version || '' ) );
 		}
 	}
+	if ( !env.conf.templates.wmf.repository ) {
+		logger.warn( 'No contribution link found (in package.json>repository.url, or jsdoc.json>templates.wmf.repository)' );
+	}
 	fs.mkPath( outdir );
 
 	const fromDir = path.join( templatePath, 'static' );
