@@ -6,6 +6,11 @@
 	--spacing-toggle-box-icon-margin: 0.8rem;
 }
 
+.toggle-all {
+	cursor: pointer;
+	float: right;
+}
+
 .description {
 	margin-bottom: 2em;
 	margin-top: 0;
