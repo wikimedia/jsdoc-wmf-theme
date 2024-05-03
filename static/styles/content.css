@@ -304,16 +304,16 @@ We need this margin top on both for consistency. */
 	display: inline-block;
 	flex-shrink: 0;
 	content: '';
-	background-image: url( ./checkbox-style.png );
+	background-image: url( ./expand.svg );
 	background-repeat: no-repeat;
-	background-position: -4px -2px;
+	background-size: contain;
 	width: var( --size-toggle-box-icon );
 	height: var( --size-toggle-box-icon );
 	margin-right: var( --spacing-toggle-box-icon-margin );
 }
 
 .toggle-box[ open ] summary::before {
-	background-position: -4px -26px;
+	background-image: url( ./collapse.svg );
 }
 
 .toggle-box .name {
