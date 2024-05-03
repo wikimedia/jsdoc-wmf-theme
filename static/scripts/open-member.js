@@ -21,3 +21,17 @@ function openMember() {
 		window.scrollTo( 0, y );
 	}
 }
+
+addEventListener( 'DOMContentLoaded', () => {
+	Array.prototype.forEach.call( document.getElementsByClassName( 'toggle-all' ), ( toggleAll ) => {
+		let allOpen = false;
+		toggleAll.addEventListener( 'click', ( e ) => {
+			e.preventDefault();
+			allOpen = !allOpen;
+			Array.prototype.forEach.call( document.getElementsByTagName( 'details' ), ( detail ) => {
+				detail.open = allOpen;
+			} );
+			toggleAll.textContent = allOpen ? 'Collapse all' : 'Expand all';
+		} );
+	} );
+} );
