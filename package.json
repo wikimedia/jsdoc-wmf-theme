@@ -20,7 +20,11 @@
 		"C. Scott Ananian <cscott@cscott.net>",
 		"Prateek Saxena <prtksxna@gmail.com>",
 		"Timo Tijhof <krinklemail@gmail.com>",
-		"Volker E. <volker.e@wikimedia.org>"
+		"Volker E. <volker.e@wikimedia.org>",
+		"Alex Paskulin <apaskulin@wikimedia.org>",
+		"Anne Tomasevich <atomasevich@wikimedia.org>",
+		"Derk-Jan Hartman <hartman.wiki@gmail.com>",
+		"Ed Sanders <esanders@wikimedia.org>"
 	],
 	"license": "Apache-2.0",
 	"bugs": {
