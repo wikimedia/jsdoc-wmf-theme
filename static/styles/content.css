@@ -9,6 +9,7 @@
 .toggle-all {
 	cursor: pointer;
 	float: right;
+	margin-top: 0.5rem;
 }
 
 .description {
