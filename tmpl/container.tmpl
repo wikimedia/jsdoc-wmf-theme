@@ -26,6 +26,7 @@
         <?js= doc.alias || doc.name ?>
     </nav>
     <?js } ?>
+    <a class="toggle-all">Expand all</a>
     <h1 class="page-title"><?js if (doc.attribs) { ?><span class="page-title__attribs"><?js= doc.attribs ?></span><?js } ?>
     <span class="page-title__name"><?js= doc.displayName?></span><?js
         if (doc.variation) { ?>
@@ -48,7 +49,6 @@
 </header>
 
 <article>
-    <a class="toggle-all">Expand all</a>
     <div class="container-overview">
     <?js if (doc.kind === 'module' && doc.modules) { ?>
         <?js if (doc.description) { ?>
