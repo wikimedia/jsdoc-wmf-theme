@@ -1,0 +1,35 @@
+.copy-code-wrapper {
+	position: relative;
+}
+
+.copy-code-wrapper button {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	box-sizing: border-box;
+	padding: 7px 11px 7px 37px;
+	border-radius: var( --border-radius-base );
+	font-family: var( --font-family-system-sans );
+	font-weight: var( --font-weight-bold );
+	color: var( --color-progressive );
+	border: 1px solid var( --border-color-base );
+	background: 11px center no-repeat url( ./copy.svg ) var( --background-color-interactive-subtle );
+}
+
+.copy-code-wrapper button:hover {
+	border-color: var( --border-color-progressive--hover );
+	color: var( --color-progressive--hover );
+}
+
+.copy-code-wrapper button:active {
+	background-color: var( --background-color-progressive--subtle );
+	border-color: var( --border-color-progressive--active );
+	color: var( --color-progressive--active );
+}
+
+.copy-code-wrapper button:focus {
+	background-color: var( --background-color-progressive--focus );
+	border-color: var( --border-color-progressive--hover );
+	box-shadow: var( --box-shadow-color-progressive--focus );
+	color: var( --color-progressive--focus );
+}
