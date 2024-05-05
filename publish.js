@@ -777,10 +777,14 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 		}
 	} );
 
+	// T363523
+	const allowedGlobals = [].concat( opts.allowedGlobals || [] );
+	allowedGlobals.push( 'window' );
+
 	data().each( function ( doclet ) {
 		const isUnexpectedGlobal = doclet && doclet.meta &&
 			doclet.kind !== 'class' && doclet.kind !== 'namespace' &&
-			doclet.scope === 'global' && doclet.name !== 'window';
+			doclet.scope === 'global' && !allowedGlobals.includes( doclet.name );
 		if ( isUnexpectedGlobal ) {
 			throw new Error( `***
 Unexpected global detected. Add the following to a module, namespace, or class:
