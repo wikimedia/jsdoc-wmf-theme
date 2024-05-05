@@ -57,6 +57,10 @@ git push --tags origin
 npm publish
 ```
 
+## Update LibraryUpgrader
+
+Update the theme version in [LibraryUpgrader config](https://gitlab.wikimedia.org/repos/ci-tools/libup-config/-/blob/main/releases.json).
+
 ## Update MediaWiki core and other consumers
 
 Once you've completed the release, you can follow these steps to update the package version used by other projects, such as MediaWiki core.
