@@ -1,5 +1,29 @@
 # Release History
 
+## jsdoc-wmf-theme 1.0.1 (2024-05-05)
+
+* Recognize string literals in types (Tacsipacsi)
+* Add plugin for generating external type links automatically (Ed Sanders)
+* Sort prefix map keys to check longest first (Ed Sanders)
+* Indicate optional parameters with square brackets (Ed Sanders)
+* Summarize plugin: Only add full stop if removed (Ed Sanders)
+* Don't render contribute link when no URL available, and print warning (Ed Sanders)
+* Add an expand/collapse all button (Ed Sanders)
+* Use original SVGs for expand/collapse (Ed Sanders)
+* Support @chainable (Ed Sanders)
+* templates: Align expand all button with h1 (apaskulin)
+* Add copy example button to jsdoc theme (Derk-Jan Hartman)
+* styles: Remove background color from button (apaskulin)
+* Allow allowGlobals configuration option (Jon Robson)
+
+—
+* Move var declarations inline (Ed Sanders)
+* Use ES6 syntax (Ed Sanders)
+* build: Update dependencies, linters and fix (Ed Sanders)
+* Replace IIFEs with ES6 scopes (Ed Sanders)
+* Add a few more people to the author list (Derk-Jan Hartman)
+* docs: Add step to update LibraryUpgrader (apaskulin)
+
 ## jsdoc-wmf-theme 1.0.0 (2024-04-16)
 
 * styles: Remove line separation from source files (apaskulin)
