@@ -28,7 +28,6 @@
 }
 
 .copy-code-wrapper button:focus {
-	background-color: var( --background-color-progressive--focus );
 	border-color: var( --border-color-progressive--hover );
 	box-shadow: var( --box-shadow-color-progressive--focus );
 	color: var( --color-progressive--focus );
