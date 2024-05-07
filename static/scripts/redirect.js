@@ -12,8 +12,23 @@
 		const match = hash.match( regex );
 
 		if ( match ) {
-			const extracted = match[ 1 ];
-			window.location.href = new URL( `${ extracted }.html`, base );
+			let targetHash = '';
+			const extracted = match[ 1 ].replace(
+				/(\.([^-]+))-(?:static-(?:method|property)-(.+)|(?:method|property)-(.+)|.+)$/g,
+				( postfix, keep, className, staticName, instanceName ) => {
+					if ( staticName ) {
+						targetHash = `#.${ staticName }`;
+					} else if ( instanceName ) {
+						if ( instanceName === 'constructor' ) {
+							targetHash = `#${ className }`;
+						} else {
+							targetHash = `#${ instanceName }`;
+						}
+					}
+					return keep;
+				}
+			);
+			window.location.href = new URL( `${ extracted }.html${ targetHash }`, base );
 		}
 	}
 }
