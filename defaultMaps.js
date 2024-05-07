@@ -1,11 +1,12 @@
 'use strict';
 
+// Locally can be overidden to `false` to completely unregister,
+// allowing the matcher to fall through to shorter sub-prefixes,
+// and `true` if the prefix is used locally, so the matcher will
+// recognise it, do nothing, and skip over any shorter sub-prefixes.
 const prefixMap = {
 	'OO.ui.': 'https://doc.wikimedia.org/oojs-ui/master/js/{type}.html',
 	'OO.': 'https://doc.wikimedia.org/oojs/master/{type}.html'
-};
-const prefixMapIgnore = {
-	// e.g 'OO.ui.Something': true
 };
 const linkMap = {
 	// jQuery
@@ -103,6 +104,5 @@ require( './data/webapis' ).forEach( ( type ) => {
 
 module.exports = {
 	prefixMap,
-	prefixMapIgnore,
 	linkMap
 };

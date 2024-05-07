@@ -7,11 +7,8 @@ const conf = require( 'jsdoc/env' ).conf;
 const wmfConf = ( conf.templates && conf.templates.wmf ) || {};
 const defaultMaps = require( '../defaultMaps' );
 const prefixMap = { ...defaultMaps.prefixMap, ...wmfConf.prefixMap };
-const prefixMapIgnore = { ...defaultMaps.prefixMapIgnore, ...wmfConf.prefixMapIgnore };
 const linkMap = { ...defaultMaps.linkMap, ...wmfConf.linkMap };
 
-// Keys can be set to 'false' to remove from the list
-const ignoreList = Object.keys( prefixMapIgnore ).filter( ( key ) => prefixMapIgnore[ key ] );
 // Sort prefixes, longest first
 const prefixMapsKeys = Object.keys( prefixMap ).sort( ( a, b ) => b.length - a.length );
 
@@ -103,8 +100,11 @@ exports.handlers = {
 					// Ignore anything explicitly defined in the linkMap
 					!linkMap[ type ] &&
 					type.startsWith( prefix ) &&
-					ignoreList.every( ( ignore ) => !type.startsWith( ignore ) )
+					prefixMap[ prefix ] !== false
 				) {
+					if ( prefixMap[ prefix ] === true ) {
+						return true;
+					}
 					helper.registerLink( type, prefixMap[ prefix ].replace( /\{type\}/g, type ) );
 					// Break, so we don't match a shorter prefix
 					return true;
