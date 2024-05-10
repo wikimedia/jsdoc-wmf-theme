@@ -4,5 +4,6 @@
 	"node_modules/jsdoc-wmf-theme/plugins/betterlinks",
 	"node_modules/jsdoc-wmf-theme/plugins/externals",
 	"node_modules/jsdoc-wmf-theme/plugins/summarize",
+	"node_modules/jsdoc-wmf-theme/plugins/oojs-static",
 	"node_modules/jsdoc-class-hierarchy"
 ]
