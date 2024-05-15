@@ -70,6 +70,30 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
     <?js= this.partial('details.tmpl', data) ?>
 <?js } ?>
 
+<?js if (data.returns && returns.length) { ?>
+<h4>Returns:</h4>
+<?js if (returns.length > 1) { ?><ul><?js
+    returns.forEach(function(r) { ?>
+        <li><?js= self.partial('returns.tmpl', r) ?></li>
+    <?js });
+?></ul><?js } else {
+    returns.forEach(function(r) { ?>
+        <?js= self.partial('returns.tmpl', r) ?>
+    <?js });
+} } ?>
+
+<?js if (data.yields && yields.length) { ?>
+<h4>Yields:</h4>
+<?js if (yields.length > 1) { ?><ul><?js
+    yields.forEach(function(r) { ?>
+        <li><?js= self.partial('returns.tmpl', r) ?></li>
+    <?js });
+?></ul><?js } else {
+    yields.forEach(function(r) { ?>
+        <?js= self.partial('returns.tmpl', r) ?>
+    <?js });
+} } ?>
+
 <?js if (data.kind !== 'module' && data.requires && data.requires.length) { ?>
 <h4>Requires:</h4>
 <ul><?js data.requires.forEach(function(r) { ?>
@@ -119,30 +143,6 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
 ?></ul><?js } else {
     exceptions.forEach(function(r) { ?>
         <?js= self.partial('exceptions.tmpl', r) ?>
-    <?js });
-} } ?>
-
-<?js if (data.returns && returns.length) { ?>
-<h4>Returns:</h4>
-<?js if (returns.length > 1) { ?><ul><?js
-    returns.forEach(function(r) { ?>
-        <li><?js= self.partial('returns.tmpl', r) ?></li>
-    <?js });
-?></ul><?js } else {
-    returns.forEach(function(r) { ?>
-        <?js= self.partial('returns.tmpl', r) ?>
-    <?js });
-} } ?>
-
-<?js if (data.yields && yields.length) { ?>
-<h4>Yields:</h4>
-<?js if (yields.length > 1) { ?><ul><?js
-    yields.forEach(function(r) { ?>
-        <li><?js= self.partial('returns.tmpl', r) ?></li>
-    <?js });
-?></ul><?js } else {
-    yields.forEach(function(r) { ?>
-        <?js= self.partial('returns.tmpl', r) ?>
     <?js });
 } } ?>
 
