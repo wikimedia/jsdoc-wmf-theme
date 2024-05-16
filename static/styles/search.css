@@ -29,6 +29,7 @@
 	max-height: calc( 100vh - var( --size-header--mobile ) );
 	overflow: auto;
 	box-shadow: var( --box-shadow-drop-medium );
+	z-index: var( --z-index-stacking-1 );
 }
 
 .search-results li {
