@@ -33,11 +33,9 @@ function expandLinks( text, longname ) {
 		conf = ( env.conf.templates && env.conf.templates.betterlinks ) || {},
 		phabBase = conf.phabricator || 'https://phabricator.wikimedia.org/';
 	// Replace shortnames with appropriate longname
-	text = text.replace( /\{\s*@link\s+([#.])([\w$]+)\s*\}/g, function ( m, mod, name ) {
-		return '{@link ' + basename + mod + name + ' ' + mod + name + '}';
-	} );
+	text = text.replace( /\{\s*@link\s+([#.])([\w$]+)\s*\}/g, ( m, mod, name ) => '{@link ' + basename + mod + name + ' ' + mod + name + '}' );
 	// Ensure that things which look like http/https URLs are {@link}-ified
-	text = text.replace( reWeburl, function ( match, _, offset, innerText ) {
+	text = text.replace( reWeburl, ( match, _, offset, innerText ) => {
 		const before = innerText.slice( 0, offset );
 		if ( /(\{@link |@|=['"])$/.test( before ) ) {
 			return match; // don't linkify
@@ -45,9 +43,7 @@ function expandLinks( text, longname ) {
 		return '{@link ' + match + '}';
 	} );
 	if ( /^http/.test( phabBase ) ) {
-		text = text.replace( /\bT\d+\b/g, function ( task ) {
-			return '{@link ' + phabBase + task + ' ' + task + '}';
-		} );
+		text = text.replace( /\bT\d+\b/g, ( task ) => '{@link ' + phabBase + task + ' ' + task + '}' );
 	}
 	return text;
 }
@@ -64,25 +60,21 @@ function shouldProcessString( tagName, text ) {
 }
 
 function expandModule( name, longname ) {
-	return name.replace( /^[:~]/, function () {
-		return longname.replace( /~.*/, '' ) + '~';
-	} );
+	return name.replace( /^[:~]/, () => longname.replace( /~.*/, '' ) + '~' );
 }
 
 function process( doclet, longname ) {
 	if ( Array.isArray( doclet.augments ) ) {
-		doclet.augments = doclet.augments.map( function ( name ) {
-			return expandModule( name, longname );
-		} );
+		doclet.augments = doclet.augments.map( ( name ) => expandModule( name, longname ) );
 	}
-	tags.forEach( function ( tag ) {
+	tags.forEach( ( tag ) => {
 		if ( !hasOwnProp.call( doclet, tag ) ) {
 			return;
 		}
 		if ( typeof doclet[ tag ] === 'string' && shouldProcessString( tag, doclet[ tag ] ) ) {
 			doclet[ tag ] = expandLinks( doclet[ tag ], longname );
 		} else if ( Array.isArray( doclet[ tag ] ) ) {
-			doclet[ tag ].forEach( function ( value, index, original ) {
+			doclet[ tag ].forEach( ( value, index, original ) => {
 				const inner = {};
 
 				inner[ tag ] = value;

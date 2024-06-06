@@ -48,7 +48,7 @@ exports.handlers = {
 			}
 
 			if ( e.doclet.params ) {
-				e.doclet.params.forEach( function ( param ) {
+				e.doclet.params.forEach( ( param ) => {
 					if ( param.type && param.type.names ) {
 						types.push.apply( types, param.type.names );
 					}
@@ -57,7 +57,7 @@ exports.handlers = {
 
 			// Check if the class returns the target class type
 			if ( e.doclet.returns ) {
-				e.doclet.returns.forEach( function ( returnType ) {
+				e.doclet.returns.forEach( ( returnType ) => {
 					if ( returnType.type && returnType.type.names ) {
 						types.push.apply( types, returnType.type.names );
 					}
@@ -66,7 +66,7 @@ exports.handlers = {
 		} else if ( e.doclet.kind === 'function' ) { // Check if this is a function/method
 			// Check if the function/method has parameters with the target class type
 			if ( e.doclet.params ) {
-				e.doclet.params.forEach( function ( param ) {
+				e.doclet.params.forEach( ( param ) => {
 					if ( param.type && param.type.names ) {
 						types.push.apply( types, param.type.names );
 					}
@@ -75,7 +75,7 @@ exports.handlers = {
 
 			// Check if the function/method returns the target class type
 			if ( e.doclet.returns ) {
-				e.doclet.returns.forEach( function ( returnType ) {
+				e.doclet.returns.forEach( ( returnType ) => {
 					if ( returnType.type && returnType.type.names ) {
 						types.push.apply( types, returnType.type.names );
 					}

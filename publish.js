@@ -46,9 +46,7 @@ const domino = require( 'domino' ),
 		if ( isGenericWithArgs ) {
 			const argName = isGenericWithArgs[ 2 ];
 			// Check that the argument is valid
-			const argLink = argName.split( ',' ).map( function ( name ) {
-				return linkto( name.trim(), linkText, cssClass, fragmentId );
-			} ).join( ' ' ).trim();
+			const argLink = argName.split( ',' ).map( ( name ) => linkto( name.trim(), linkText, cssClass, fragmentId ) ).join( ' ' ).trim();
 			if ( argLink !== '' ) {
 				return r;
 			}
@@ -70,7 +68,7 @@ function getAttribs( doclet ) {
 	const attribs = helper.getAttribs( doclet );
 
 	if ( doclet.tags ) {
-		doclet.tags.forEach( function ( tag ) {
+		doclet.tags.forEach( ( tag ) => {
 			if ( tag.originalTitle === 'chainable' ) {
 				attribs.push( 'chainable' );
 			}
@@ -186,16 +184,14 @@ function updateItemName( item ) {
 }
 
 function addParamAttributes( params ) {
-	return params.filter( function ( param ) {
-		return param.name && !param.name.includes( '.' );
-	} ).map( updateItemName );
+	return params.filter( ( param ) => param.name && !param.name.includes( '.' ) ).map( updateItemName );
 }
 
 function buildItemTypeStrings( item ) {
 	const types = [];
 
 	if ( item && item.type && item.type.names ) {
-		item.type.names.forEach( function ( name ) {
+		item.type.names.forEach( ( name ) => {
 			types.push( linkto( name, htmlsafe( name ) ) );
 		} );
 	}
@@ -216,7 +212,7 @@ function buildAttribsString( attribs ) {
 function addNonParamAttributes( items ) {
 	let types = [];
 
-	items.forEach( function ( item ) {
+	items.forEach( ( item ) => {
 		types = types.concat( buildItemTypeStrings( item ) );
 	} );
 
@@ -241,8 +237,8 @@ function addSignatureReturns( f ) {
 	// if there are both nullable and non-nullable return types), but let's assume that most people
 	// who use multiple @return tags aren't using Closure Compiler type annotations, and vice-versa.
 	if ( source ) {
-		source.forEach( function ( item ) {
-			getAttribs( item ).forEach( function ( attrib ) {
+		source.forEach( ( item ) => {
+			getAttribs( item ).forEach( ( attrib ) => {
 				if ( !attribs.includes( attrib ) ) {
 					attribs.push( attrib );
 				}
@@ -272,9 +268,7 @@ function addSignatureTypes( f ) {
 
 function addClassNames( f ) {
 	const attribs = getAttribs( f );
-	let classNames = attribs.map( function ( a ) {
-		return 'method--' + a;
-	} ).join( ' ' );
+	let classNames = attribs.map( ( a ) => 'method--' + a ).join( ' ' );
 	classNames += f.inherited ? ' method--inherited' : '';
 	classNames += f.deprecated ? ' method--deprecated' : '';
 	f.attribsClassName = classNames;
@@ -293,7 +287,7 @@ function addAttribs( f ) {
 }
 
 function shortenPaths( files, commonPrefix ) {
-	Object.keys( files ).forEach( function ( file ) {
+	Object.keys( files ).forEach( ( file ) => {
 		files[ file ].shortened = files[ file ].resolved.replace( commonPrefix, '' )
 			// always use forward slashes
 			.replace( /\\/g, '/' );
@@ -337,7 +331,7 @@ function generate( title, docs, filename, resolveLinks ) {
 
 function generateSourceFiles( sourceFiles, encoding ) {
 	encoding = encoding || 'utf8';
-	Object.keys( sourceFiles ).forEach( function ( file ) {
+	Object.keys( sourceFiles ).forEach( ( file ) => {
 		let source;
 		// links are keyed to the shortened path in each doclet's `meta.shortpath` property
 		const sourceOutfile = helper.getUniqueFilename( sourceFiles[ file ].shortened );
@@ -373,20 +367,18 @@ function attachModuleSymbols( doclets, modules ) {
 	const symbols = {};
 
 	// build a lookup table
-	doclets.forEach( function ( symbol ) {
+	doclets.forEach( ( symbol ) => {
 		symbols[ symbol.longname ] = symbols[ symbol.longname ] || [];
 		symbols[ symbol.longname ].push( symbol );
 	} );
 
-	modules.forEach( function ( module ) {
+	modules.forEach( ( module ) => {
 		if ( symbols[ module.longname ] ) {
 			module.modules = symbols[ module.longname ]
 				// Only show symbols that have a description. Make an exception for classes, because
 				// we want to show the constructor-signature heading no matter what.
-				.filter( function ( symbol ) {
-					return symbol.description || symbol.kind === 'class';
-				} )
-				.map( function ( symbol ) {
+				.filter( ( symbol ) => symbol.description || symbol.kind === 'class' )
+				.map( ( symbol ) => {
 					symbol = doop( symbol );
 
 					if ( symbol.kind === 'class' || symbol.kind === 'function' ) {
@@ -438,7 +430,7 @@ function buildMemberNav( parent, items, itemHeading, itemsSeen, linktoFn, depth,
 		ul.classList.add( 'nav__sub-items' );
 		li.appendChild( ul );
 
-		items.forEach( function ( item ) {
+		items.forEach( ( item ) => {
 			let displayName;
 			// Limit the navigation to items that match the requested depth.
 			if ( depth !== undefined ) {
@@ -616,7 +608,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 
 	// Manually-requested links (to external documentation)
 	conf.wmf.linkMap = conf.wmf.linkMap || {};
-	Object.keys( conf.wmf.linkMap ).forEach( function ( longname ) {
+	Object.keys( conf.wmf.linkMap ).forEach( ( longname ) => {
 		addAlias( longname, conf.wmf.linkMap[ longname ] );
 	} );
 
@@ -633,13 +625,13 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	data.sort( 'longname, version, since' );
 	helper.addEventListeners( data );
 
-	data().each( function ( doclet ) {
+	data().each( ( doclet ) => {
 		let sourcePath;
 
 		doclet.attribs = '';
 
 		if ( doclet.examples ) {
-			doclet.examples = doclet.examples.map( function ( example ) {
+			doclet.examples = doclet.examples.map( ( example ) => {
 				let $caption,
 					$code;
 
@@ -655,7 +647,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 			} );
 		}
 		if ( doclet.see ) {
-			doclet.see.forEach( function ( seeItem, i ) {
+			doclet.see.forEach( ( seeItem, i ) => {
 				doclet.see[ i ] = hashToLink( doclet, seeItem );
 			} );
 		}
@@ -701,7 +693,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 
 	// copy the template's static files to outdir
 	const staticFiles = fs.ls( fromDir, 4 );
-	staticFiles.forEach( function ( fileName ) {
+	staticFiles.forEach( ( fileName ) => {
 		const toDir = fs.toDir( fileName.replace( fromDir, outdir ) );
 
 		fs.mkPath( toDir );
@@ -720,11 +712,11 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 		// eslint-disable-next-line n/no-missing-require
 		const staticFileScanner = new ( require( 'jsdoc/src/scanner' ) ).Scanner();
 
-		staticFilePaths.forEach( function ( filePath ) {
+		staticFilePaths.forEach( ( filePath ) => {
 			filePath = path.resolve( env.pwd, filePath );
 			const extraStaticFiles = staticFileScanner.scan( [ filePath ], 10, staticFileFilter );
 
-			extraStaticFiles.forEach( function ( fileName ) {
+			extraStaticFiles.forEach( ( fileName ) => {
 				const sourcePath = fs.toDir( filePath ),
 					toDir = fs.toDir( fileName.replace( sourcePath, outdir ) );
 
@@ -737,7 +729,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	if ( sourceFilePaths.length ) {
 		sourceFiles = shortenPaths( sourceFiles, path.commonPrefix( sourceFilePaths ) );
 	}
-	data().each( function ( doclet ) {
+	data().each( ( doclet ) => {
 		const url = helper.createLink( doclet );
 
 		helper.registerLink( doclet.longname, url );
@@ -760,7 +752,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 			return pieces.length < 2 ? null : pieces[ 1 ];
 		};
 	// Find ambiguous shortnames
-	Object.keys( helper.longnameToUrl ).forEach( function ( longname ) {
+	Object.keys( helper.longnameToUrl ).forEach( ( longname ) => {
 		const s = shorten( longname );
 		if ( s ) {
 			// Prefix '$' so we don't conflict w/ built-ins like 'prototype'
@@ -768,7 +760,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 		}
 	} );
 	// Ok, add non-ambiguous shortnames
-	Object.keys( helper.longnameToUrl ).forEach( function ( longname ) {
+	Object.keys( helper.longnameToUrl ).forEach( ( longname ) => {
 		const s = shorten( longname );
 		if ( s && count[ '$' + s ] === 1 ) {
 			addAlias( s, helper.longnameToUrl[ longname ] );
@@ -781,7 +773,7 @@ exports.publish = function ( taffyData, opts, tutorials ) {
 	const allowedGlobals = [].concat( opts.allowedGlobals || [] );
 	allowedGlobals.push( 'window' );
 
-	data().each( function ( doclet ) {
+	data().each( ( doclet ) => {
 		const isUnexpectedGlobal = doclet && doclet.meta &&
 			doclet.kind !== 'class' && doclet.kind !== 'namespace' &&
 			doclet.scope === 'global' && !allowedGlobals.includes( doclet.name );
@@ -812,7 +804,7 @@ See https://www.mediawiki.org/wiki/JSDoc#Globals
 	} );
 
 	// do this after the urls have all been generated
-	data().each( function ( doclet ) {
+	data().each( ( doclet ) => {
 		doclet.breadcrumbLinks = getAncestorLinks( doclet );
 
 		doclet.displayName = doclet.longname.replace( /\b(module|event):/g, '' );
@@ -900,7 +892,7 @@ See https://www.mediawiki.org/wiki/JSDoc#Globals
 	const externals = taffy( members.externals );
 	const interfaces = taffy( members.interfaces );
 
-	Object.keys( helper.longnameToUrl ).forEach( function ( longname ) {
+	Object.keys( helper.longnameToUrl ).forEach( ( longname ) => {
 		if ( hasOwnProp.call( aliases, longname ) ) {
 			return; /* skip alias */
 		}
@@ -965,7 +957,7 @@ See https://www.mediawiki.org/wiki/JSDoc#Globals
 
 	// tutorials can have only one parent so there is no risk for loops
 	function saveChildren( node ) {
-		node.children.forEach( function ( child ) {
+		node.children.forEach( ( child ) => {
 			generateTutorial( 'Tutorial: ' + child.title, child, helper.tutorialToUrl( child.name ) );
 			saveChildren( child );
 		} );

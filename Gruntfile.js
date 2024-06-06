@@ -9,7 +9,8 @@ module.exports = function gruntConfig( grunt ) {
 
 		eslint: {
 			options: {
-				fix: grunt.option( 'fix' )
+				fix: grunt.option( 'fix' ),
+				cache: true
 			},
 			all: [ '.' ]
 		},

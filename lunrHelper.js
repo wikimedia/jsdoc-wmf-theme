@@ -13,7 +13,7 @@ exports.makeIndex = function ( data ) {
 		documents = [];
 
 	// Collect only the data we need to search
-	data.each( function ( doclet ) {
+	data.each( ( doclet ) => {
 		if ( doclet.meta && doclet.breadcrumbLinks.length === 0 && doclet.name !== 'window' ) {
 			return;
 		}

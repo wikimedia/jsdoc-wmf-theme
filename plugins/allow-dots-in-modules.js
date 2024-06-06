@@ -13,9 +13,7 @@
  */
 exports.handlers = {
 	beforeParse: function ( e ) {
-		e.source = e.source.replaceAll( /@(module|exports) .+/g, function ( m ) {
-			return m.replaceAll( '.', '(DOT)' );
-		} );
+		e.source = e.source.replaceAll( /@(module|exports) .+/g, ( m ) => m.replaceAll( '.', '(DOT)' ) );
 	},
 
 	newDoclet: function ( e ) {

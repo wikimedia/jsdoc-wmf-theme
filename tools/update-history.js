@@ -14,7 +14,7 @@ if ( /\+git$/.test( version ) ) {
 		'## jsdoc-wmf-theme x.x.x (not yet released)\n\n'
 	);
 } else {
-	history = history.replace( /^## jsdoc-wmf-theme x\.x\.x.*$/m, function () {
+	history = history.replace( /^## jsdoc-wmf-theme x\.x\.x.*$/m, () => {
 		const today = new Date();
 		const fmt = new Intl.DateTimeFormat( 'en-GB', {
 			day: 'numeric',

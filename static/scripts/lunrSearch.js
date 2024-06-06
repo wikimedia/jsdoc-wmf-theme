@@ -72,16 +72,12 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 	function getResults( results ) {
 		// Get details of results
-		resultDocs = docs.filter( ( d ) => {
-			return results.indexOf( d.id ) > -1;
-		} ).map( ( d ) => {
-			return {
-				id: d.id,
-				name: d.name,
-				longname: d.longname,
-				summary: d.summary || ''
-			};
-		} );
+		resultDocs = docs.filter( ( d ) => results.indexOf( d.id ) > -1 ).map( ( d ) => ( {
+			id: d.id,
+			name: d.name,
+			longname: d.longname,
+			summary: d.summary || ''
+		} ) );
 
 		// Add results to the <ul>
 		resultsEl.innerHTML = '';
@@ -133,9 +129,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		let a = r1.concat( r2 );
 
 		// Remove scores and metadata before looking for uniques
-		a = a.map( ( r ) => {
-			return r.ref;
-		} );
+		a = a.map( ( r ) => r.ref );
 
 		// Keep uniques
 		for ( let i = 0; i < a.length; ++i ) {
