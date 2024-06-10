@@ -1,5 +1,24 @@
 # Release History
 
+## jsdoc-wmf-theme 1.1.0 (2024-06-10)
+
+* Make prefixMapIgnore an object so values can also be unset (Ed Sanders)
+* Specify more defaults in linkMap and prefixMap (Ed Sanders)
+* templates: Fix bug displaying too many breadcrumb levels (apaskulin)
+* js: Fix redirecting for links to methods, properties, and events (jwbth)
+* method.tmpl: Move returns/yields to top of list, after parameters (Ed Sanders)
+* Add dependency on jsdoc-class-hierarchy by default (James D. Forrester)
+* Fix hidden search results list (Novem Linguae)
+* templates: Use title from README (apaskulin)
+* Create a single "default" plugin that loads the standard list (Ed Sanders)
+* Upstream support for .static from OOJS (Ed Sanders)
+* Merge prefixMap and prefixMapIgnore (Ed Sanders)
+* Fix prefixMap/linkMap overrides (Ed Sanders)
+
+—
+* build: Updating npm dependencies (libraryupgrader)
+* docs: Add step for modifying local plugin config (apaskulin)
+
 ## jsdoc-wmf-theme 1.0.1 (2024-05-05)
 
 * Recognize string literals in types (Tacsipacsi)
