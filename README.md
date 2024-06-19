@@ -19,6 +19,13 @@ In your `jsdoc.json` file, add a template option.
 }
 ```
 
+To load the standard set of plugins, use:
+```json
+"plugins": {
+  "node_modules/jsdoc-wmf-theme/plugins/default"
+}
+```
+
 ### Options
 For information about options and plugins, see the [wiki page](https://www.mediawiki.org/wiki/Special:MyLanguage/JSDoc).
 
@@ -55,6 +62,13 @@ cd ..
 #### Point to your local theme
 In your local repository that uses JSDoc, edit the JSDoc config file (either `jsdoc.js` or
 `.jsdoc.json`) and change the template to `../wmf-theme`.
+
+#### Edit defaultPlugins.json
+In your local wmf-theme repository, edit defaultPlugins.json to point to the local plugins.
+
+- For theme plugins, replace `node_modules/jsdoc-wmf-theme/` with `../wmf-theme/`.
+- For third-party plugins, replace `node_modules/` with `../wmf-theme/node_modules/`.
+- JSDoc plugins (starting with `plugins/`) can remain unchanged.
 
 #### Build and view your local docs
 Build the docs in your test repo and view the generated site in the browser. E.g. for MediaWiki
