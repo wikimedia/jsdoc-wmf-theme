@@ -60,8 +60,11 @@ cd ..
 ```
 
 #### Point to your local theme
-In your local repository that uses JSDoc, edit the JSDoc config file (either `jsdoc.js` or
-`.jsdoc.json`) and change the template to `../wmf-theme`.
+In your local repository that uses JSDoc, edit the JSDoc config file (either `jsdoc.json` or
+`.jsdoc.json`):
+
+- Change the template to `../wmf-theme`.
+- Change the plugins to point to `../wmf-theme`. For example, for the default plugin set, use `../wmf-theme/plugins/default`.
 
 #### Edit defaultPlugins.json
 In your local wmf-theme repository, edit defaultPlugins.json to point to the local plugins.
