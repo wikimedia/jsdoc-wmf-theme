@@ -477,7 +477,7 @@ function linktoExternal( longName, name ) {
 function buildMemberNavIfConf( nav, member, name, seen, linktoFn, depth, href ) {
 	if (
 		env.conf.templates.wmf.hideSections === undefined ||
-	!env.conf.templates.wmf.hideSections.includes( name )
+		!env.conf.templates.wmf.hideSections.includes( name )
 	) {
 		buildMemberNav( nav, member, name, seen, linktoFn, depth, href );
 	}

@@ -3,11 +3,20 @@
 // eslint-disable-next-line n/no-missing-require
 const helper = require( 'jsdoc/util/templateHelper' );
 // eslint-disable-next-line n/no-missing-require
-const conf = require( 'jsdoc/env' ).conf;
-const wmfConf = ( conf.templates && conf.templates.wmf ) || {};
+const { conf } = require( 'jsdoc/env' );
+// If no wmf config exists, we need to initialise it in-place
+conf.templates = conf.templates || {};
+conf.templates.wmf = conf.templates.wmf || {};
+const wmfConf = conf.templates.wmf;
+
+// Copy from wmfConf to defaultMaps (to override defaults) then back
+// to wmfConf to modify the original config object (which is also
+// loaded later in publish.js)
 const defaultMaps = require( '../defaultMaps' );
-const prefixMap = { ...defaultMaps.prefixMap, ...wmfConf.prefixMap };
-const linkMap = { ...defaultMaps.linkMap, ...wmfConf.linkMap };
+wmfConf.linkMap = { ...defaultMaps.linkMap, ...wmfConf.linkMap };
+wmfConf.prefixMap = { ...defaultMaps.prefixMap, ...wmfConf.prefixMap };
+
+const { prefixMap, linkMap } = wmfConf;
 
 // Sort prefixes, longest first
 const prefixMapsKeys = Object.keys( prefixMap ).sort( ( a, b ) => b.length - a.length );
