@@ -1,6 +1,6 @@
 # Release History
 
-## jsdoc-wmf-theme 1.1.0 (2024-06-10)
+## jsdoc-wmf-theme 1.1.0 (2024-06-25)
 
 * Make prefixMapIgnore an object so values can also be unset (Ed Sanders)
 * Specify more defaults in linkMap and prefixMap (Ed Sanders)
