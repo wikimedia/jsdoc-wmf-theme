@@ -19,7 +19,7 @@ const linkMap = {
 
 // Standard built-in objects
 [
-	// https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects
+	// Scraped from https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects
 	// Fundamental objects
 	'Object',
 	'Function',
@@ -98,6 +98,7 @@ const linkMap = {
 } );
 
 // Web APIs
+// Scraped from https://developer.mozilla.org/en-US/docs/Web/API#interfaces
 require( './data/webapis' ).forEach( ( type ) => {
 	linkMap[ type ] = `https://developer.mozilla.org/docs/Web/API/${ type }`;
 } );
