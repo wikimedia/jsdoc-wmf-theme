@@ -33,15 +33,12 @@
 	"homepage": "https://gerrit.wikimedia.org/g/jsdoc/wmf-theme/+/refs/heads/master/README.md",
 	"files": [
 		"fixtures",
+		"plugins",
+		"src",
 		"static",
 		"tmpl",
-		"data",
-		"defaultMaps.js",
-		"lunrHelper.js",
 		"publish.js",
-		"HISTORY.md",
-		"plugins",
-		"defaultPlugins.json"
+		"HISTORY.md"
 	],
 	"dependencies": {
 		"@jsdoc/salty": "^0.2.8",

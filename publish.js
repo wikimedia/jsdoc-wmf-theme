@@ -17,7 +17,7 @@ const domino = require( 'domino' ),
 	/* eslint-enable n/no-missing-require */
 	taffy = require( '@jsdoc/salty' ).taffy,
 	util = require( 'util' ),
-	lunrHelper = require( './lunrHelper' ),
+	lunrHelper = require( './src/lunrHelper' ),
 
 	rLiteral = /^(null|undefined|true|false|NaN|Infinity|'[^']*')$/,
 	// These are built-in types and classes in ECMAScript.

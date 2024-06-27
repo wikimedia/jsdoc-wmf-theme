@@ -12,7 +12,7 @@ const wmfConf = conf.templates.wmf;
 // Copy from wmfConf to defaultMaps (to override defaults) then back
 // to wmfConf to modify the original config object (which is also
 // loaded later in publish.js)
-const defaultMaps = require( '../defaultMaps' );
+const defaultMaps = require( '../src/defaultMaps' );
 wmfConf.linkMap = { ...defaultMaps.linkMap, ...wmfConf.linkMap };
 wmfConf.prefixMap = { ...defaultMaps.prefixMap, ...wmfConf.prefixMap };
 

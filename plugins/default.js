@@ -6,7 +6,7 @@ const app = require( 'jsdoc/app' ),
 	plugins = require( 'jsdoc/plugins' ),
 	// eslint-disable-next-line n/no-missing-require
 	path = require( 'jsdoc/path' ),
-	defaultPlugins = require( '../defaultPlugins' );
+	defaultPlugins = require( '../src/defaultPlugins' );
 
 plugins.installPlugins(
 	defaultPlugins.map(

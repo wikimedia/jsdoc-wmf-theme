@@ -62,7 +62,7 @@ describe( 'Externals plugin', () => {
 	];
 
 	const mocks = {
-		'../defaultMaps': defaultMaps,
+		'../src/defaultMaps': defaultMaps,
 		'jsdoc/util/templateHelper': {},
 		'jsdoc/tag/type': {}
 	};
