@@ -42,6 +42,9 @@ function pushTypesFromList( types, list ) {
 	} );
 }
 
+// eslint-disable-next-line security/detect-unsafe-regex
+const typeAndMethodPattern = /^[a-z0-9.]+(#[^ }]+)?$/i;
+
 /**
  * Automatically register links to known external types when they are encountered
  */
@@ -71,6 +74,17 @@ exports.handlers = {
 			if ( e.doclet.returns ) {
 				pushTypesFromList( rawTypes, e.doclet.returns );
 			}
+
+		}
+
+		if ( e.doclet.see ) {
+			e.doclet.see.forEach( ( name ) => {
+				// @see can bee a full text description, but we also commonly
+				// use `@see Type` or `@see Type#method`, so support this as well.
+				if ( name && typeAndMethodPattern.test( name ) ) {
+					rawTypes.add( name );
+				}
+			} );
 		}
 
 		utils.processText( e.doclet, ( text ) => {
@@ -84,7 +98,7 @@ exports.handlers = {
 		} );
 
 		const types = Array.from( rawTypes ).reduce( ( acc, val ) => {
-			if ( /^[a-z0-9.]+(#[^ }]+)?$/i.test( val ) ) {
+			if ( typeAndMethodPattern.test( val ) ) {
 				// Optimisation: If the type is (namespaced) alphanumeric, then
 				// the value itself is the type, e.g. 'foo.bar.Baz1'
 				acc.push( val );
