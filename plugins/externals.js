@@ -75,7 +75,7 @@ exports.handlers = {
 
 		utils.processText( e.doclet, ( text ) => {
 			// eslint-disable-next-line security/detect-unsafe-regex
-			const linkPattern = /\{\s*@link\s+([a-z0-9.]+)[ }]/ig;
+			const linkPattern = /\{\s*@link\s+([a-z0-9.]+(#[^ }]+)?)[ }]/ig;
 			let match;
 			while ( ( match = linkPattern.exec( text ) ) !== null ) {
 				rawTypes.add( match[ 1 ] );
@@ -84,7 +84,7 @@ exports.handlers = {
 		} );
 
 		const types = Array.from( rawTypes ).reduce( ( acc, val ) => {
-			if ( /^[a-z0-9.]+$/i.test( val ) ) {
+			if ( /^[a-z0-9.]+(#[^ }]+)?$/i.test( val ) ) {
 				// Optimisation: If the type is (namespaced) alphanumeric, then
 				// the value itself is the type, e.g. 'foo.bar.Baz1'
 				acc.push( val );
@@ -97,18 +97,29 @@ exports.handlers = {
 			return acc;
 		}, [] );
 
-		types.forEach( ( type ) => {
+		types.forEach( ( fullType ) => {
+			const [ type, method ] = fullType.split( '#' );
 			prefixMapsKeys.some( ( prefix ) => {
+				const prefixMapTarget = prefixMap[ prefix ];
 				if (
 					// Ignore anything explicitly defined in the linkMap
 					!linkMap[ type ] &&
 					type.startsWith( prefix ) &&
-					prefixMap[ prefix ] !== false
+					prefixMapTarget !== false
 				) {
-					if ( prefixMap[ prefix ] === true ) {
+					if ( prefixMapTarget === true ) {
 						return true;
 					}
-					helper.registerLink( type, prefixMap[ prefix ].replace( /\{type\}/g, type ) );
+					let hash = '';
+					if ( method && !prefixMapTarget.includes( '#' ) ) {
+						// If the type contains a #method, the pefix map target doesn't
+						// contain a hashlink, assume that we can get to the method using
+						// #<method> (in the default JSDoc style).
+						// TODO: Come up with a notation for the linkMap that allows for
+						// more complex mappings.
+						hash = '#' + method;
+					}
+					helper.registerLink( fullType, prefixMapTarget.replace( /\{type\}/g, type ) + hash );
 					// Break, so we don't match a shorter prefix
 					return true;
 				}
