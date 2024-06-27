@@ -1,5 +1,6 @@
 'use strict';
 
+const utils = require( '../src/utils' );
 // eslint-disable-next-line n/no-missing-require
 const helper = require( 'jsdoc/util/templateHelper' );
 // eslint-disable-next-line n/no-missing-require
@@ -71,6 +72,16 @@ exports.handlers = {
 				pushTypesFromList( rawTypes, e.doclet.returns );
 			}
 		}
+
+		utils.processText( e.doclet, ( text ) => {
+			// eslint-disable-next-line security/detect-unsafe-regex
+			const linkPattern = /\{\s*@link\s+([a-z0-9.]+)[ }]/ig;
+			let match;
+			while ( ( match = linkPattern.exec( text ) ) !== null ) {
+				rawTypes.add( match[ 1 ] );
+			}
+			return text;
+		} );
 
 		const types = Array.from( rawTypes ).reduce( ( acc, val ) => {
 			if ( /^[a-z0-9.]+$/i.test( val ) ) {
