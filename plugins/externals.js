@@ -33,63 +33,46 @@ function extractNames( parsedType, names = [] ) {
 	return names;
 }
 
+function pushTypesFromList( types, list ) {
+	list.forEach( ( node ) => {
+		if ( node.type && node.type.names ) {
+			node.type.names.forEach( ( name ) => types.add( name ) );
+		}
+	} );
+}
+
 /**
  * Automatically register links to known external types when they are encountered
  */
 exports.handlers = {
 	newDoclet: function ( e ) {
-		let types = [];
+		const rawTypes = new Set();
 
 		if ( e.doclet.kind === 'class' ) {
 			if ( e.doclet.augments ) {
-				types.push.apply( types, e.doclet.augments );
+				e.doclet.augments.forEach( ( name ) => rawTypes.add( name ) );
 			}
 
 			if ( e.doclet.implements ) {
-				types.push.apply( types, e.doclet.implements );
+				e.doclet.implements.forEach( ( name ) => rawTypes.add( name ) );
 			}
 
 			if ( e.doclet.mixes ) {
-				types.push.apply( types, e.doclet.mixes );
-			}
-
-			if ( e.doclet.params ) {
-				e.doclet.params.forEach( ( param ) => {
-					if ( param.type && param.type.names ) {
-						types.push.apply( types, param.type.names );
-					}
-				} );
-			}
-
-			// Check if the class returns the target class type
-			if ( e.doclet.returns ) {
-				e.doclet.returns.forEach( ( returnType ) => {
-					if ( returnType.type && returnType.type.names ) {
-						types.push.apply( types, returnType.type.names );
-					}
-				} );
-			}
-		} else if ( e.doclet.kind === 'function' ) { // Check if this is a function/method
-			// Check if the function/method has parameters with the target class type
-			if ( e.doclet.params ) {
-				e.doclet.params.forEach( ( param ) => {
-					if ( param.type && param.type.names ) {
-						types.push.apply( types, param.type.names );
-					}
-				} );
-			}
-
-			// Check if the function/method returns the target class type
-			if ( e.doclet.returns ) {
-				e.doclet.returns.forEach( ( returnType ) => {
-					if ( returnType.type && returnType.type.names ) {
-						types.push.apply( types, returnType.type.names );
-					}
-				} );
+				e.doclet.mixes.forEach( ( name ) => rawTypes.add( name ) );
 			}
 		}
 
-		types = types.reduce( ( acc, val ) => {
+		if ( e.doclet.kind === 'class' || e.doclet.kind === 'function' ) {
+			if ( e.doclet.params ) {
+				pushTypesFromList( rawTypes, e.doclet.params );
+			}
+
+			if ( e.doclet.returns ) {
+				pushTypesFromList( rawTypes, e.doclet.returns );
+			}
+		}
+
+		const types = Array.from( rawTypes ).reduce( ( acc, val ) => {
 			if ( /^[a-z0-9.]+$/i.test( val ) ) {
 				// Optimisation: If the type is (namespaced) alphanumeric, then
 				// the value itself is the type, e.g. 'foo.bar.Baz1'
@@ -98,7 +81,7 @@ exports.handlers = {
 				// A more complex type, parse and extract types recursively,
 				// e.g. 'Object.<string,Foo[]>'
 				const parsedType = parseType( '{' + val + '}', false, true ).parsedType;
-				acc.push.apply( acc, extractNames( parsedType ) );
+				acc.push( ...extractNames( parsedType ) );
 			}
 			return acc;
 		}, [] );
