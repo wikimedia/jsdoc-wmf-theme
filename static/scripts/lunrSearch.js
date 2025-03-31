@@ -72,7 +72,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 	function getResults( results ) {
 		// Get details of results
-		resultDocs = docs.filter( ( d ) => results.indexOf( d.id ) > -1 ).map( ( d ) => ( {
+		resultDocs = docs.filter( ( d ) => results.includes( d.id ) ).map( ( d ) => ( {
 			id: d.id,
 			name: d.name,
 			longname: d.longname,

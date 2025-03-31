@@ -1,7 +1,6 @@
 'use strict';
 
 // We can use .replaceAll since Node.js 15
-/* eslint-disable es-x/no-string-prototype-replaceall */
 
 /**
  * JSDoc incorrectly handles dots in 'module' annotations. When the module name includes any dots,
