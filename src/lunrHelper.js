@@ -9,8 +9,8 @@ const lunr = require( 'lunr' ),
 	helper = require( 'jsdoc/util/templateHelper' );
 
 exports.makeIndex = function ( data ) {
-	const outdir = path.normalize( env.opts.destination ),
-		documents = [];
+	const outdir = path.normalize( env.opts.destination );
+	const documents = {};
 
 	// Collect only the data we need to search
 	data.each( ( doclet ) => {
@@ -22,8 +22,8 @@ exports.makeIndex = function ( data ) {
 		if ( doclet.longname.includes( 'anonymous' ) ) {
 			return;
 		}
-
-		documents.push( {
+		const id = helper.longnameToUrl[ doclet.longname ];
+		documents[ id ] = {
 			id: helper.longnameToUrl[ doclet.longname ],
 			kind: doclet.kind,
 			title: doclet.pageTitle,
@@ -31,7 +31,7 @@ exports.makeIndex = function ( data ) {
 			name: doclet.name,
 			summary: doclet.summary,
 			description: doclet.classdesc || doclet.description
-		} );
+		};
 	} );
 
 	// Build index and add data
@@ -44,9 +44,9 @@ exports.makeIndex = function ( data ) {
 			this.field( 'description', { boost: 50 } );
 			this.ref( 'id' );
 
-			documents.forEach( function ( doc ) {
-				this.add( doc );
-			}, this );
+			for ( const id in documents ) {
+				this.add( documents[ id ] );
+			}
 		} ),
 
 		// Write JSON and JS files

@@ -71,8 +71,9 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	}
 
 	function getResults( results ) {
-		// Get details of results
-		resultDocs = docs.filter( ( d ) => results.includes( d.id ) ).map( ( d ) => ( {
+		// Map result refs back to doc and their details
+		// This must preserve the order of the results array (T405317)
+		resultDocs = results.map( ( id ) => docs[ id ] ).map( ( d ) => ( {
 			id: d.id,
 			name: d.name,
 			longname: d.longname,
