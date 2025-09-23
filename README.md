@@ -48,12 +48,12 @@ mkdir jsdoc-test
 cd jsdoc-test
 
 # Download a repository that uses JSDoc. Either MediaWiki core...
-git clone ssh://yourUserName@gerrit.wikimedia.org:29418/mediawiki/core
+git clone https://gerrit.wikimedia.org/r/mediawiki/core
 # ...or OOJS (or another repo of your choosing).
-git clone ssh://yourUserName@gerrit.wikimedia.org:29418/oojs/core
+git clone https://gerrit.wikimedia.org/r/oojs/core
 
 # Get the JSDoc theme
-git clone --recurse-submodules ssh://yourUserName@gerrit.wikimedia.org:29418/jsdoc/wmf-theme
+git clone https://gerrit.wikimedia.org/r/jsdoc/wmf-theme
 cd wmf-theme
 npm install
 cd ..
