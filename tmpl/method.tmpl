@@ -66,10 +66,6 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
     <?js= this.partial('params.tmpl', params) ?>
 <?js } ?>
 
-<?js if (!data.hideconstructor) { ?>
-    <?js= this.partial('details.tmpl', data) ?>
-<?js } ?>
-
 <?js if (data.returns && returns.length) { ?>
 <h4>Returns:</h4>
 <?js if (returns.length > 1) { ?><ul><?js
@@ -145,6 +141,10 @@ if ( ( data.kind !== 'module' && !data.hideconstructor ) && data.kind !== 'names
         <?js= self.partial('exceptions.tmpl', r) ?>
     <?js });
 } } ?>
+
+<?js if (!data.hideconstructor) { ?>
+    <?js= this.partial('details.tmpl', data) ?>
+<?js } ?>
 
 </div>
 

@@ -93,6 +93,7 @@
 .details {
 	margin-top: 14px;
 	border-left: var( --border-width-thick ) var( --border-style-base ) var( --border-color-light );
+	font-size: var( --font-size-small );
 }
 
 .details dt {
