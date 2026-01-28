@@ -1,5 +1,38 @@
 # Release History
 
+## jsdoc-wmf-theme 1.2.0 (2026-01-28)
+
+* plugins/externals: Cleanup type extraction code (Ed Sanders)
+* externals.js: Process {@link} targets and register found types (Ed Sanders)
+* externals.js: Support link to external methods (Ed Sanders)
+* externals.js: Search @see for external types (Ed Sanders)
+* build: auto-install JSDoc (Novem Linguae)
+* search: Fix lost role=listbox attribute (Timo Tijhof)
+* Actually apply search ranking and relevant/importance boosting (Timo Tijhof)
+* templates: De-emphasize details section (apaskulin)
+
+—
+* docs: Fix date on v1.1.0 release (apaskulin)
+* Add tests for externals.js config manipulation (Ed Sanders)
+* Document where MDN APIs are scraped from (Ed Sanders)
+* Move source files to /src (Ed Sanders)
+* Factor out text processing utility from betterlink.js (Ed Sanders)
+* build: Updating micromatch to 4.0.8 (libraryupgrader)
+* build: Updating cross-spawn to 7.0.6 (libraryupgrader)
+* build: Updating nanoid to 3.3.8 (libraryupgrader)
+* build: Updating stylelint-config-wikimedia to 0.18.0 (libraryupgrader)
+* build: Updating mocha to 10.8.2 (libraryupgrader)
+* build: Updating eslint-config-wikimedia to 0.29.1 (libraryupgrader)
+* build: Updating eslint-config-wikimedia to 0.30.0 (libraryupgrader)
+* build: Updating brace-expansion to 1.1.12, 2.0.2 (libraryupgrader)
+* build: Updating eslint-config-wikimedia to 0.31.0 (libraryupgrader)
+* build: Updating eslint-config-wikimedia to 0.32.1 (libraryupgrader)
+* build: Updating eslint-config-wikimedia to 0.32.2 (libraryupgrader)
+* docs: Remove mention of ssh://yourUserName from Git instructions (Timo Tijhof)
+* build: Updating eslint-config-wikimedia to 0.32.3 (libraryupgrader)
+* Raise minimum jsdoc version from 4.0.4 to 4.0.5 (James D. Forrester)
+* build: Updating npm dependencies (libraryupgrader)
+
 ## jsdoc-wmf-theme 1.1.0 (2024-06-25)
 
 * Make prefixMapIgnore an object so values can also be unset (Ed Sanders)
