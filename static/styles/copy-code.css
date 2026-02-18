@@ -3,32 +3,34 @@
 }
 
 .copy-code-wrapper button {
+	cursor: pointer;
 	position: absolute;
 	top: 4px;
 	right: 4px;
 	box-sizing: border-box;
-	padding: 7px 11px 7px 37px;
+	min-height: 32px;
+	padding: 1px 11px 1px 37px;
 	border-radius: var( --border-radius-base );
 	font-family: var( --font-family-system-sans );
 	font-weight: var( --font-weight-bold );
-	color: var( --color-progressive );
-	border: 1px solid var( --border-color-base );
+	color: var( --color-base );
+	border: 1px solid var( --border-color-interactive );
 	background: 11px center no-repeat url( ./copy.svg ) var( --background-color-interactive-subtle );
+	transition-property: background-color, color, border-color, box-shadow;
+	transition-duration: var( --transition-duration-base );
 }
 
 .copy-code-wrapper button:hover {
-	border-color: var( --border-color-progressive--hover );
-	color: var( --color-progressive--hover );
+	background-color: var( --background-color-interactive-subtle--hover );
+	border-color: var( --border-color-interactive--hover );
 }
 
 .copy-code-wrapper button:active {
-	background-color: var( --background-color-progressive--subtle );
-	border-color: var( --border-color-progressive--active );
-	color: var( --color-progressive--active );
+	background-color: var( --background-color-interactive-subtle--active );
+	border-color: var( --border-color-interactive--active );
 }
 
 .copy-code-wrapper button:focus {
-	border-color: var( --border-color-progressive--hover );
-	box-shadow: var( --box-shadow-color-progressive--focus );
-	color: var( --color-progressive--focus );
+	border-color: var( --border-color-progressive--focus );
+	box-shadow: inset 0 0 0 1px var( --box-shadow-color-progressive--focus );
 }
