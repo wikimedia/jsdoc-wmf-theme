@@ -1,5 +1,5 @@
 :root {
-	--size-search-container: 45rem;
+	--size-search-container: 28rem;
 }
 
 .search-container {
@@ -45,7 +45,7 @@
 .search-result {
 	display: block;
 	/* Match Codex MenuItem. */
-	padding: 0.8rem 1.2rem;
+	padding: 0.5rem 0.75rem;
 }
 
 .search-result dd {

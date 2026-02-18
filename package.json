@@ -42,7 +42,7 @@
 	],
 	"dependencies": {
 		"@jsdoc/salty": "^0.2.8",
-		"@wikimedia/codex-design-tokens": "1.1.1",
+		"@wikimedia/codex-design-tokens": "2.3.4",
 		"domino": "^2.1.6",
 		"jsdoc": "^4.0.5",
 		"jsdoc-class-hierarchy": "1.1.2",

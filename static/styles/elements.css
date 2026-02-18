@@ -10,8 +10,7 @@
 }
 
 html {
-	/* Simplify rem calculations: 1.6rem = 16px. */
-	font-size: 62.5%;
+	font-size: 100%;
 	scroll-padding-top: var( --size-header );
 }
 
@@ -20,7 +19,7 @@ body {
 	color: var( --color-base );
 	margin: 0;
 	font-family: var( --font-family-system-sans );
-	font-size: 1.6rem;
+	font-size: var( --font-size-medium );
 	line-height: var( --line-height-medium );
 }
 
@@ -31,7 +30,7 @@ h4,
 h5,
 h6 {
 	color: var( --color-emphasized );
-	margin: 3.2rem 0 0;
+	margin: 2rem 0 0;
 	line-height: var( --line-height-xxx-small );
 	transition: font-size var( --transition-duration-medium ), font-weight var( --transition-duration-medium );
 }
@@ -48,37 +47,37 @@ h1 {
 	border-bottom: var( --border-width-heading ) var( --border-style-base ) var( --border-color-light );
 	margin-top: 0;
 	padding-bottom: 2px;
-	font-size: 2.4rem;
+	font-size: 1.5rem;
 }
 
 h2 {
-	font-size: 2rem;
+	font-size: 1.25rem;
 }
 
 /* Reduce top margin when introductory headlines are following each other. */
 h1 + h2 {
-	margin-top: 1.6rem;
+	margin-top: 1rem;
 }
 
 h3 {
-	font-size: 1.8rem;
+	font-size: 1.125rem;
 }
 
 h4 {
-	font-size: 1.6rem;
+	font-size: 1rem;
 }
 
 h5,
 h6 {
-	font-size: 1.6rem;
+	font-size: 1rem;
 }
 
 blockquote {
-	margin: 1.6rem 0 0;
+	margin: 1rem 0 0;
 	border-left: var( --border-start-blockquote );
-	padding: 0.8rem 3.2rem;
+	padding: 0.5rem 2rem;
 	font-family: var( --font-family-serif );
-	font-size: 2rem;
+	font-size: 1.25rem;
 	font-style: italic;
 }
 
@@ -89,7 +88,7 @@ pre,
 }
 
 p {
-	margin: 3.2rem 0 0;
+	margin: 2rem 0 0;
 	overflow-wrap: break-word;
 }
 
@@ -102,7 +101,7 @@ h6 + p,
 p + p,
 ul + p,
 p:first-child {
-	margin: 0.8rem 0 0;
+	margin: 0.5rem 0 0;
 }
 
 pre,
@@ -110,19 +109,19 @@ pre,
 	background-color: var( --background-color-interactive-subtle );
 	color: var( --color-emphasized );
 	border: var( --border-base );
-	padding: 1.2rem;
-	font-size: 1.4rem;
+	padding: 0.75rem;
+	font-size: 0.875rem;
 	white-space: pre-wrap;
 }
 
 ol,
 ul {
-	margin: 0.8rem 0;
-	padding: 0 0 0 1.8rem; /* Can't remain within our 8px based sizing due to browser defaults */
+	margin: 0.5rem 0;
+	padding: 0 0 0 1.125rem; /* Can't remain within our 8px based sizing due to browser defaults */
 }
 
 .content li {
-	margin-top: 0.4rem;
+	margin-top: 0.25rem;
 }
 
 .content li:first-child {
@@ -152,12 +151,12 @@ strong {
 }
 
 small {
-	font-size: 1.3rem;
+	font-size: 0.8125rem;
 }
 
 sub,
 sup {
-	font-size: 1.1rem;
+	font-size: 0.6875rem;
 }
 
 code {
@@ -165,13 +164,13 @@ code {
 	display: inline-block;
 	/* Support: Chrome - prevent overflow for long code blocks. */
 	max-width: 100%;
-	padding: 0.2rem 0.4rem;
-	font-size: 1.4rem;
+	padding: 0.125rem 0.25rem;
+	font-size: 0.875rem;
 }
 
 .name {
 	color: var( --color-base );
-	font-size: 1.5rem;
+	font-size: 0.9375rem;
 }
 
 code,
@@ -234,7 +233,7 @@ dd > p:first-child {
 @media ( min-width: 900px ) {
 	.sitemap {
 		column-count: 2;
-		column-gap: 3rem;
+		column-gap: 2rem;
 	}
 }
 

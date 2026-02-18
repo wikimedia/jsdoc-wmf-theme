@@ -1,15 +1,15 @@
 /* Styles for documentation content. Overrides the base JSDoc theme. */
 
 :root {
-	--spacing-toggle-box-spacing: 2.4rem;
+	--spacing-toggle-box-spacing: 1.5rem;
 	--size-toggle-box-icon: 16px;
-	--spacing-toggle-box-icon-margin: 0.8rem;
+	--spacing-toggle-box-icon-margin: 0.5rem;
 }
 
 .toggle-all {
 	cursor: pointer;
 	float: right;
-	margin-top: 0.5rem;
+	margin-top: 0.3125rem;
 }
 
 .description {
@@ -331,7 +331,7 @@ We need this margin top on both for consistency. */
 /* Standalone descrioption that appears when the details element is closed. */
 .summary {
 	/* keep same margin-top as description */
-	margin-top: 0.8rem;
+	margin-top: 0.5rem;
 	/* lesser margin-bottom than description to keep page compact */
 	margin-bottom: 0;
 }

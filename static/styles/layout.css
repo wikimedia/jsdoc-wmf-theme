@@ -3,9 +3,9 @@
 :root {
 	--width-site: 960px;
 	--width-site-desktop-wide: 1140px;
-	--size-sidebar-tablet: 20.8rem;
-	--size-sidebar-tablet-plus: 24rem;
-	--size-sidebar-desktop: 25.6rem;
+	--size-sidebar-tablet: 13rem;
+	--size-sidebar-tablet-plus: 15rem;
+	--size-sidebar-desktop: 16rem;
 }
 
 /* Header. */
@@ -64,8 +64,8 @@
 	position: relative;
 	margin-right: auto;
 	margin-left: auto;
-	padding-left: 1.6rem;
-	padding-right: 1.6rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 .flex-cols {
@@ -82,8 +82,8 @@
 .footer {
 	background-color: var( --background-color-interactive );
 	color: var( --color-base );
-	padding: 2.4rem 0;
-	font-size: 1.3rem;
+	padding: 1.5rem 0;
+	font-size: 0.8125rem;
 }
 
 .footer__list {
@@ -103,7 +103,7 @@
 .footer__list li {
 	list-style: none none;
 	display: block;
-	padding: 0.8rem 0 0;
+	padding: 0.5rem 0 0;
 }
 
 .footer__list li:first-child {
@@ -111,12 +111,12 @@
 }
 
 .footer__list + p {
-	margin-top: 1.2rem;
+	margin-top: 0.75rem;
 }
 
 .lnk--wikimedia-project {
 	display: inline-block;
-	padding: 0.4rem 0;
+	padding: 0.25rem 0;
 	text-transform: uppercase;
 }
 
@@ -130,7 +130,7 @@
 
 	.site-title {
 		/* Account for menu button. */
-		margin-left: 4.2rem;
+		margin-left: 2.625rem;
 	}
 
 	.site-title a {
@@ -149,20 +149,20 @@
 /* Smartphone+ portrait */
 @media ( min-width: 414px ) {
 	.content-box {
-		padding-left: 3.2rem;
-		padding-right: 3.2rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 
 	.footer__list li {
 		display: list-item;
 		float: left;
-		padding: 0 0.8rem 0 0;
+		padding: 0 0.5rem 0 0;
 	}
 
 	.footer__list li::after {
 		content: '\2022'; /* bullet dot: '•' */
 		color: var( --color-subtle );
-		padding: 0 0 0 0.8rem;
+		padding: 0 0 0 0.5rem;
 		font-weight: 100;
 	}
 
@@ -217,7 +217,7 @@
 		width: var( --size-sidebar-tablet );
 		max-height: calc( 100vh - var( --min-size-header ) * 2 );
 		overflow-y: auto;
-		margin-right: 3.2rem;
+		margin-right: 2rem;
 		z-index: 1;
 		transition: width var( --transition-duration-medium );
 	}
