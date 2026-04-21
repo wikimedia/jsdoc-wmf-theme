@@ -549,33 +549,35 @@ function buildNav( members, customPages = {} ) {
 	};
 }
 
-function buildSiteMapSection( items, subsection ) {
-	const heading = subsection ? `<h2 class="sitemap-heading">${ subsection }</h2>` : '';
-	return `${ heading }
-<ul class="sitemap">
-	${ items.sort( ( a, b ) => a.name < b.name ? -1 : 1 ).map( ( a ) => `<li>${ a }</li>` ).join( '\n' ) }
+function buildSiteMapSection( items ) {
+	return `<ul class="sitemap">
+	${ items.map( ( a ) => `<li>${ a }</li>` ).join( '\n' ) }
 </ul>`;
 }
 
-function buildSiteMap( items, options = {} ) {
-	let index = [];
+// Sections are created and keyed by jsdoc/util/templateHelper#getMembers
+// https://github.com/jsdoc/jsdoc/blob/4.0.5/lib/jsdoc/util/templateHelper.js#L645
+function buildSiteMap( members, options = {} ) {
+	let buffer = [];
 	let html = '<h1>Sitemap</h1>';
-	const sortLongName = ( a, b ) => a.longname < b.longname ? -1 : 1;
-	Object.keys( items ).forEach( ( key ) => {
+	for ( const key in members ) {
 		if ( options.include && !options.include.includes( key ) ) {
-			return;
+			continue;
 		}
-		items[ key ].sort( sortLongName ).forEach( ( doclet ) => {
-			index.push( linkto( doclet.longname, doclet.displayName ) );
-		} );
-		if ( options.sections && index.length ) {
-			html += buildSiteMapSection( index, key );
-			index = [];
+		const doclets = members[ key ];
+		doclets.toSorted( ( a, b ) => a.longname < b.longname ? -1 : 1 );
+		for ( const doclet of doclets ) {
+			buffer.push( linkto( doclet.longname, doclet.displayName ) );
 		}
-	} );
+		if ( options.sections && buffer.length ) {
+			html += `<h2 class="sitemap-heading">${ key }</h2>\n`;
+			html += buildSiteMapSection( buffer );
+			buffer = [];
+		}
+	}
 
-	if ( index.length ) {
-		html += buildSiteMapSection( index.sort( sortLongName ) );
+	if ( buffer.length ) {
+		html += buildSiteMapSection( buffer );
 	}
 	return html;
 }

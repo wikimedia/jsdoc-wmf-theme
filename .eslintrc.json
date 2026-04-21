@@ -1,6 +1,8 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/server"
+		"wikimedia",
+		"wikimedia/node",
+		"wikimedia/language/es2023"
 	]
 }
