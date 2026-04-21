@@ -549,35 +549,26 @@ function buildNav( members, customPages = {} ) {
 	};
 }
 
-function buildSiteMapSection( items ) {
-	return `<ul class="sitemap">
-	${ items.map( ( a ) => `<li>${ a }</li>` ).join( '\n' ) }
-</ul>`;
-}
-
 // Sections are created and keyed by jsdoc/util/templateHelper#getMembers
 // https://github.com/jsdoc/jsdoc/blob/4.0.5/lib/jsdoc/util/templateHelper.js#L645
-function buildSiteMap( members, options = {} ) {
-	let buffer = [];
+function buildSiteMap( members, options ) {
 	let html = '<h1>Sitemap</h1>';
 	for ( const key in members ) {
 		if ( options.include && !options.include.includes( key ) ) {
 			continue;
 		}
 		const doclets = members[ key ];
+		if ( !doclets.length ) {
+			// Skip empty sections
+			continue;
+		}
 		doclets.toSorted( ( a, b ) => a.longname < b.longname ? -1 : 1 );
+		html += `<h2 class="sitemap-heading">${ key }</h2>\n`;
+		html += '<ul class="sitemap">\n';
 		for ( const doclet of doclets ) {
-			buffer.push( linkto( doclet.longname, doclet.displayName ) );
+			html += `<li>${ linkto( doclet.longname, doclet.displayName ) }</li>\n`;
 		}
-		if ( options.sections && buffer.length ) {
-			html += `<h2 class="sitemap-heading">${ key }</h2>\n`;
-			html += buildSiteMapSection( buffer );
-			buffer = [];
-		}
-	}
-
-	if ( buffer.length ) {
-		html += buildSiteMapSection( buffer );
+		html += '</ul>\n';
 	}
 	return html;
 }
