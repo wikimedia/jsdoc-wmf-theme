@@ -236,7 +236,3 @@ dd > p:first-child {
 		column-gap: 2rem;
 	}
 }
-
-.sitemap-heading {
-	text-transform: capitalize; /* stylelint-disable-line declaration-property-value-disallowed-list */
-}

@@ -563,7 +563,9 @@ function buildSiteMap( members, options ) {
 			continue;
 		}
 		doclets.toSorted( ( a, b ) => a.longname < b.longname ? -1 : 1 );
-		html += `<h2 class="sitemap-heading">${ key }</h2>\n`;
+		// T361162: Capitalize headings
+		const displayName = key[ 0 ].toUpperCase() + key.slice( 1 );
+		html += `<h2 class="sitemap-heading" id="${ key }">${ displayName }</h2>\n`;
 		html += '<ul class="sitemap">\n';
 		for ( const doclet of doclets ) {
 			html += `<li>${ linkto( doclet.longname, doclet.displayName ) }</li>\n`;
