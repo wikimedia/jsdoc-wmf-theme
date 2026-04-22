@@ -1,17 +1,21 @@
 'use strict';
 
-const assert = require( 'assert' );
 const proxyquire = require( 'proxyquire' ).noPreserveCache().noCallThru();
 
-describe( 'Externals plugin', () => {
+QUnit.module( 'Externals plugin', () => {
 	const defaultMaps = {
 		linkMap: { 'jQuery.Promise': 'https://jquery.com' },
 		prefixMap: { 'OO.ui.': 'https://doc.wikimedia.org/ooui/{type}' }
 	};
 
-	const mockConfigs = [
-		{
-			description: 'should extend wmfConf with defaultMaps when wmfConf already has some entries',
+	const mocks = {
+		'../src/defaultMaps': defaultMaps,
+		'jsdoc/util/templateHelper': {},
+		'jsdoc/tag/type': {}
+	};
+
+	QUnit.test.each( 'conf', {
+		'extend wmfConf with defaultMaps when wmfConf already has some entries': {
 			conf: {
 				templates: {
 					wmf: {
@@ -31,8 +35,7 @@ describe( 'Externals plugin', () => {
 				}
 			}
 		},
-		{
-			description: 'should initialize wmfConf with defaultMaps when wmfConf is empty',
+		'initialize wmfConf with defaultMaps when wmfConf is empty': {
 			conf: {
 				templates: {
 					wmf: {}
@@ -47,8 +50,7 @@ describe( 'Externals plugin', () => {
 				}
 			}
 		},
-		{
-			description: 'should initialize templates and wmfConf when they do not exist',
+		'initialize templates and wmfConf when they do not exist': {
 			conf: {},
 			expected: {
 				linkMap: {
@@ -59,28 +61,16 @@ describe( 'Externals plugin', () => {
 				}
 			}
 		}
-	];
-
-	const mocks = {
-		'../src/defaultMaps': defaultMaps,
-		'jsdoc/util/templateHelper': {},
-		'jsdoc/tag/type': {}
-	};
-
-	// eslint-disable-next-line mocha/no-setup-in-describe
-	mockConfigs.forEach( ( { description, conf, expected } ) => {
-		it( description, () => {
-			// Override the mock for jsdoc/env with the current test case's conf
-			proxyquire( '../plugins/externals.js', {
-				'jsdoc/env': { conf: conf },
-				...mocks
-			} );
-
-			const { linkMap, prefixMap } = conf.templates.wmf;
-
-			// Assertions
-			assert.deepStrictEqual( linkMap, expected.linkMap );
-			assert.deepStrictEqual( prefixMap, expected.prefixMap );
+	}, ( assert, { conf, expected } ) => {
+		// Override the mock for jsdoc/env with the current test case's conf
+		proxyquire( '../plugins/externals.js', {
+			'jsdoc/env': { conf: conf },
+			...mocks
 		} );
+
+		const { linkMap, prefixMap } = conf.templates.wmf;
+
+		assert.deepEqual( linkMap, expected.linkMap );
+		assert.deepEqual( prefixMap, expected.prefixMap );
 	} );
 } );
