@@ -236,3 +236,7 @@ dd > p:first-child {
 		column-gap: 2rem;
 	}
 }
+
+.sitemap-heading a {
+	color: var( --color-placeholder );
+}
