@@ -80,7 +80,7 @@
 }
 
 /* Use higher contrast and text-weight for printable form. */
-@media print, projection {
+@media print {
 	.str {
 		color: #060;
 	}
