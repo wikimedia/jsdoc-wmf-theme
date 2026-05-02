@@ -181,7 +181,8 @@ code,
 
 pre {
 	white-space: pre-wrap;
-	word-wrap: break-word;
+	overflow-wrap: anywhere;
+	word-wrap: normal;
 	/* Make scrollable on very small screens if necessary. */
 	overflow-x: auto;
 }
@@ -227,7 +228,8 @@ dd > p:first-child {
 
 /* Sitemap */
 .sitemap {
-	word-break: break-word;
+	overflow-wrap: anywhere;
+	word-break: normal;
 }
 
 @media ( min-width: 900px ) {
