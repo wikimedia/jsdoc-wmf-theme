@@ -1,5 +1,31 @@
 # Release History
 
+## jsdoc-wmf-theme 1.3.0 (2026-05-27)
+
+* Change base rem size to update codex-design-tokens to 2.3.4 (Ed Sanders)
+* Fix styles for copy button (Ed Sanders)
+* siteMap: Minor code clean up, remove broken sort (Timo Tijhof)
+* siteMap: Remove "sections" option (Timo Tijhof)
+* siteMap: Add anchors to headings for permalinking (Timo Tijhof)
+* style: Add anchor link icon to sitemap headings (apaskulin)
+* styles: Replace deprecated word-wrap: break-word with overflow-wrap/word-wrap duo (James D. Forrester)
+* styles: Drop deprecated 'projection' media type (James D. Forrester)
+
+—
+* build: Updating npm dependencies (libraryupgrader)
+* build: Updating underscore to 1.13.8 (libraryupgrader)
+* build: Updating flatted to 3.4.1 (libraryupgrader)
+* build: Updating flatted to 3.4.2 (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+* build: Updating brace-expansion to 1.1.13, 2.0.3 (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+* tests: Switch from mocha to qunit (Timo Tijhof)
+* build: Updating postcss to 8.5.12 (libraryupgrader)
+* build: Upgrade stylelint-config-wikimedia to 0.19.2 and grunt-stylelint to 0.21.0 (James D. Forrester)
+* Upgrade @wikimedia/codex-design-tokens from 2.3.4 to 2.5.1 (James D. Forrester)
+* build: Updating eslint-config-wikimedia to 0.32.4 (libraryupgrader)
+* build: Updating fast-uri to 3.1.2 (libraryupgrader)
+
 ## jsdoc-wmf-theme 1.2.0 (2026-01-28)
 
 * plugins/externals: Cleanup type extraction code (Ed Sanders)
