@@ -21,9 +21,9 @@
 	/* Size. */
 	--min-size-header: 4rem;
 	/* 2x header spacing + height of the search input. */
-	--size-header: calc( calc( var( --spacing-header ) * 2 ) + calc( var( --font-size-base ) * var( --line-height-medium ) ) + calc( var( --spacing-vertical-search-input ) * 2 ) + calc( var( --border-width-base ) * 2 ) );
+	--size-header: calc( calc( var( --spacing-header ) * 2 ) + var( --line-height-medium ) + calc( var( --spacing-vertical-search-input ) * 2 ) + calc( var( --border-width-base ) * 2 ) );
 	/* Nav button height + 3x header spacing + height of the search input. */
-	--size-header--mobile: calc( var( --size-nav-button ) + calc( var( --spacing-header ) * 3 ) + calc( var( --font-size-base ) * var( --line-height-medium ) ) + calc( var( --spacing-vertical-search-input ) * 2 ) + calc( var( --border-width-base ) * 2 ) );
+	--size-header--mobile: calc( var( --size-nav-button ) + calc( var( --spacing-header ) * 3 ) + var( --line-height-medium ) + calc( var( --spacing-vertical-search-input ) * 2 ) + calc( var( --border-width-base ) * 2 ) );
 	--size-nav-button: 1.25rem;
 
 	/* Spacing. */
