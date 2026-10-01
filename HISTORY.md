@@ -1,5 +1,26 @@
 # Release History
 
+## jsdoc-wmf-theme 1.3.1 (2026-10-01)
+
+* styles: Remove calc based on font size (apaskulin)
+
+—
+* build: Updating markdown-it to 14.2.0 (libraryupgrader)
+* build: Updating stylelint-config-wikimedia to 0.19.3 (libraryupgrader)
+* build: Updating brace-expansion to 1.1.16, 2.1.2 (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+* build: Updating postcss to 8.5.23 (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+* build: Updating eslint-config-wikimedia to 0.32.5 (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+* build: Updating fast-uri to 3.1.7 (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+* build: Updating eslint-config-wikimedia to 0.32.6 (libraryupgrader)
+* build: Updating stylelint-config-wikimedia to 0.19.4 (libraryupgrader)
+* build: Updating markdown-it to 14.3.2 (libraryupgrader)
+* build: Updating npm dependencies (libraryupgrader)
+
 ## jsdoc-wmf-theme 1.3.0 (2026-05-27)
 
 * Change base rem size to update codex-design-tokens to 2.3.4 (Ed Sanders)
